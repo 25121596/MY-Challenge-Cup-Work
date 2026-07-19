@@ -1,0 +1,13 @@
+build/
+*.gguf
+*.exe
+*.dll
+*.lib
+*.exp
+*.obj
+*.pdb
+*.ilk
+*.ini
+edge-gui.ini
+.DS_Store
+Thumbs.db
