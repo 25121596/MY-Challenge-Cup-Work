@@ -70,6 +70,9 @@ public:
     int      last_latency()  const { return _last_latency_ms; }
     int64_t  last_report_at() const { return _last_report_us; }
 
+    // Number of consecutive failed heartbeat attempts since last success.
+    int consecutive_failures() const { return _consecutive_failures; }
+
 private:
     void run_loop();
     bool send_heartbeat(const std::string & json_body, int & out_latency_ms);
@@ -95,4 +98,7 @@ private:
     bool    _last_success    = false;
     int     _last_latency_ms = -1;
     int64_t _last_report_us  = 0;
+
+    // Consecutive failed heartbeat count (reset on success)
+    int     _consecutive_failures = 0;
 };

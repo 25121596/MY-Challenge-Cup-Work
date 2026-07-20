@@ -77,6 +77,9 @@ void HeartbeatManager::run_loop() {
             _last_latency_ms = latency_ms;
             _last_report_us  = snap.timestamp_us;
 
+            if (ok) _consecutive_failures = 0;
+            else    _consecutive_failures++;
+
             if (on_status) {
                 on_status(ok, latency_ms, ok ? "" : "heartbeat failed");
             }
@@ -104,6 +107,10 @@ bool HeartbeatManager::send_now() {
     _last_success    = ok;
     _last_latency_ms = latency_ms;
     _last_report_us  = snap.timestamp_us;
+
+    if (ok) _consecutive_failures = 0;
+    else    _consecutive_failures++;
+
     _prev_snapshot   = snap;
     _prev_valid      = true;
     return ok;

@@ -74,6 +74,8 @@ add_executable(edge-gui
     p2p_mesh.h
     conflict_detector.cpp
     conflict_detector.h
+    edge_local_decision.cpp
+    edge_local_decision.h
     file_dialog.cpp
     file_dialog.h
 )

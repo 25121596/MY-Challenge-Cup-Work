@@ -10,6 +10,7 @@
 #include "model_sync.h"
 #include "p2p_mesh.h"
 #include "conflict_detector.h"
+#include "edge_local_decision.h"
 
 #include <deque>
 #include <functional>
@@ -58,6 +59,7 @@ public:
     ModelSyncManager _model_sync;
     P2PMesh          _p2p;
     ConflictDetector _conflict_detector;
+    EdgeLocalDecision  _local_decision;
 
     // Render the full UI. Called once per frame.
     void render();

@@ -342,6 +342,23 @@ void EdgeApp::render_top_bar() {
         ImGui::TextColored(ImVec4(1.0f, 0.6f, 0.3f, 1.0f), "[\xe6\x9c\xac\xe5\x9c\xb0]");
     }
 
+    // ── Network condition indicator (edge autonomy) ────────────
+    {
+        ImGui::SameLine();
+        auto nc = _local_decision.current_condition();
+        switch (nc) {
+            case NetworkCondition::Healthy:
+                ImGui::TextColored(ImVec4(0.3f, 1.0f, 0.3f, 1.0f), "[net:ok]");
+                break;
+            case NetworkCondition::Degraded:
+                ImGui::TextColored(ImVec4(1.0f, 0.8f, 0.2f, 1.0f), "[net:degraded]");
+                break;
+            case NetworkCondition::Offline:
+                ImGui::TextColored(ImVec4(1.0f, 0.3f, 0.3f, 1.0f), "[net:offline]");
+                break;
+        }
+    }
+
     if (_power_info.valid) {
         ImGui::SameLine();
         if (_power_info.on_ac) {
@@ -750,7 +767,70 @@ void EdgeApp::submit_message(const std::string & text) {
 
     auto on_perf = [this](const EnginePerf & perf) { _last_perf = perf; };
 
-    if (_cloud_enabled && _cloud.is_reachable()) {
+    // ── Network-aware autonomous decision (edge-local fallback) ──
+    // Assess current network condition for edge autonomy (Module 3.1).
+    int  rtt_ms   = _device_monitor.measure_rtt_ms(_cloud_endpoint);
+    bool cloud_ok = _cloud_client.is_reachable();
+    int  hb_fails = _heartbeat.consecutive_failures();
+    NetworkCondition net = _local_decision.assess_network(rtt_ms, cloud_ok, hb_fails);
+
+    bool force_local = false;
+    bool use_p2p     = false;
+
+    if (net != NetworkCondition::Healthy) {
+        // Use a default confidence of 0.7 — wire to real inference
+        // confidence once the engine exposes per-token logprobs.
+        float confidence = 0.7f;
+        LocalAction action = _local_decision.decide(confidence, net);
+
+        switch (action) {
+            case LocalAction::LocalInfer:
+                force_local = true;
+                break;
+            case LocalAction::QueueForCloud:
+                // Respond locally now; queue for later cloud review.
+                force_local = true;
+                // TODO: enqueue the message text for deferred cloud processing
+                break;
+            case LocalAction::P2PConsensus:
+                if (_p2p.is_running() && !_p2p.known_peers().empty()) {
+                    use_p2p     = true;
+                    force_local = true;
+                } else {
+                    // No P2P peers available — best-effort local inference.
+                    force_local = true;
+                }
+                break;
+            case LocalAction::FollowCloud:
+                // Network is degraded but decision engine says follow cloud.
+                // Fall through to normal cloud/local path below.
+                break;
+        }
+    }
+
+    if (force_local) {
+        // ── Autonomous local inference ──────────────────────────
+        std::string prompt;
+        std::vector<common_chat_msg> msgs(_messages.begin(), _messages.end() - 1);
+        if (!_system_prompt.empty()) msgs.insert(msgs.begin(), {"system", _system_prompt});
+        prompt = _engine.render_chat_prompt(msgs, true);
+        _engine.generate(prompt, on_token, on_perf);
+
+        // Broadcast decision intent to P2P peers for consensus
+        if (use_p2p) {
+            for (const auto & peer : _p2p.known_peers()) {
+                if (peer.online) {
+                    DecisionIntent intent;
+                    intent.intent_id  = "intent_" + std::to_string(_messages.size());
+                    intent.node_id    = _p2p_node_id;
+                    intent.target_id  = "msg_" + std::to_string(_messages.size());
+                    intent.proposed_action = "local_infer";
+                    intent.confidence = 0.7f;
+                    _p2p.send_decision_intent(peer.node_id, intent);
+                }
+            }
+        }
+    } else if (_cloud_enabled && _cloud.is_reachable()) {
         std::string json = build_messages_json(
             std::deque<common_chat_msg>(_messages.begin(), _messages.end() - 1));
         _cloud.set_endpoint(_cloud_endpoint, _cloud_api_key);
@@ -833,6 +913,27 @@ void EdgeApp::update_device_metrics() {
     _heartbeat.set_network_rtt(
         _cloud_client.is_reachable() ? 0 : -1,
         _cloud_client.is_reachable());
+
+    // ── Edge autonomy: track network transitions ───────────────
+    // Re-assess network condition at 1 Hz so the UI stays current.
+    NetworkCondition prev_cond = _local_decision.current_condition();
+    int  rtt    = _device_monitor.measure_rtt_ms(_cloud_endpoint);
+    bool cloud  = _cloud_client.is_reachable();
+    int  hb_fail = _heartbeat.consecutive_failures();
+    NetworkCondition new_cond = _local_decision.assess_network(rtt, cloud, hb_fail);
+
+    // Flush offline decisions when network recovers
+    if (new_cond == NetworkCondition::Healthy &&
+        (prev_cond == NetworkCondition::Degraded ||
+         prev_cond == NetworkCondition::Offline)) {
+        auto decisions = _local_decision.flush_offline_decisions();
+        if (!decisions.empty()) {
+            fprintf(stderr, "[EdgeLocalDecision] Network recovered — "
+                    "flushing %zu offline decision(s) for cloud PPO training\n",
+                    decisions.size());
+            // TODO: upload decisions to cloud via _cloud_client for PPO replay buffer
+        }
+    }
 }
 
 // ── Heartbeat panel ──────────────────────────────────────────────
