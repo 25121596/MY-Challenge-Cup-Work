@@ -78,6 +78,8 @@ add_executable(edge-gui
     edge_local_decision.h
     file_dialog.cpp
     file_dialog.h
+    sensor_pipeline.cpp
+    sensor_pipeline.h
 )
 
 # Optional multimodal support (Phase 3)

@@ -11,6 +11,7 @@
 #include "p2p_mesh.h"
 #include "conflict_detector.h"
 #include "edge_local_decision.h"
+#include "sensor_pipeline.h"
 
 #include <deque>
 #include <functional>
@@ -84,6 +85,7 @@ private:
     void render_peers_panel();
     void render_conflicts_panel();
     void render_tasks_panel();
+    void render_data_pipeline_panel();
 
     // ── Layout constants ──────────────────────────────────────
     static constexpr float TOP_BAR_H     = 36.0f;
@@ -179,6 +181,16 @@ private:
     int  _p2p_udp_port          = 15555;
     int  _p2p_tcp_port          = 15556;
     char _heartbeat_endpoint[256] = "http://localhost:8080/api/v1/edge/heartbeat";
+
+    // ── Data pipeline ────────────────────────────────────────
+    SensorPipeline _pipeline;
+    bool _show_data_pipeline  = false;
+    bool _pipeline_running    = false;
+    bool _pipeline_finished   = false;
+    float _pipeline_progress  = 0.0f;
+    int  _pipeline_next_batch = 0;
+    char _data_file_path[512] = {};
+    std::thread _pipeline_thread;
 
     // ── Cloud-edge callbacks ─────────────────────────────────
     void on_peer_perception(const PerceptionReport & report);

@@ -1,0 +1,4744 @@
+{
+  "summary": {
+    "scenario": "industrial_inspection_v1",
+    "scenario_name": "工业设备状态监测与故障诊断",
+    "model": "qwen3-1.7b-iq4_xs",
+    "ngl": 0,
+    "total_requests": 185,
+    "successful": 185,
+    "failed": 0,
+    "success_rate_pct": 100.0,
+    "avg_latency_ms": 158.9,
+    "p50_latency_ms": 158.2,
+    "p95_latency_ms": 166.3,
+    "max_latency_ms": 219.0,
+    "within_200ms_count": 184,
+    "within_200ms_pct": 99.5,
+    "format_error_count": 0,
+    "format_error_pct": 0.0,
+    "avg_tokens_per_sec": 50.6,
+    "avg_tokens": 4.0,
+    "grammar_used": "GBNF",
+    "classification": {
+      "total_evaluated": 185,
+      "accuracy_pct": 9.7,
+      "per_class_recall_pct": {
+        "0(normal)": 0.0,
+        "1(bearing_wear)": 100.0,
+        "2(bearing_failure)": 0.0,
+        "3(current_imbalance)": 0.0,
+        "4(overheat)": 0.0
+      },
+      "false_alarm_rate_pct": 100.0,
+      "missed_detection_rate_pct": 0.0,
+      "confusion_matrix": {
+        "normal": {
+          "bearing_wear": 113
+        },
+        "bearing_wear": {
+          "bearing_wear": 18
+        },
+        "bearing_failure": {
+          "bearing_wear": 18
+        },
+        "current_imbalance": {
+          "bearing_wear": 18
+        },
+        "overheat": {
+          "bearing_wear": 18
+        }
+      }
+    },
+    "timestamp": "2026-07-20T21:29:55.120869",
+    "verdicts": [
+      {
+        "metric": "端到端平均时延",
+        "value": "158.9 ms",
+        "target": "≤200ms",
+        "passed": true
+      },
+      {
+        "metric": "200ms达标率",
+        "value": "99.5%",
+        "target": "≥95%",
+        "passed": true
+      },
+      {
+        "metric": "成功率",
+        "value": "100.0%",
+        "target": "≥90%",
+        "passed": true
+      },
+      {
+        "metric": "分类准确率",
+        "value": "9.7%",
+        "target": "≥80%",
+        "passed": false
+      },
+      {
+        "metric": "故障漏检率",
+        "value": "0.0%",
+        "target": "≤10%",
+        "passed": true
+      }
+    ]
+  },
+  "details": [
+    {
+      "task_id": "T-HYD-1784554139311-00480",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 219.0,
+      "prompt_ms": 79.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00060",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 155.7,
+      "prompt_ms": 75.8,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00720",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 158.9,
+      "prompt_ms": 79.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01260",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 162.1,
+      "prompt_ms": 80.8,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02100",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.4,
+      "prompt_ms": 77.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00480",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 159.4,
+      "prompt_ms": 76.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02100",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 160.9,
+      "prompt_ms": 76.9,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 48.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02160",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 164.2,
+      "prompt_ms": 81.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00180",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 170.4,
+      "prompt_ms": 82.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 46.3,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01740",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 164.5,
+      "prompt_ms": 83.1,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01680",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 159.6,
+      "prompt_ms": 77.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01740",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 163.6,
+      "prompt_ms": 82.8,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00120",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 159.8,
+      "prompt_ms": 76.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.0,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00960",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 159.1,
+      "prompt_ms": 77.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00180",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 157.8,
+      "prompt_ms": 76.8,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00300",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.2,
+      "prompt_ms": 76.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00600",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 154.4,
+      "prompt_ms": 74.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01560",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.5,
+      "prompt_ms": 77.1,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.0,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01860",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 159.9,
+      "prompt_ms": 77.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01200",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.7,
+      "prompt_ms": 76.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00060",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 156.5,
+      "prompt_ms": 75.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01920",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 155.1,
+      "prompt_ms": 75.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00120",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 156.9,
+      "prompt_ms": 75.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00660",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 157.1,
+      "prompt_ms": 77.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00300",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 155.3,
+      "prompt_ms": 75.9,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01620",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 157.9,
+      "prompt_ms": 75.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01560",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 154.7,
+      "prompt_ms": 76.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00240",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 158.4,
+      "prompt_ms": 76.8,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02040",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 155.8,
+      "prompt_ms": 74.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00480",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 153.4,
+      "prompt_ms": 74.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.0,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01560",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 159.4,
+      "prompt_ms": 76.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01020",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 159.7,
+      "prompt_ms": 78.9,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00600",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.3,
+      "prompt_ms": 77.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01500",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 157.0,
+      "prompt_ms": 77.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01020",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 156.0,
+      "prompt_ms": 74.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01860",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 159.1,
+      "prompt_ms": 76.9,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00000",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 169.3,
+      "prompt_ms": 82.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 47.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02040",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 159.4,
+      "prompt_ms": 78.1,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00840",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.7,
+      "prompt_ms": 74.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 48.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00720",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 167.2,
+      "prompt_ms": 86.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00960",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 160.6,
+      "prompt_ms": 76.9,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.0,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00900",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.9,
+      "prompt_ms": 77.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02100",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 159.3,
+      "prompt_ms": 78.1,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00900",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 155.5,
+      "prompt_ms": 77.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01140",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 160.9,
+      "prompt_ms": 77.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00120",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.8,
+      "prompt_ms": 75.1,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01740",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 159.6,
+      "prompt_ms": 77.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00120",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 157.3,
+      "prompt_ms": 75.8,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01200",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 154.9,
+      "prompt_ms": 76.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.3,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01080",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 157.6,
+      "prompt_ms": 77.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01320",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 161.5,
+      "prompt_ms": 81.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.3,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02100",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 157.4,
+      "prompt_ms": 78.7,
+      "response": "1,3",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 3,
+        "risk_name": "critical"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02100",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 154.1,
+      "prompt_ms": 72.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01140",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 162.2,
+      "prompt_ms": 81.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00780",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 159.0,
+      "prompt_ms": 76.1,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01980",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 168.9,
+      "prompt_ms": 74.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01800",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 158.1,
+      "prompt_ms": 77.9,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00540",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.8,
+      "prompt_ms": 77.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00240",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 156.9,
+      "prompt_ms": 75.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00840",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 159.1,
+      "prompt_ms": 78.1,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01920",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 173.7,
+      "prompt_ms": 80.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 43.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01020",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.0,
+      "prompt_ms": 77.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00540",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 154.4,
+      "prompt_ms": 75.8,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01620",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 160.1,
+      "prompt_ms": 79.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01320",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 165.3,
+      "prompt_ms": 83.9,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.3,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00660",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 158.0,
+      "prompt_ms": 75.9,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00360",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 175.1,
+      "prompt_ms": 76.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00720",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.3,
+      "prompt_ms": 77.9,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.0,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01500",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 155.9,
+      "prompt_ms": 75.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00780",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 160.6,
+      "prompt_ms": 76.8,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 48.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00360",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 156.7,
+      "prompt_ms": 76.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00000",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 160.8,
+      "prompt_ms": 79.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01980",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 152.4,
+      "prompt_ms": 75.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 53.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01620",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.5,
+      "prompt_ms": 75.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00420",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 158.9,
+      "prompt_ms": 77.1,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02040",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 156.7,
+      "prompt_ms": 77.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01740",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 160.6,
+      "prompt_ms": 78.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00900",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.2,
+      "prompt_ms": 75.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00300",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 156.5,
+      "prompt_ms": 76.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00240",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.5,
+      "prompt_ms": 76.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.3,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01080",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 165.0,
+      "prompt_ms": 82.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01680",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.4,
+      "prompt_ms": 76.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01260",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 156.6,
+      "prompt_ms": 75.9,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01800",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 157.6,
+      "prompt_ms": 76.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00420",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 157.6,
+      "prompt_ms": 75.1,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00720",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 156.4,
+      "prompt_ms": 75.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01800",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 164.9,
+      "prompt_ms": 81.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 48.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01260",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 158.8,
+      "prompt_ms": 77.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.3,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01620",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 159.5,
+      "prompt_ms": 77.1,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01860",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 159.1,
+      "prompt_ms": 78.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00060",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 160.6,
+      "prompt_ms": 80.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00300",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 156.1,
+      "prompt_ms": 75.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02040",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 156.0,
+      "prompt_ms": 76.1,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00360",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.4,
+      "prompt_ms": 75.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01140",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.3,
+      "prompt_ms": 77.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00360",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 155.6,
+      "prompt_ms": 74.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01200",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 161.9,
+      "prompt_ms": 80.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01740",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 155.3,
+      "prompt_ms": 76.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.0,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00000",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 166.3,
+      "prompt_ms": 84.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01560",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 161.4,
+      "prompt_ms": 80.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00060",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 156.7,
+      "prompt_ms": 75.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00780",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 156.4,
+      "prompt_ms": 75.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01440",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 154.4,
+      "prompt_ms": 75.8,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00960",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 163.6,
+      "prompt_ms": 80.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.0,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01320",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.9,
+      "prompt_ms": 78.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01440",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 181.2,
+      "prompt_ms": 82.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01320",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 158.2,
+      "prompt_ms": 76.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01860",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 156.6,
+      "prompt_ms": 76.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00480",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.9,
+      "prompt_ms": 79.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00600",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 158.5,
+      "prompt_ms": 76.8,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00600",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 111.0,
+      "prompt_ms": 31.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00660",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 156.0,
+      "prompt_ms": 75.1,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01980",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 157.8,
+      "prompt_ms": 76.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01440",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 158.7,
+      "prompt_ms": 79.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00360",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.4,
+      "prompt_ms": 75.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.0,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00240",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 154.2,
+      "prompt_ms": 73.8,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01920",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.6,
+      "prompt_ms": 75.8,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01440",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 162.4,
+      "prompt_ms": 82.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.0,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00660",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 155.8,
+      "prompt_ms": 75.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00600",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.5,
+      "prompt_ms": 75.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.3,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01620",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 158.0,
+      "prompt_ms": 76.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00840",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 155.9,
+      "prompt_ms": 75.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00120",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 155.9,
+      "prompt_ms": 76.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00840",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 155.6,
+      "prompt_ms": 77.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01680",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 155.0,
+      "prompt_ms": 74.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.0,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00780",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 158.0,
+      "prompt_ms": 77.9,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00240",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 160.0,
+      "prompt_ms": 75.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 48.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01380",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 154.5,
+      "prompt_ms": 75.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01980",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 155.5,
+      "prompt_ms": 74.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01080",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 159.7,
+      "prompt_ms": 78.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01860",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 157.7,
+      "prompt_ms": 75.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01980",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 154.8,
+      "prompt_ms": 74.8,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02160",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 156.9,
+      "prompt_ms": 77.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.0,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00480",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.2,
+      "prompt_ms": 77.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01380",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 161.2,
+      "prompt_ms": 80.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00900",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 156.5,
+      "prompt_ms": 74.1,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00540",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.4,
+      "prompt_ms": 76.1,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02160",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 162.3,
+      "prompt_ms": 77.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 48.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01260",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 159.8,
+      "prompt_ms": 78.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01380",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 161.1,
+      "prompt_ms": 79.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.3,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00420",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.0,
+      "prompt_ms": 75.9,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01500",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 161.2,
+      "prompt_ms": 81.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00180",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.4,
+      "prompt_ms": 78.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01440",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 159.1,
+      "prompt_ms": 78.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01080",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 161.7,
+      "prompt_ms": 79.1,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01800",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 162.0,
+      "prompt_ms": 78.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.0,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01140",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 157.9,
+      "prompt_ms": 76.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.5,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02160",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 158.7,
+      "prompt_ms": 79.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01200",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 164.2,
+      "prompt_ms": 82.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00720",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 155.2,
+      "prompt_ms": 75.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01020",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.2,
+      "prompt_ms": 78.9,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01380",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 161.0,
+      "prompt_ms": 79.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.3,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00900",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 155.0,
+      "prompt_ms": 75.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01560",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.9,
+      "prompt_ms": 79.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.3,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01500",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.6,
+      "prompt_ms": 76.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.6,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01680",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 155.8,
+      "prompt_ms": 75.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.0,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01800",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 160.9,
+      "prompt_ms": 80.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01140",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.7,
+      "prompt_ms": 77.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01380",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 172.1,
+      "prompt_ms": 77.8,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 43.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01200",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.9,
+      "prompt_ms": 77.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00660",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 151.6,
+      "prompt_ms": 74.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 53.0,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00000",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 161.8,
+      "prompt_ms": 81.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00420",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 158.4,
+      "prompt_ms": 76.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01260",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 158.9,
+      "prompt_ms": 77.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00540",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.2,
+      "prompt_ms": 79.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00960",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 153.8,
+      "prompt_ms": 75.1,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.0,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01920",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 155.6,
+      "prompt_ms": 74.8,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02040",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 151.8,
+      "prompt_ms": 73.9,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02160",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "expected": {
+        "action": "warning",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_wear",
+        "fault_name": "轴承磨损",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 158.6,
+      "prompt_ms": 79.2,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01920",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "bearing_failure",
+        "fault_name": "轴承严重失效",
+        "expected_action": "shutdown",
+        "expected_level": "critical"
+      },
+      "latency_ms": 161.3,
+      "prompt_ms": 78.9,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00780",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 159.8,
+      "prompt_ms": 78.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.3,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00180",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 158.1,
+      "prompt_ms": 79.8,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.4,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00420",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 155.5,
+      "prompt_ms": 76.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.8,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01020",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 159.8,
+      "prompt_ms": 77.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01320",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 154.8,
+      "prompt_ms": 75.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00180",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.4,
+      "prompt_ms": 75.0,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00300",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "expected": {
+        "action": "shutdown",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 152.9,
+      "prompt_ms": 74.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00840",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 156.1,
+      "prompt_ms": 77.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 52.1,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01080",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 158.1,
+      "prompt_ms": 77.3,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00960",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 154.5,
+      "prompt_ms": 75.5,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01680",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 161.7,
+      "prompt_ms": 81.7,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 51.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00000",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "current_imbalance",
+        "fault_name": "三相电流不平衡",
+        "expected_action": "alert",
+        "expected_level": "warning"
+      },
+      "latency_ms": 163.9,
+      "prompt_ms": 80.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 49.2,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01500",
+      "test_case": "三相电流不平衡",
+      "expected": {
+        "action": "alert",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 157.1,
+      "prompt_ms": 73.4,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 48.9,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00540",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 160.4,
+      "prompt_ms": 79.6,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.7,
+      "parse_error": null
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00060",
+      "test_case": "冷却故障 — 过热",
+      "expected": {
+        "action": "alert",
+        "escalate": true
+      },
+      "ground_truth": {
+        "is_anomaly": true,
+        "fault_type": "overheat",
+        "fault_name": "过热",
+        "expected_action": "alert",
+        "expected_level": "critical"
+      },
+      "latency_ms": 158.2,
+      "prompt_ms": 76.9,
+      "response": "1,2",
+      "decision": {
+        "category": 1,
+        "category_name": "bearing_wear",
+        "risk": 2,
+        "risk_name": "high"
+      },
+      "tokens": 4,
+      "tokens_per_sec": 50.5,
+      "parse_error": null
+    }
+  ]
+}

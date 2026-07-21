@@ -69,6 +69,17 @@ public:
                   const engine_token_callback & on_token,
                   std::function<void(const EnginePerf &)> on_perf = nullptr);
 
+    // Generate with GBNF grammar constraint (for classification tasks).
+    // grammar_str: GBNF rules, e.g. "root ::= [0-6]". Empty = unconstrained.
+    // Uses temperature=0 (greedy), n_predict=2 (short-decision output).
+    // Synchronous — blocks until generation completes (~50ms for 1-2 tokens).
+    // Does NOT modify the chat KV cache state.
+    bool generate_completion(
+        const std::string & prompt,
+        const std::string & grammar_str,
+        const engine_token_callback & on_token,
+        std::function<void(const EnginePerf &)> on_perf = nullptr);
+
     // Request the current generation to stop as soon as possible.
     void stop();
 

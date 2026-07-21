@@ -404,6 +404,128 @@ void EdgeEngine::run_loop(std::string prompt,
     _running.store(false);
 }
 
+// ── Grammar-constrained completion (for batch classification) ──
+
+bool EdgeEngine::generate_completion(
+    const std::string & prompt,
+    const std::string & grammar_str,
+    const engine_token_callback & on_token,
+    std::function<void(const EnginePerf &)> on_perf)
+{
+    if (!is_loaded()) return false;
+    if (_running.load()) return false;
+
+    _stop_requested.store(false);
+    _running.store(true);
+
+    using Clock = std::chrono::steady_clock;
+    auto t_start = Clock::now();
+
+    // ── Tokenize prompt ──────────────────────────────────────
+    int n_prompt = -llama_tokenize(
+        _vocab, prompt.c_str(), prompt.size(), nullptr, 0, true, true);
+    if (n_prompt <= 0) {
+        _running.store(false);
+        on_token("[Error: tokenization failed]", true);
+        return false;
+    }
+
+    std::vector<llama_token> prompt_tokens(n_prompt);
+    llama_tokenize(_vocab, prompt.c_str(), prompt.size(),
+                   prompt_tokens.data(), n_prompt, true, true);
+
+    // ── Decode prompt ────────────────────────────────────────
+    llama_batch batch = llama_batch_get_one(prompt_tokens.data(), n_prompt);
+    if (llama_decode(_ctx, batch) != 0) {
+        _running.store(false);
+        on_token("[Error: prompt decode failed]", true);
+        return false;
+    }
+
+    // ── Build grammar-constrained sampler chain ──────────────
+    auto chain_params = llama_sampler_chain_default_params();
+    chain_params.no_perf = true;
+    llama_sampler * chain = llama_sampler_chain_init(chain_params);
+
+    if (!grammar_str.empty()) {
+        llama_sampler * gram = llama_sampler_init_grammar(
+            _vocab, grammar_str.c_str(), "root");
+        if (gram) {
+            llama_sampler_chain_add(chain, gram);
+        }
+    }
+
+    // Distribution sampler (greedy: seed=42, temperature effectively 0)
+    llama_sampler * dist = llama_sampler_init_dist(42);
+    llama_sampler_chain_add(chain, dist);
+
+    auto t_first_token = Clock::now();
+    double ttft_ms = std::chrono::duration<double, std::milli>(
+        t_first_token - t_start).count();
+
+    // ── Generate 1-2 tokens (enough for single-digit output) ──
+    llama_token new_token_id;
+    int n_generated = 0;
+    const int max_tokens = 2;
+
+    for (int i = 0; i < max_tokens && !_stop_requested.load(); i++) {
+        new_token_id = llama_sampler_sample(chain, _ctx, -1);
+
+        if (llama_vocab_is_eog(_vocab, new_token_id)) {
+            llama_sampler_accept(chain, new_token_id);
+            break;
+        }
+
+        char buf[256];
+        int n = llama_token_to_piece(_vocab, new_token_id, buf, sizeof(buf), 0, true);
+        if (n > 0) {
+            on_token(std::string(buf, n), false);
+        }
+
+        llama_sampler_accept(chain, new_token_id);
+        batch = llama_batch_get_one(&new_token_id, 1);
+        if (llama_decode(_ctx, batch) != 0) break;
+        ++n_generated;
+    }
+
+    // ── Clean up sampler chain ───────────────────────────────
+    llama_sampler_free(chain);
+
+    // ── Perf ─────────────────────────────────────────────────
+    if (on_perf) {
+        EnginePerf perf;
+        perf.valid = true;
+        auto pdata = llama_perf_context(_ctx);
+        perf.n_p_tokens = pdata.n_p_eval;
+        perf.n_g_tokens = pdata.n_eval;
+        perf.ttft_ms    = ttft_ms;
+        double pp_ms = pdata.t_p_eval_ms;
+        double tg_ms = pdata.t_eval_ms;
+        perf.pp_tokens_per_sec = pp_ms > 0 ? (pdata.n_p_eval / pp_ms * 1000.0) : 0;
+        perf.tg_tokens_per_sec = tg_ms > 0 ? (pdata.n_eval / tg_ms * 1000.0) : 0;
+        llama_perf_context_reset(_ctx);
+        on_perf(perf);
+    } else {
+        // Always reset perf to avoid polluting chat stats
+        llama_perf_context_reset(_ctx);
+    }
+
+    // ── Clear KV cache to avoid polluting chat session ────────
+    {
+        std::lock_guard<std::mutex> lock(_mutex);
+        if (_ctx) {
+            auto * mem = llama_get_memory(_ctx);
+            if (mem) llama_memory_clear(mem, true);
+            _n_past = 0;
+            _cached_tokens.clear();
+        }
+    }
+
+    on_token("", true);
+    _running.store(false);
+    return true;
+}
+
 // ── LoRA adapter management ─────────────────────────────────────
 
 std::string EdgeEngine::load_lora(const std::string & lora_path, float scale) {

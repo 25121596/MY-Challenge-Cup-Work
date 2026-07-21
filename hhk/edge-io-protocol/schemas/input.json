@@ -1,0 +1,102 @@
+{
+  "$schema": "边端模型输入格式 v1.0",
+  "description": "上游系统（传感器、PLC、SCADA）喂给边端模型的数据格式",
+
+  "fields": {
+    "task_id": {
+      "type": "string",
+      "required": true,
+      "example": "T-20260715-001",
+      "说明": "唯一任务编号，用于追踪"
+    },
+    "node_id": {
+      "type": "string",
+      "required": true,
+      "example": "edge-node-03",
+      "说明": "边缘节点编号，多节点场景区分用"
+    },
+    "timestamp": {
+      "type": "string(ISO8601)",
+      "required": true,
+      "example": "2026-07-15T10:23:45",
+      "说明": "数据采集时间"
+    },
+    "task_type": {
+      "type": "enum",
+      "required": true,
+      "options": [
+        "fault_diagnosis",      // 故障诊断
+        "quality_inspection",   // 质量检测
+        "safety_check",         // 安全识别
+        "data_analysis",        // 数据分析
+        "status_monitoring",    // 状态监控
+        "predictive_maintenance" // 预测性维护
+      ],
+      "说明": "任务类型，决定用哪个 prompt 模板"
+    },
+    "priority": {
+      "type": "enum",
+      "required": false,
+      "default": "medium",
+      "options": ["high", "medium", "low"],
+      "说明": "优先级。high=紧急，跳过排队直接推理"
+    },
+    "max_latency_ms": {
+      "type": "int",
+      "required": false,
+      "default": 200,
+      "说明": "允许的最大推理时延（毫秒）"
+    },
+    "data": {
+      "type": "object",
+      "required": true,
+      "说明": "实际数据载荷，根据不同 task_type 内容不同",
+      "fields": {
+        "device_id": "设备编号",
+        "device_type": "设备类型（motor/pump/valve/conveyor/...）",
+        "readings": "传感器读数，key-value 格式",
+        "image_url": "如果有图片，放本地路径或 base64",
+        "context": "补充上下文（最近一次维护时间、历史故障记录等）"
+      }
+    }
+  },
+
+  "examples": {
+    "故障诊断": {
+      "task_id": "T-001",
+      "node_id": "edge-workshop3",
+      "timestamp": "2026-07-15T14:30:00",
+      "task_type": "fault_diagnosis",
+      "priority": "high",
+      "data": {
+        "device_id": "motor-a01",
+        "device_type": "三相异步电机",
+        "readings": {
+          "vibration_mm_s": 5.1,
+          "temperature_bearing_c": 85,
+          "temperature_winding_c": 65,
+          "current_phase_a": 12.3,
+          "current_phase_b": 13.1,
+          "current_phase_c": 12.5
+        },
+        "context": "连续运行3个月未维护，额定功率7.5kW"
+      }
+    },
+    "质量检测": {
+      "task_id": "T-002",
+      "node_id": "edge-assembly-line1",
+      "timestamp": "2026-07-15T14:30:05",
+      "task_type": "quality_inspection",
+      "data": {
+        "device_id": "camera-05",
+        "device_type": "工业相机",
+        "readings": {
+          "defect_probability": 0.23,
+          "surface_roughness_um": 3.2,
+          "dimension_error_mm": 0.05
+        },
+        "image_url": "/data/images/part_20260715_143005.jpg"
+      }
+    }
+  }
+}

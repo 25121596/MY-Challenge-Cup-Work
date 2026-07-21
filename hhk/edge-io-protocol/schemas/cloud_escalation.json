@@ -1,0 +1,77 @@
+{
+  "$schema": "边端→云端交互格式 v1.0",
+  "description": "边端置信度不足时，将任务甩给云端大模型的标准格式",
+
+  "fields": {
+    "escalation_id": {
+      "type": "string",
+      "required": true,
+      "说明": "唯一甩锅编号"
+    },
+    "from_node": {
+      "type": "string",
+      "required": true,
+      "说明": "发起请求的边缘节点"
+    },
+    "timestamp": {
+      "type": "string(ISO8601)",
+      "required": true
+    },
+    "reason": {
+      "type": "enum",
+      "说明": "为什么甩给云",
+      "options": [
+        "low_confidence",      // 置信度不够
+        "complex_task",        // 任务太复杂
+        "model_capability",    // 超出边端模型能力范围
+        "consistency_conflict",// 多节点结论冲突，需要云端仲裁
+        "periodic_sync"        // 定期同步任务
+      ]
+    },
+    "original_input": {
+      "type": "object",
+      "说明": "原始输入数据（就是 input.json 里的 data）"
+    },
+    "edge_result": {
+      "type": "object",
+      "说明": "边端模型的推理结果（就是 output.json 里的 decision + confidence），给云端参考"
+    },
+    "network_status": {
+      "type": "object",
+      "说明": "当前网络状态，帮助云端判断是否正常返回还是降级响应",
+      "fields": {
+        "rtt_ms": "与云端的网络延迟",
+        "bandwidth_kbps": "估测带宽",
+        "packet_loss": "丢包率"
+      }
+    }
+  },
+
+  "cloud_response_format": {
+    "description": "云端返回给边端的格式",
+    "fields": {
+      "escalation_id": "关联甩锅编号",
+      "cloud_decision": "云端的决策结果（格式同 output.decision）",
+      "confidence": "云端置信度",
+      "model_update": {
+        "type": "object",
+        "说明": "云端可选下发的模型更新参数（权重增量、prompt 更新等）",
+        "optional": true,
+        "fields": {
+          "has_update": "是否有更新",
+          "update_type": "prompt | lora_weights | threshold | model_binary",
+          "update_payload": "更新内容"
+        }
+      },
+      "sync_instruction": {
+        "type": "object",
+        "说明": "云端给这个边端节点的同步指令",
+        "optional": true,
+        "fields": {
+          "action": "keep_current | update_model | adjust_threshold | full_sync",
+          "reason": "为什么发这个指令"
+        }
+      }
+    }
+  }
+}

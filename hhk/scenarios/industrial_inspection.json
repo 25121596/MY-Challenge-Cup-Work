@@ -1,0 +1,86 @@
+{
+  "scenario_id": "industrial_inspection_v1",
+  "name": "工业设备状态监测与故障诊断",
+  "description": "模拟生产线设备(电机/泵/压缩机)的实时状态监测, 边端推理异常, 云端二次确认",
+  "application_domain": "工业制造",
+
+  "edge_config": {
+    "model": "qwen3-1.7b-iq4_xs",
+    "model_type": "text",
+    "ngl": 0,
+    "ctx_size": 2048,
+    "memory_budget_mb": 1536,
+    "max_latency_ms": 200,
+    "confidence_threshold": 0.75
+  },
+
+  "cloud_config": {
+    "model": "qwen3-32b",
+    "model_type": "text",
+    "endpoint": "http://localhost:8080",
+    "capabilities": ["deep_reasoning", "multi_sensor_fusion", "long_context"]
+  },
+
+  "task_types": ["fault_diagnosis", "status_monitoring", "predictive_maintenance"],
+
+  "data_sources": [
+    {
+      "source_id": "motor-a01",
+      "device_type": "三相异步电机",
+      "sensor_types": ["vibration", "temperature", "current", "rpm"],
+      "sample_rate_hz": 100,
+      "data_files": ["processed_hydraulic_inputs.json"],
+      "fault_modes": ["bearing_wear", "bearing_failure", "current_imbalance", "overheat"]
+    },
+    {
+      "source_id": "pump-b02",
+      "device_type": "离心泵",
+      "sensor_types": ["flow", "pressure", "vibration", "temperature"],
+      "sample_rate_hz": 50,
+      "data_files": ["processed_hydraulic_inputs.json"],
+      "data_dir": "D:\\Challenge Cup\\Data file\\UCI_Hydraulic",
+      "fault_modes": ["flow_blockage", "overheat", "bearing_wear"]
+    }
+  ],
+
+  "test_cases": [
+    {
+      "name": "正常工况 — 无故障",
+      "description": "所有传感器在正常范围内",
+      "inject_fault": null,
+      "expected": {"action": "normal", "escalate": false}
+    },
+    {
+      "name": "早期轴承磨损 — 轻度振动增大",
+      "description": "振动缓慢上升但尚未超报警值",
+      "inject_fault": "bearing_wear",
+      "expected": {"action": "warning", "escalate": false}
+    },
+    {
+      "name": "轴承严重故障 — 振动温度均超标",
+      "description": "振动超报警值, 温度飙升",
+      "inject_fault": "bearing_failure",
+      "expected": {"action": "shutdown", "escalate": true}
+    },
+    {
+      "name": "三相电流不平衡",
+      "description": "一相电流突然增大",
+      "inject_fault": "current_imbalance",
+      "expected": {"action": "alert", "escalate": false}
+    },
+    {
+      "name": "冷却故障 — 过热",
+      "description": "温度持续上升, 流量下降",
+      "inject_fault": "overheat",
+      "expected": {"action": "alert", "escalate": true}
+    }
+  ],
+
+  "metrics_targets": {
+    "end_to_end_latency_ms": 200,
+    "edge_inference_latency_ms": 100,
+    "cloud_escalation_ratio": 0.15,
+    "fault_detection_recall": 0.90,
+    "false_alarm_rate": 0.10
+  }
+}

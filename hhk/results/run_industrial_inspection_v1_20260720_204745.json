@@ -1,0 +1,944 @@
+{
+  "summary": {
+    "scenario": "industrial_inspection_v1",
+    "scenario_name": "工业设备状态监测与故障诊断",
+    "model": "qwen3-1.7b-iq4_xs",
+    "ngl": 0,
+    "total_requests": 50,
+    "successful": 50,
+    "failed": 0,
+    "success_rate_pct": 100.0,
+    "avg_latency_ms": 3679.8,
+    "p50_latency_ms": 3675.3,
+    "p95_latency_ms": 3730.4,
+    "max_latency_ms": 3769.1,
+    "within_200ms_count": 0,
+    "within_200ms_pct": 0.0,
+    "cloud_escalations": 50,
+    "escalation_rate_pct": 100.0,
+    "avg_tokens_per_sec": 55.6,
+    "timestamp": "2026-07-20T20:47:45.334997",
+    "verdicts": [
+      {
+        "metric": "端到端平均时延",
+        "value": "3679.8 ms",
+        "target": "≤200ms",
+        "passed": false
+      },
+      {
+        "metric": "200ms达标率",
+        "value": "0.0%",
+        "target": "≥95%",
+        "passed": false
+      },
+      {
+        "metric": "成功率",
+        "value": "100.0%",
+        "target": "≥90%",
+        "passed": true
+      }
+    ]
+  },
+  "details": [
+    {
+      "task_id": "T-MOTOR-1784549647738-00118",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3677.5,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"escalate",
+      "tokens": 200,
+      "tokens_per_sec": 55.6,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549662965-01247",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3671.9,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549667236-01659",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3675.3,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"escalate",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549652124-00411",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3668.1,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"确认三相电流平衡\",\n      \"检查电机对中状态\",\n      \"检查电机是否松动\",\n      \"检查电气连接是否正常\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549662969-01309",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3673.4,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中情况\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549652120-00337",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3670.0,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549647733-00030",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3676.4,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.6,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549649931-00223",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3663.2,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.9,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549662969-01316",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3681.8,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"确认三相电流平衡\",\n      \"检查电机对中状态\",\n      \"检查电机是否松动\",\n      \"检查电气连接是否正常\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n",
+      "tokens": 200,
+      "tokens_per_sec": 55.6,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549647732-00013",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3664.7,
+      "response": "{\n  \"summary\": \"...\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"...\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机连接部位是否松动\",\n      \"检查电气系统是否存在故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"电机振动轻微，三相电流不平衡度较小，电压波动较大，",
+      "tokens": 200,
+      "tokens_per_sec": 55.9,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549658551-00897",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3675.2,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.6,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549665219-01342",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3730.4,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"确认三相电流平衡\",\n      \"检查电机对中状态\",\n      \"检查电机是否松动\"\n    ]\n  }\n}\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false",
+      "tokens": 200,
+      "tokens_per_sec": 54.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549660824-01110",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3677.0,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.6,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549656419-00781",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3673.8,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549654413-00629",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3678.8,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.6,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549652126-00449",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3720.5,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"确认三相电流平衡\",\n      \"检查电机对中状态\",\n      \"检查电机是否松动\"\n    ]\n  }\n}\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false",
+      "tokens": 200,
+      "tokens_per_sec": 54.9,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549652129-00497",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3685.0,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.5,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549647733-00039",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3663.8,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"escalate",
+      "tokens": 200,
+      "tokens_per_sec": 55.8,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549662967-01280",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3672.5,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"确认三相电流平衡\",\n      \"检查电机对中状态\",\n      \"检查电机是否松动\"\n    ]\n  }\n}\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false",
+      "tokens": 200,
+      "tokens_per_sec": 55.6,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549654404-00501",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3671.2,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"escalate",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549654407-00542",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3679.6,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.6,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549658555-00973",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3665.8,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"escalate",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549667234-01620",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3683.2,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.6,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549665218-01335",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3664.6,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.8,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549658556-00985",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3675.8,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"escalate",
+      "tokens": 200,
+      "tokens_per_sec": 55.6,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549647732-00014",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3686.0,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"确认三相电流平衡\",\n      \"检查电机对中状态\",\n      \"检查电机是否松动\",\n      \"检查电气连接是否正常\"\n    ]\n  }\n}\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"escal",
+      "tokens": 200,
+      "tokens_per_sec": 55.5,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549647739-00130",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3691.5,
+      "response": "{\n  \"summary\": \"...\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"...\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"电机振动轻微，三相电流不平衡，电压异常\",\n  \"confidence",
+      "tokens": 200,
+      "tokens_per_sec": 55.3,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549667234-01624",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3693.6,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.4,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549665222-01399",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3681.7,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查不对中情况\",\n      \"检查不平衡情况\",\n      \"检查松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"escalate_to_c",
+      "tokens": 200,
+      "tokens_per_sec": 55.6,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549647737-00102",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3671.9,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549652127-00457",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3673.7,
+      "response": "{\n  \"summary\": \"...\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"...\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"电机振动轻微，三相电流不平衡度较低，电压波动较大，需进一步检查。\",\n",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549658551-00907",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3663.9,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.8,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549662969-01308",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3678.6,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549665226-01470",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3671.2,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549662969-01310",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3767.5,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"escalate",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549656414-00696",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3660.4,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549656421-00810",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3674.3,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.6,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549667236-01653",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3698.3,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"escalate",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549658553-00929",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3769.1,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.6,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549665222-01404",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3664.4,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.8,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549652129-00487",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3673.8,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"确认三相电流平衡\",\n      \"检查电机对中状态\",\n      \"检查电机是否松动\",\n      \"检查电气连接是否正常\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549649936-00313",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3664.9,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.9,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549656421-00817",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3675.8,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查不对中情况\",\n      \"检查不平衡情况\",\n      \"检查松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"escal",
+      "tokens": 200,
+      "tokens_per_sec": 55.6,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549652120-00350",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3685.3,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.8,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549658547-00833",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3675.4,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.7,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549647738-00124",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3652.9,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.9,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549665222-01402",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3678.2,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.6,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549660817-00996",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3663.0,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"确认三相电流平衡\",\n      \"检查电机对中状态\",\n      \"检查电机是否松动\",\n      \"检查电气连接是否正常\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n",
+      "tokens": 200,
+      "tokens_per_sec": 55.8,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549656415-00704",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3676.8,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查不对中情况\",\n      \"检查不平衡情况\",\n      \"检查松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"escal",
+      "tokens": 200,
+      "tokens_per_sec": 55.6,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    },
+    {
+      "task_id": "T-MOTOR-1784549649929-00198",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 3659.8,
+      "response": "{\n  \"summary\": \"设备状态\",\n  \"confidence\": 0.8,\n  \"escalate_to_cloud\": false,\n  \"detail\": {\n    \"summary\": \"设备状态\",\n    \"recommendation\": [\n      \"检查轴承磨损情况\",\n      \"检查电机对中状态\",\n      \"检查电机不平衡情况\",\n      \"检查电机松动情况\",\n      \"检查电气故障\"\n    ]\n  }\n}\n```json\n```json\n{\n  \"summary\": \"设备状态正常\",\n  \"confidence\": 0.8,\n  \"",
+      "tokens": 200,
+      "tokens_per_sec": 55.8,
+      "escalate_to_cloud": true,
+      "escalate_reason": "模型输出格式异常"
+    }
+  ]
+}

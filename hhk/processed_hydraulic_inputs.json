@@ -1,0 +1,673 @@
+[
+  {
+    "task_id": "T-HYD-1784554139311-00000",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.6452,
+        "ps1_bar": 149.0955,
+        "ps2_bar": 123.4615,
+        "ps3_bar": 2.1189,
+        "ps4_bar": 2.905,
+        "ps5_bar": 9.2007,
+        "temperature_c": 44.4186,
+        "vibration_mm_s": 0.606,
+        "motor_power_w": 2311.4967
+      },
+      "context": "液压系统监测, 批次0-60, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-00060",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.289,
+        "temperature_c": 48.2553,
+        "vibration_mm_s": 0.6255,
+        "motor_power_w": 2276.3233
+      },
+      "context": "液压系统监测, 批次60-120, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-00120",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.2169,
+        "temperature_c": 49.2159,
+        "vibration_mm_s": 0.6353,
+        "motor_power_w": 2269.5667
+      },
+      "context": "液压系统监测, 批次120-180, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-00180",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.1986,
+        "temperature_c": 49.5033,
+        "vibration_mm_s": 0.6509,
+        "motor_power_w": 2285.06
+      },
+      "context": "液压系统监测, 批次180-240, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-00240",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.1913,
+        "temperature_c": 49.6647,
+        "vibration_mm_s": 0.6558,
+        "motor_power_w": 2282.1467
+      },
+      "context": "液压系统监测, 批次240-300, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-00300",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.1588,
+        "temperature_c": 49.8095,
+        "vibration_mm_s": 0.6628,
+        "motor_power_w": 2267.44
+      },
+      "context": "液压系统监测, 批次300-360, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-00360",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.0001,
+        "temperature_c": 51.7601,
+        "vibration_mm_s": 0.7087,
+        "motor_power_w": 2289.68
+      },
+      "context": "液压系统监测, 批次360-420, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-00420",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.023,
+        "temperature_c": 51.6297,
+        "vibration_mm_s": 0.6295,
+        "motor_power_w": 2265.08
+      },
+      "context": "液压系统监测, 批次420-480, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-00480",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 8.9386,
+        "temperature_c": 52.5517,
+        "vibration_mm_s": 0.6929,
+        "motor_power_w": 2277.2767
+      },
+      "context": "液压系统监测, 批次480-540, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-00540",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 8.9148,
+        "temperature_c": 52.6786,
+        "vibration_mm_s": 0.6626,
+        "motor_power_w": 2242.7267
+      },
+      "context": "液压系统监测, 批次540-600, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-00600",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 8.9329,
+        "temperature_c": 52.3395,
+        "vibration_mm_s": 0.6879,
+        "motor_power_w": 2277.0733
+      },
+      "context": "液压系统监测, 批次600-660, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-00660",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 8.9516,
+        "temperature_c": 52.2075,
+        "vibration_mm_s": 0.6535,
+        "motor_power_w": 2248.2967
+      },
+      "context": "液压系统监测, 批次660-720, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-00720",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.3645,
+        "temperature_c": 45.6106,
+        "vibration_mm_s": 0.5959,
+        "motor_power_w": 2285.4433
+      },
+      "context": "液压系统监测, 批次720-780, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-00780",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.6048,
+        "temperature_c": 42.4986,
+        "vibration_mm_s": 0.5912,
+        "motor_power_w": 2312.0967
+      },
+      "context": "液压系统监测, 批次780-840, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-00840",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.6152,
+        "temperature_c": 42.1353,
+        "vibration_mm_s": 0.5945,
+        "motor_power_w": 2315.68
+      },
+      "context": "液压系统监测, 批次840-900, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-00900",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.6247,
+        "temperature_c": 41.8585,
+        "vibration_mm_s": 0.6074,
+        "motor_power_w": 2319.6533
+      },
+      "context": "液压系统监测, 批次900-960, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-00960",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.6419,
+        "temperature_c": 41.4552,
+        "vibration_mm_s": 0.6177,
+        "motor_power_w": 2331.8733
+      },
+      "context": "液压系统监测, 批次960-1020, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-01020",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.6665,
+        "temperature_c": 41.0357,
+        "vibration_mm_s": 0.603,
+        "motor_power_w": 2326.2833
+      },
+      "context": "液压系统监测, 批次1020-1080, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-01080",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.6956,
+        "temperature_c": 40.4045,
+        "vibration_mm_s": 0.6065,
+        "motor_power_w": 2345.4267
+      },
+      "context": "液压系统监测, 批次1080-1140, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-01140",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.7005,
+        "temperature_c": 40.0497,
+        "vibration_mm_s": 0.6045,
+        "motor_power_w": 2335.4367
+      },
+      "context": "液压系统监测, 批次1140-1200, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-01200",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.7279,
+        "temperature_c": 39.7168,
+        "vibration_mm_s": 0.6036,
+        "motor_power_w": 2353.2
+      },
+      "context": "液压系统监测, 批次1200-1260, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-01260",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.7289,
+        "temperature_c": 39.7315,
+        "vibration_mm_s": 0.6042,
+        "motor_power_w": 2338.0033
+      },
+      "context": "液压系统监测, 批次1260-1320, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-01320",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.7306,
+        "temperature_c": 39.7197,
+        "vibration_mm_s": 0.6019,
+        "motor_power_w": 2343.6367
+      },
+      "context": "液压系统监测, 批次1320-1380, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-01380",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.7183,
+        "temperature_c": 39.7737,
+        "vibration_mm_s": 0.603,
+        "motor_power_w": 2332.87
+      },
+      "context": "液压系统监测, 批次1380-1440, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139311-01440",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 9.9107,
+        "temperature_c": 35.0022,
+        "vibration_mm_s": 0.5813,
+        "motor_power_w": 2374.6433
+      },
+      "context": "液压系统监测, 批次1440-1500, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139312-01500",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 10.1602,
+        "temperature_c": 30.5173,
+        "vibration_mm_s": 0.5633,
+        "motor_power_w": 2415.25
+      },
+      "context": "液压系统监测, 批次1500-1560, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139312-01560",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 10.1837,
+        "temperature_c": 30.5509,
+        "vibration_mm_s": 0.563,
+        "motor_power_w": 2415.66
+      },
+      "context": "液压系统监测, 批次1560-1620, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139312-01620",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 10.1999,
+        "temperature_c": 30.5584,
+        "vibration_mm_s": 0.5528,
+        "motor_power_w": 2421.9733
+      },
+      "context": "液压系统监测, 批次1620-1680, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139312-01680",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 10.2015,
+        "temperature_c": 30.7369,
+        "vibration_mm_s": 0.5435,
+        "motor_power_w": 2441.0567
+      },
+      "context": "液压系统监测, 批次1680-1740, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139312-01740",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 10.1718,
+        "temperature_c": 31.0762,
+        "vibration_mm_s": 0.5524,
+        "motor_power_w": 2411.7233
+      },
+      "context": "液压系统监测, 批次1740-1800, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139312-01800",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 10.1706,
+        "temperature_c": 31.3803,
+        "vibration_mm_s": 0.5503,
+        "motor_power_w": 2424.4433
+      },
+      "context": "液压系统监测, 批次1800-1860, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139312-01860",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 10.1713,
+        "temperature_c": 31.1972,
+        "vibration_mm_s": 0.5437,
+        "motor_power_w": 2417.0567
+      },
+      "context": "液压系统监测, 批次1860-1920, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139312-01920",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 10.1561,
+        "temperature_c": 31.3283,
+        "vibration_mm_s": 0.5432,
+        "motor_power_w": 2424.5433
+      },
+      "context": "液压系统监测, 批次1920-1980, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139312-01980",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 10.144,
+        "temperature_c": 31.2537,
+        "vibration_mm_s": 0.5501,
+        "motor_power_w": 2416.2733
+      },
+      "context": "液压系统监测, 批次1980-2040, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139312-02040",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 10.1521,
+        "temperature_c": 30.9749,
+        "vibration_mm_s": 0.55,
+        "motor_power_w": 2421.45
+      },
+      "context": "液压系统监测, 批次2040-2100, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139312-02100",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 10.1674,
+        "temperature_c": 30.7076,
+        "vibration_mm_s": 0.5539,
+        "motor_power_w": 2423.2933
+      },
+      "context": "液压系统监测, 批次2100-2160, 60时间点"
+    }
+  },
+  {
+    "task_id": "T-HYD-1784554139312-02160",
+    "node_id": "edge-hydraulic-01",
+    "timestamp": "2026-07-20T21:28:59",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "data": {
+      "device_id": "hydraulic-system-01",
+      "device_type": "液压系统",
+      "readings": {
+        "flow_l_min": 10.18,
+        "temperature_c": 30.485,
+        "vibration_mm_s": 0.5551,
+        "motor_power_w": 2414.4182
+      },
+      "context": "液压系统监测, 批次2160-2220, 44时间点"
+    }
+  }
+]

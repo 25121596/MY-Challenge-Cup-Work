@@ -1,0 +1,86 @@
+{
+  "$schema": "任务分类定义 v1.0",
+  "description": "边端模型支持的全部任务类型及对应的处理策略",
+
+  "task_types": {
+    "fault_diagnosis": {
+      "name": "故障诊断",
+      "description": "根据传感器数据判断设备是否存在故障",
+      "prompt_template": "prompts/fault_diagnosis.txt",
+      "priority": "high",
+      "max_latency_ms": 200,
+      "escalate_threshold": 0.75,
+      "escalate_condition": "confidence < 0.75 OR action == 'shutdown'",
+      "example_scenarios": ["电机异常振动", "PLC通信中断", "泵体异响"]
+    },
+    "quality_inspection": {
+      "name": "质量检测",
+      "description": "根据检测数据判断产品是否合格",
+      "prompt_template": "prompts/quality_inspection.txt",
+      "priority": "high",
+      "max_latency_ms": 200,
+      "escalate_threshold": 0.80,
+      "escalate_condition": "confidence < 0.80 OR action == 'alert'",
+      "example_scenarios": ["零件尺寸检测", "表面缺陷检测", "焊接质量评估"]
+    },
+    "safety_check": {
+      "name": "安全识别",
+      "description": "分析作业场景中的安全隐患",
+      "prompt_template": "prompts/safety_check.txt",
+      "priority": "high",
+      "max_latency_ms": 150,
+      "escalate_threshold": 0.70,
+      "escalate_condition": "confidence < 0.70 OR level == 'critical'",
+      "example_scenarios": ["施工现场检查", "受限空间作业", "设备维修前检查"]
+    },
+    "data_analysis": {
+      "name": "数据分析",
+      "description": "分析历史监测数据的趋势",
+      "prompt_template": "prompts/data_analysis.txt",
+      "priority": "medium",
+      "max_latency_ms": 200,
+      "escalate_threshold": 0.70,
+      "escalate_condition": "confidence < 0.70 OR 预测超限时间 < 24h",
+      "example_scenarios": ["振动趋势分析", "温度趋势预测", "能耗异常分析"]
+    },
+    "status_monitoring": {
+      "name": "状态监控",
+      "description": "实时监控设备运行参数是否正常",
+      "prompt_template": "prompts/status_monitoring.txt",
+      "priority": "low",
+      "max_latency_ms": 100,
+      "escalate_threshold": 0.90,
+      "escalate_condition": "任何异常都甩云",
+      "note": "此类型主要由规则引擎处理，模型仅做二次确认"
+    },
+    "predictive_maintenance": {
+      "name": "预测性维护",
+      "description": "根据历史数据预测设备维护时间点",
+      "prompt_template": "prompts/data_analysis.txt",
+      "priority": "medium",
+      "max_latency_ms": 500,
+      "escalate_threshold": 0.70,
+      "escalate_condition": "confidence < 0.70",
+      "example_scenarios": ["轴承剩余寿命预测", "滤芯更换提醒"]
+    }
+  },
+
+  "escalation_rules": {
+    "description": "什么情况下边端任务必须甩给云端",
+    "always_escalate": [
+      "confidence 低于 task_type 对应的 escalate_threshold",
+      "action == 'shutdown'（停机指令必须云端确认）",
+      "多个节点对同一 zone 的决策冲突",
+      "模型自身无法识别的 task_type"
+    ],
+    "escalate_on_network_available": [
+      "confidence 在阈值附近（±0.1）",
+      "level == 'critical' 且 action != 'shutdown'"
+    ],
+    "never_escalate": [
+      "action == 'normal' 且 confidence > 0.9",
+      "网络完全断开",
+      "task_type == 'status_monitoring' 且状态正常"
+    ]
+  }
+}

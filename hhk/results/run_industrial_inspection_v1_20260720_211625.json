@@ -1,0 +1,1355 @@
+{
+  "summary": {
+    "scenario": "industrial_inspection_v1",
+    "scenario_name": "工业设备状态监测与故障诊断",
+    "model": "qwen3-1.7b-iq4_xs",
+    "ngl": 0,
+    "total_requests": 50,
+    "successful": 50,
+    "failed": 0,
+    "success_rate_pct": 100.0,
+    "avg_latency_ms": 397.0,
+    "p50_latency_ms": 394.9,
+    "p95_latency_ms": 412.2,
+    "max_latency_ms": 459.6,
+    "within_200ms_count": 0,
+    "within_200ms_pct": 0.0,
+    "cloud_escalations": 0,
+    "escalation_rate_pct": 0.0,
+    "escalation_breakdown": {
+      "LOW_CONFIDENCE": 0,
+      "FORMAT_ERROR": 0,
+      "HIGH_RISK": 0,
+      "UNKNOWN_CLASS": 0,
+      "TIMEOUT": 0
+    },
+    "format_error_count": 0,
+    "format_error_pct": 0.0,
+    "avg_tokens_per_sec": 48.3,
+    "avg_tokens": 15.0,
+    "grammar_used": "GBNF",
+    "timestamp": "2026-07-20T21:16:25.323628",
+    "verdicts": [
+      {
+        "metric": "端到端平均时延",
+        "value": "397.0 ms",
+        "target": "≤200ms",
+        "passed": false
+      },
+      {
+        "metric": "200ms达标率",
+        "value": "0.0%",
+        "target": "≥95%",
+        "passed": false
+      },
+      {
+        "metric": "成功率",
+        "value": "100.0%",
+        "target": "≥90%",
+        "passed": true
+      }
+    ]
+  },
+  "details": [
+    {
+      "task_id": "T-MOTOR-1784549647738-00118",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 459.6,
+      "prompt_ms": 84.1,
+      "response": "{\"c\":0,\"s\":90,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 90,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 47.4,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549662965-01247",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 397.6,
+      "prompt_ms": 82.0,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 47.8,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549667236-01659",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 408.0,
+      "prompt_ms": 87.2,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 47.1,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549652124-00411",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 419.9,
+      "prompt_ms": 91.8,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 46.0,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549662969-01309",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 412.2,
+      "prompt_ms": 87.2,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 46.5,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549652120-00337",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 406.9,
+      "prompt_ms": 92.6,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.1,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549647733-00030",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 397.1,
+      "prompt_ms": 83.0,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.1,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549649931-00223",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 397.8,
+      "prompt_ms": 86.1,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.4,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549662969-01316",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 400.6,
+      "prompt_ms": 85.4,
+      "response": "{\"c\":0,\"s\":90,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 90,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 47.9,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549647732-00013",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 385.6,
+      "prompt_ms": 86.4,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 50.5,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549658551-00897",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 391.0,
+      "prompt_ms": 82.1,
+      "response": "{\"c\":0,\"s\":90,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 90,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.9,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549665219-01342",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 394.7,
+      "prompt_ms": 82.4,
+      "response": "{\"c\":0,\"s\":99,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 99,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.4,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549660824-01110",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 403.4,
+      "prompt_ms": 84.0,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 47.2,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549656419-00781",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 406.9,
+      "prompt_ms": 87.6,
+      "response": "{\"c\":0,\"s\":90,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 90,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 47.2,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549654413-00629",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 404.7,
+      "prompt_ms": 90.5,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.1,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549652126-00449",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 389.0,
+      "prompt_ms": 80.7,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 49.0,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549652129-00497",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 392.6,
+      "prompt_ms": 82.3,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.7,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549647733-00039",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 394.5,
+      "prompt_ms": 83.6,
+      "response": "{\"c\":0,\"s\":99,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 99,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.6,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549662967-01280",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 391.7,
+      "prompt_ms": 84.0,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 49.1,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549654404-00501",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 397.8,
+      "prompt_ms": 83.2,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.0,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549654407-00542",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 392.5,
+      "prompt_ms": 81.9,
+      "response": "{\"c\":0,\"s\":90,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 90,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.6,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549658555-00973",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 387.6,
+      "prompt_ms": 80.8,
+      "response": "{\"c\":0,\"s\":90,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 90,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 49.2,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549667234-01620",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 389.4,
+      "prompt_ms": 80.5,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.9,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549665218-01335",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 395.0,
+      "prompt_ms": 83.3,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.5,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549658556-00985",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 404.7,
+      "prompt_ms": 81.4,
+      "response": "{\"c\":0,\"s\":90,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 90,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 46.7,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549647732-00014",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 398.2,
+      "prompt_ms": 81.8,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 47.7,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549647739-00130",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 411.9,
+      "prompt_ms": 83.7,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 46.0,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549667234-01624",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 398.9,
+      "prompt_ms": 83.2,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 47.9,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549665222-01399",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 381.3,
+      "prompt_ms": 81.8,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 50.4,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549647737-00102",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 399.1,
+      "prompt_ms": 82.3,
+      "response": "{\"c\":0,\"s\":90,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 90,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 47.7,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549652127-00457",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 395.8,
+      "prompt_ms": 80.6,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 47.9,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549658551-00907",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 393.1,
+      "prompt_ms": 82.3,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.6,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549662969-01308",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 397.0,
+      "prompt_ms": 85.9,
+      "response": "{\"c\":0,\"s\":90,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 90,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.5,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549665226-01470",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 387.5,
+      "prompt_ms": 79.6,
+      "response": "{\"c\":0,\"s\":90,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 90,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 49.1,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549662969-01310",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 389.3,
+      "prompt_ms": 82.0,
+      "response": "{\"c\":0,\"s\":90,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 90,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 49.1,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549656414-00696",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 391.9,
+      "prompt_ms": 79.7,
+      "response": "{\"c\":0,\"s\":90,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 90,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.4,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549656421-00810",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 389.3,
+      "prompt_ms": 82.8,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 49.3,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549667236-01653",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 400.3,
+      "prompt_ms": 84.1,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 47.8,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549658553-00929",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 393.0,
+      "prompt_ms": 83.1,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.7,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549665222-01404",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 388.3,
+      "prompt_ms": 80.6,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 49.1,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549652129-00487",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 390.2,
+      "prompt_ms": 81.6,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.9,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549649936-00313",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 389.8,
+      "prompt_ms": 80.8,
+      "response": "{\"c\":0,\"s\":90,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 90,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.9,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549656421-00817",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 390.5,
+      "prompt_ms": 84.0,
+      "response": "{\"c\":0,\"s\":90,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 90,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 49.3,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549652120-00350",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 386.9,
+      "prompt_ms": 80.2,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 49.2,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549658547-00833",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 390.0,
+      "prompt_ms": 81.2,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.9,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549647738-00124",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 390.6,
+      "prompt_ms": 82.3,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 49.0,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549665222-01402",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 394.9,
+      "prompt_ms": 85.0,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.7,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549660817-00996",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 396.2,
+      "prompt_ms": 81.4,
+      "response": "{\"c\":0,\"s\":95,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 95,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.0,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549656415-00704",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 395.2,
+      "prompt_ms": 81.2,
+      "response": "{\"c\":0,\"s\":90,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 90,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 48.1,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    },
+    {
+      "task_id": "T-MOTOR-1784549649929-00198",
+      "test_case": "正常工况 — 无故障",
+      "expected": {
+        "action": "normal",
+        "escalate": false
+      },
+      "ground_truth": {
+        "is_anomaly": false,
+        "fault_type": "normal"
+      },
+      "latency_ms": 392.1,
+      "prompt_ms": 84.1,
+      "response": "{\"c\":0,\"s\":90,\"r\":0}",
+      "decision": {
+        "category": 0,
+        "category_name": "normal",
+        "confidence": 90,
+        "request_cloud": false
+      },
+      "tokens": 15,
+      "tokens_per_sec": 49.0,
+      "escalate_to_cloud": false,
+      "escalate_reason": "",
+      "parse_error": null
+    }
+  ]
+}

@@ -1,0 +1,2212 @@
+{
+  "stats": {
+    "total": 118,
+    "success": 118,
+    "failed": 0,
+    "queue_size": 490,
+    "avg_latency_ms": 212.3,
+    "results_cached": 118
+  },
+  "results": [
+    {
+      "task_id": "T-STREAM-1784563136407",
+      "timestamp": "2026-07-20T23:59:00",
+      "output": {
+        "task_id": "T-STREAM-1784563136407",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:00.228",
+        "latency_ms": 219.0,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136417",
+      "timestamp": "2026-07-20T23:59:00",
+      "output": {
+        "task_id": "T-STREAM-1784563136417",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:00.447",
+        "latency_ms": 218.9,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136428",
+      "timestamp": "2026-07-20T23:59:00",
+      "output": {
+        "task_id": "T-STREAM-1784563136428",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:00.661",
+        "latency_ms": 213.3,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136438",
+      "timestamp": "2026-07-20T23:59:00",
+      "output": {
+        "task_id": "T-STREAM-1784563136438",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:00.878",
+        "latency_ms": 217.0,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136448",
+      "timestamp": "2026-07-20T23:59:01",
+      "output": {
+        "task_id": "T-STREAM-1784563136448",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:01.097",
+        "latency_ms": 218.1,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136459",
+      "timestamp": "2026-07-20T23:59:01",
+      "output": {
+        "task_id": "T-STREAM-1784563136459",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:01.309",
+        "latency_ms": 212.1,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136469",
+      "timestamp": "2026-07-20T23:59:01",
+      "output": {
+        "task_id": "T-STREAM-1784563136469",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:01.523",
+        "latency_ms": 213.9,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136479",
+      "timestamp": "2026-07-20T23:59:01",
+      "output": {
+        "task_id": "T-STREAM-1784563136479",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:01.737",
+        "latency_ms": 213.5,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136490",
+      "timestamp": "2026-07-20T23:59:01",
+      "output": {
+        "task_id": "T-STREAM-1784563136490",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:01.951",
+        "latency_ms": 213.2,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136501",
+      "timestamp": "2026-07-20T23:59:02",
+      "output": {
+        "task_id": "T-STREAM-1784563136501",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:02.162",
+        "latency_ms": 211.0,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136511",
+      "timestamp": "2026-07-20T23:59:02",
+      "output": {
+        "task_id": "T-STREAM-1784563136511",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:02.375",
+        "latency_ms": 212.6,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136521",
+      "timestamp": "2026-07-20T23:59:02",
+      "output": {
+        "task_id": "T-STREAM-1784563136521",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:02.592",
+        "latency_ms": 216.5,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136531",
+      "timestamp": "2026-07-20T23:59:02",
+      "output": {
+        "task_id": "T-STREAM-1784563136531",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:02.813",
+        "latency_ms": 221.3,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136542",
+      "timestamp": "2026-07-20T23:59:03",
+      "output": {
+        "task_id": "T-STREAM-1784563136542",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:03.035",
+        "latency_ms": 221.4,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136552",
+      "timestamp": "2026-07-20T23:59:03",
+      "output": {
+        "task_id": "T-STREAM-1784563136552",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:03.255",
+        "latency_ms": 219.8,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136563",
+      "timestamp": "2026-07-20T23:59:03",
+      "output": {
+        "task_id": "T-STREAM-1784563136563",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:03.478",
+        "latency_ms": 222.7,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136573",
+      "timestamp": "2026-07-20T23:59:03",
+      "output": {
+        "task_id": "T-STREAM-1784563136573",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:03.689",
+        "latency_ms": 210.4,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136583",
+      "timestamp": "2026-07-20T23:59:03",
+      "output": {
+        "task_id": "T-STREAM-1784563136583",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:03.898",
+        "latency_ms": 208.3,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136594",
+      "timestamp": "2026-07-20T23:59:04",
+      "output": {
+        "task_id": "T-STREAM-1784563136594",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:04.121",
+        "latency_ms": 222.9,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136604",
+      "timestamp": "2026-07-20T23:59:04",
+      "output": {
+        "task_id": "T-STREAM-1784563136604",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:04.330",
+        "latency_ms": 208.5,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136614",
+      "timestamp": "2026-07-20T23:59:04",
+      "output": {
+        "task_id": "T-STREAM-1784563136614",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:04.548",
+        "latency_ms": 217.9,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136624",
+      "timestamp": "2026-07-20T23:59:04",
+      "output": {
+        "task_id": "T-STREAM-1784563136624",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:04.762",
+        "latency_ms": 213.8,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136635",
+      "timestamp": "2026-07-20T23:59:04",
+      "output": {
+        "task_id": "T-STREAM-1784563136635",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:04.973",
+        "latency_ms": 210.5,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136645",
+      "timestamp": "2026-07-20T23:59:05",
+      "output": {
+        "task_id": "T-STREAM-1784563136645",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:05.194",
+        "latency_ms": 220.9,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136655",
+      "timestamp": "2026-07-20T23:59:05",
+      "output": {
+        "task_id": "T-STREAM-1784563136655",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:05.400",
+        "latency_ms": 205.1,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136665",
+      "timestamp": "2026-07-20T23:59:05",
+      "output": {
+        "task_id": "T-STREAM-1784563136665",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:05.610",
+        "latency_ms": 209.5,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136676",
+      "timestamp": "2026-07-20T23:59:05",
+      "output": {
+        "task_id": "T-STREAM-1784563136676",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:05.830",
+        "latency_ms": 219.8,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136686",
+      "timestamp": "2026-07-20T23:59:06",
+      "output": {
+        "task_id": "T-STREAM-1784563136686",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:06.061",
+        "latency_ms": 231.0,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136696",
+      "timestamp": "2026-07-20T23:59:06",
+      "output": {
+        "task_id": "T-STREAM-1784563136696",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:06.277",
+        "latency_ms": 215.8,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136707",
+      "timestamp": "2026-07-20T23:59:06",
+      "output": {
+        "task_id": "T-STREAM-1784563136707",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:06.495",
+        "latency_ms": 216.9,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136717",
+      "timestamp": "2026-07-20T23:59:06",
+      "output": {
+        "task_id": "T-STREAM-1784563136717",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:06.707",
+        "latency_ms": 212.2,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136727",
+      "timestamp": "2026-07-20T23:59:06",
+      "output": {
+        "task_id": "T-STREAM-1784563136727",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:06.924",
+        "latency_ms": 216.9,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136737",
+      "timestamp": "2026-07-20T23:59:07",
+      "output": {
+        "task_id": "T-STREAM-1784563136737",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:07.138",
+        "latency_ms": 213.5,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136748",
+      "timestamp": "2026-07-20T23:59:07",
+      "output": {
+        "task_id": "T-STREAM-1784563136748",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:07.357",
+        "latency_ms": 218.4,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136758",
+      "timestamp": "2026-07-20T23:59:07",
+      "output": {
+        "task_id": "T-STREAM-1784563136758",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:07.576",
+        "latency_ms": 218.5,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136768",
+      "timestamp": "2026-07-20T23:59:07",
+      "output": {
+        "task_id": "T-STREAM-1784563136768",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:07.789",
+        "latency_ms": 213.1,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136779",
+      "timestamp": "2026-07-20T23:59:08",
+      "output": {
+        "task_id": "T-STREAM-1784563136779",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:08.005",
+        "latency_ms": 215.2,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136789",
+      "timestamp": "2026-07-20T23:59:08",
+      "output": {
+        "task_id": "T-STREAM-1784563136789",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:08.223",
+        "latency_ms": 217.6,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136799",
+      "timestamp": "2026-07-20T23:59:08",
+      "output": {
+        "task_id": "T-STREAM-1784563136799",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:08.434",
+        "latency_ms": 211.3,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136809",
+      "timestamp": "2026-07-20T23:59:08",
+      "output": {
+        "task_id": "T-STREAM-1784563136809",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:08.645",
+        "latency_ms": 209.9,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136820",
+      "timestamp": "2026-07-20T23:59:08",
+      "output": {
+        "task_id": "T-STREAM-1784563136820",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:08.867",
+        "latency_ms": 221.9,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136830",
+      "timestamp": "2026-07-20T23:59:09",
+      "output": {
+        "task_id": "T-STREAM-1784563136830",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:09.086",
+        "latency_ms": 219.3,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136840",
+      "timestamp": "2026-07-20T23:59:09",
+      "output": {
+        "task_id": "T-STREAM-1784563136840",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:09.300",
+        "latency_ms": 213.6,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136850",
+      "timestamp": "2026-07-20T23:59:09",
+      "output": {
+        "task_id": "T-STREAM-1784563136850",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:09.514",
+        "latency_ms": 212.9,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136861",
+      "timestamp": "2026-07-20T23:59:09",
+      "output": {
+        "task_id": "T-STREAM-1784563136861",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:09.725",
+        "latency_ms": 211.1,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136871",
+      "timestamp": "2026-07-20T23:59:09",
+      "output": {
+        "task_id": "T-STREAM-1784563136871",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:09.937",
+        "latency_ms": 211.5,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136882",
+      "timestamp": "2026-07-20T23:59:10",
+      "output": {
+        "task_id": "T-STREAM-1784563136882",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:10.150",
+        "latency_ms": 213.0,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136892",
+      "timestamp": "2026-07-20T23:59:10",
+      "output": {
+        "task_id": "T-STREAM-1784563136892",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:10.379",
+        "latency_ms": 228.3,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136902",
+      "timestamp": "2026-07-20T23:59:10",
+      "output": {
+        "task_id": "T-STREAM-1784563136902",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:10.594",
+        "latency_ms": 214.4,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136913",
+      "timestamp": "2026-07-20T23:59:10",
+      "output": {
+        "task_id": "T-STREAM-1784563136913",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:10.803",
+        "latency_ms": 209.1,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136923",
+      "timestamp": "2026-07-20T23:59:11",
+      "output": {
+        "task_id": "T-STREAM-1784563136923",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:11.024",
+        "latency_ms": 219.8,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136933",
+      "timestamp": "2026-07-20T23:59:11",
+      "output": {
+        "task_id": "T-STREAM-1784563136933",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:11.239",
+        "latency_ms": 215.0,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136943",
+      "timestamp": "2026-07-20T23:59:11",
+      "output": {
+        "task_id": "T-STREAM-1784563136943",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:11.453",
+        "latency_ms": 213.4,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136953",
+      "timestamp": "2026-07-20T23:59:11",
+      "output": {
+        "task_id": "T-STREAM-1784563136953",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:11.670",
+        "latency_ms": 217.0,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136964",
+      "timestamp": "2026-07-20T23:59:11",
+      "output": {
+        "task_id": "T-STREAM-1784563136964",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:11.880",
+        "latency_ms": 209.8,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136974",
+      "timestamp": "2026-07-20T23:59:12",
+      "output": {
+        "task_id": "T-STREAM-1784563136974",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:12.105",
+        "latency_ms": 224.9,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136984",
+      "timestamp": "2026-07-20T23:59:12",
+      "output": {
+        "task_id": "T-STREAM-1784563136984",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:12.324",
+        "latency_ms": 218.0,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563136994",
+      "timestamp": "2026-07-20T23:59:12",
+      "output": {
+        "task_id": "T-STREAM-1784563136994",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:12.539",
+        "latency_ms": 214.8,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137004",
+      "timestamp": "2026-07-20T23:59:12",
+      "output": {
+        "task_id": "T-STREAM-1784563137004",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:12.752",
+        "latency_ms": 213.3,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137015",
+      "timestamp": "2026-07-20T23:59:12",
+      "output": {
+        "task_id": "T-STREAM-1784563137015",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:12.966",
+        "latency_ms": 213.7,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137025",
+      "timestamp": "2026-07-20T23:59:13",
+      "output": {
+        "task_id": "T-STREAM-1784563137025",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:13.173",
+        "latency_ms": 206.4,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137036",
+      "timestamp": "2026-07-20T23:59:13",
+      "output": {
+        "task_id": "T-STREAM-1784563137036",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:13.380",
+        "latency_ms": 206.4,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137046",
+      "timestamp": "2026-07-20T23:59:13",
+      "output": {
+        "task_id": "T-STREAM-1784563137046",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:13.590",
+        "latency_ms": 209.6,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137057",
+      "timestamp": "2026-07-20T23:59:13",
+      "output": {
+        "task_id": "T-STREAM-1784563137057",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:13.802",
+        "latency_ms": 211.5,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137068",
+      "timestamp": "2026-07-20T23:59:14",
+      "output": {
+        "task_id": "T-STREAM-1784563137068",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:14.016",
+        "latency_ms": 214.2,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137078",
+      "timestamp": "2026-07-20T23:59:14",
+      "output": {
+        "task_id": "T-STREAM-1784563137078",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:14.224",
+        "latency_ms": 207.6,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137089",
+      "timestamp": "2026-07-20T23:59:14",
+      "output": {
+        "task_id": "T-STREAM-1784563137089",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:14.438",
+        "latency_ms": 213.2,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137099",
+      "timestamp": "2026-07-20T23:59:14",
+      "output": {
+        "task_id": "T-STREAM-1784563137099",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:14.648",
+        "latency_ms": 209.4,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137109",
+      "timestamp": "2026-07-20T23:59:14",
+      "output": {
+        "task_id": "T-STREAM-1784563137109",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:14.858",
+        "latency_ms": 210.5,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137120",
+      "timestamp": "2026-07-20T23:59:15",
+      "output": {
+        "task_id": "T-STREAM-1784563137120",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:15.067",
+        "latency_ms": 208.3,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137130",
+      "timestamp": "2026-07-20T23:59:15",
+      "output": {
+        "task_id": "T-STREAM-1784563137130",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:15.272",
+        "latency_ms": 204.4,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137140",
+      "timestamp": "2026-07-20T23:59:15",
+      "output": {
+        "task_id": "T-STREAM-1784563137140",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:15.479",
+        "latency_ms": 207.3,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137150",
+      "timestamp": "2026-07-20T23:59:15",
+      "output": {
+        "task_id": "T-STREAM-1784563137150",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:15.689",
+        "latency_ms": 209.2,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137161",
+      "timestamp": "2026-07-20T23:59:15",
+      "output": {
+        "task_id": "T-STREAM-1784563137161",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:15.889",
+        "latency_ms": 199.3,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137171",
+      "timestamp": "2026-07-20T23:59:16",
+      "output": {
+        "task_id": "T-STREAM-1784563137171",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:16.096",
+        "latency_ms": 207.5,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137181",
+      "timestamp": "2026-07-20T23:59:16",
+      "output": {
+        "task_id": "T-STREAM-1784563137181",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:16.304",
+        "latency_ms": 206.6,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137192",
+      "timestamp": "2026-07-20T23:59:16",
+      "output": {
+        "task_id": "T-STREAM-1784563137192",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:16.513",
+        "latency_ms": 208.7,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137202",
+      "timestamp": "2026-07-20T23:59:16",
+      "output": {
+        "task_id": "T-STREAM-1784563137202",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:16.730",
+        "latency_ms": 217.0,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137212",
+      "timestamp": "2026-07-20T23:59:16",
+      "output": {
+        "task_id": "T-STREAM-1784563137212",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:16.942",
+        "latency_ms": 212.0,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137223",
+      "timestamp": "2026-07-20T23:59:17",
+      "output": {
+        "task_id": "T-STREAM-1784563137223",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:17.154",
+        "latency_ms": 211.6,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137233",
+      "timestamp": "2026-07-20T23:59:17",
+      "output": {
+        "task_id": "T-STREAM-1784563137233",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:17.360",
+        "latency_ms": 205.6,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137244",
+      "timestamp": "2026-07-20T23:59:17",
+      "output": {
+        "task_id": "T-STREAM-1784563137244",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:17.571",
+        "latency_ms": 210.5,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137255",
+      "timestamp": "2026-07-20T23:59:17",
+      "output": {
+        "task_id": "T-STREAM-1784563137255",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:17.783",
+        "latency_ms": 212.1,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137265",
+      "timestamp": "2026-07-20T23:59:17",
+      "output": {
+        "task_id": "T-STREAM-1784563137265",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:17.991",
+        "latency_ms": 207.8,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137275",
+      "timestamp": "2026-07-20T23:59:18",
+      "output": {
+        "task_id": "T-STREAM-1784563137275",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:18.200",
+        "latency_ms": 208.5,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137285",
+      "timestamp": "2026-07-20T23:59:18",
+      "output": {
+        "task_id": "T-STREAM-1784563137285",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:18.406",
+        "latency_ms": 205.0,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137296",
+      "timestamp": "2026-07-20T23:59:18",
+      "output": {
+        "task_id": "T-STREAM-1784563137296",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:18.616",
+        "latency_ms": 209.8,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137306",
+      "timestamp": "2026-07-20T23:59:18",
+      "output": {
+        "task_id": "T-STREAM-1784563137306",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:18.823",
+        "latency_ms": 207.5,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137316",
+      "timestamp": "2026-07-20T23:59:19",
+      "output": {
+        "task_id": "T-STREAM-1784563137316",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:19.030",
+        "latency_ms": 206.1,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137327",
+      "timestamp": "2026-07-20T23:59:19",
+      "output": {
+        "task_id": "T-STREAM-1784563137327",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:19.236",
+        "latency_ms": 205.4,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137337",
+      "timestamp": "2026-07-20T23:59:19",
+      "output": {
+        "task_id": "T-STREAM-1784563137337",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:19.443",
+        "latency_ms": 206.6,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137347",
+      "timestamp": "2026-07-20T23:59:19",
+      "output": {
+        "task_id": "T-STREAM-1784563137347",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:19.641",
+        "latency_ms": 198.3,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137358",
+      "timestamp": "2026-07-20T23:59:19",
+      "output": {
+        "task_id": "T-STREAM-1784563137358",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:19.846",
+        "latency_ms": 204.6,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137368",
+      "timestamp": "2026-07-20T23:59:20",
+      "output": {
+        "task_id": "T-STREAM-1784563137368",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:20.048",
+        "latency_ms": 201.9,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137379",
+      "timestamp": "2026-07-20T23:59:20",
+      "output": {
+        "task_id": "T-STREAM-1784563137379",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:20.253",
+        "latency_ms": 203.9,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137389",
+      "timestamp": "2026-07-20T23:59:20",
+      "output": {
+        "task_id": "T-STREAM-1784563137389",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:20.457",
+        "latency_ms": 204.3,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137399",
+      "timestamp": "2026-07-20T23:59:20",
+      "output": {
+        "task_id": "T-STREAM-1784563137399",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:20.660",
+        "latency_ms": 202.7,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137409",
+      "timestamp": "2026-07-20T23:59:20",
+      "output": {
+        "task_id": "T-STREAM-1784563137409",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:20.869",
+        "latency_ms": 208.2,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137420",
+      "timestamp": "2026-07-20T23:59:21",
+      "output": {
+        "task_id": "T-STREAM-1784563137420",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:21.071",
+        "latency_ms": 202.3,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    },
+    {
+      "task_id": "T-STREAM-1784563137430",
+      "timestamp": "2026-07-20T23:59:21",
+      "output": {
+        "task_id": "T-STREAM-1784563137430",
+        "node_id": "edge-stream-01",
+        "timestamp": "2026-07-20T23:59:21.281",
+        "latency_ms": 208.9,
+        "decision": {
+          "category": 1,
+          "category_name": "bearing_wear",
+          "confidence": 85,
+          "request_cloud": false
+        },
+        "escalate_to_cloud": false,
+        "consistency": {
+          "decision_hash": "0e0a401399a50c2a",
+          "zone": "edge-stream"
+        }
+      },
+      "raw": "1"
+    }
+  ]
+}

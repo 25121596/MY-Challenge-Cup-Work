@@ -1,0 +1,85 @@
+{
+  "scenario": "industrial_inspection",
+  "scenario_id": "industrial_inspection_v1",
+  "started_at": "2026-07-20T20:44:41.293039",
+  "test_file": "D:\\Challenge Cup\\7.20\\competition-main\\hhk\\test_inputs_industrial_inspection_v1.json",
+  "test_metadata": {
+    "scenario": "industrial_inspection_v1",
+    "source": "processed_motor_inputs_edge_sim.json",
+    "total_test_entries": 1000,
+    "test_cases": [
+      {
+        "name": "正常工况 — 无故障",
+        "fault": "none",
+        "count": 200,
+        "anomalies": 0
+      },
+      {
+        "name": "早期轴承磨损 — 轻度振动增大",
+        "fault": "bearing_wear",
+        "count": 200,
+        "anomalies": 100
+      },
+      {
+        "name": "轴承严重故障 — 振动温度均超标",
+        "fault": "bearing_failure",
+        "count": 200,
+        "anomalies": 100
+      },
+      {
+        "name": "三相电流不平衡",
+        "fault": "current_imbalance",
+        "count": 200,
+        "anomalies": 100
+      },
+      {
+        "name": "冷却故障 — 过热",
+        "fault": "overheat",
+        "count": 200,
+        "anomalies": 100
+      }
+    ]
+  },
+  "result_file": "D:\\Challenge Cup\\7.20\\competition-main\\hhk\\results\\run_industrial_inspection_v1_20260720_204745.json",
+  "summary": {
+    "scenario": "industrial_inspection_v1",
+    "scenario_name": "工业设备状态监测与故障诊断",
+    "model": "qwen3-1.7b-iq4_xs",
+    "ngl": 0,
+    "total_requests": 50,
+    "successful": 50,
+    "failed": 0,
+    "success_rate_pct": 100.0,
+    "avg_latency_ms": 3679.8,
+    "p50_latency_ms": 3675.3,
+    "p95_latency_ms": 3730.4,
+    "max_latency_ms": 3769.1,
+    "within_200ms_count": 0,
+    "within_200ms_pct": 0.0,
+    "cloud_escalations": 50,
+    "escalation_rate_pct": 100.0,
+    "avg_tokens_per_sec": 55.6,
+    "timestamp": "2026-07-20T20:47:45.334997",
+    "verdicts": [
+      {
+        "metric": "端到端平均时延",
+        "value": "3679.8 ms",
+        "target": "≤200ms",
+        "passed": false
+      },
+      {
+        "metric": "200ms达标率",
+        "value": "0.0%",
+        "target": "≥95%",
+        "passed": false
+      },
+      {
+        "metric": "成功率",
+        "value": "100.0%",
+        "target": "≥90%",
+        "passed": true
+      }
+    ]
+  },
+  "completed_at": "2026-07-20T20:47:45.337709"
+}

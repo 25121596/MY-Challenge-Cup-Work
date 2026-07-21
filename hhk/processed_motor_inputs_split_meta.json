@@ -1,0 +1,19 @@
+{
+  "source": "processed_motor_inputs.json",
+  "seed": 42,
+  "ratios": {
+    "train": 0.6,
+    "test": 0.2,
+    "edge_sim": 0.2
+  },
+  "counts": {
+    "total": 1661,
+    "train": 996,
+    "test": 332,
+    "edge_sim": 333
+  },
+  "label_distribution": {
+    "status_monitoring": 1661
+  },
+  "split_timestamp": "2026-07-20T20:19:59"
+}

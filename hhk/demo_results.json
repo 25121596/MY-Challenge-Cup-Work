@@ -1,0 +1,817 @@
+{
+  "summary": {
+    "scenario": "demo",
+    "total_requests": 100,
+    "successful": 100,
+    "failed": 0,
+    "avg_latency_ms": 110.2,
+    "max_latency_ms": 196.2,
+    "within_200ms_pct": 100.0,
+    "cloud_escalations": 0,
+    "escalation_rate_pct": 0.0,
+    "avg_tokens_per_sec": 65.8,
+    "timestamp": "2026-07-20T22:53:48.033595"
+  },
+  "details": [
+    {
+      "task_id": "T-HYD-1784554139311-00000",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 196.2,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 62.7
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00060",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 112.2,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 61.6
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00120",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 109.4,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 70.3
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00180",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 107.1,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 70.1
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00240",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 109.5,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 67.4
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00300",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 106.6,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 66.8
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00360",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 106.8,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 64.2
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00420",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 109.9,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 64.8
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00480",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 108.9,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 62.0
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00540",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 112.6,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 62.6
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00600",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 112.6,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 63.3
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00660",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 104.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 69.3
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00720",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 109.1,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 67.0
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00780",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 108.5,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 69.5
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00840",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 112.4,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 67.9
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00900",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 108.2,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 63.4
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00960",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 107.8,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 69.6
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01020",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 106.8,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 66.8
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01080",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 108.3,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 66.1
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01140",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 108.8,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.0
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01200",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 107.2,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 68.5
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01260",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 108.4,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 63.7
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01320",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 105.2,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 67.7
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01380",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 103.9,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 67.7
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01440",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 105.8,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 68.3
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01500",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 110.3,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 62.8
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01560",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 107.0,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 67.3
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01620",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 108.2,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 63.4
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01680",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 106.6,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 64.7
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01740",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 108.2,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 64.8
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01800",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 108.2,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 63.1
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01860",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 111.3,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 66.0
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01920",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 107.5,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 67.0
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01980",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 109.2,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 66.3
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02040",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 111.3,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 64.1
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02100",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 105.1,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 68.5
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02160",
+      "test_case": "正常工况 — 无故障",
+      "latency_ms": 111.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 62.2
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00000",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 113.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 63.7
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00060",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 111.4,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 61.9
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00120",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 106.6,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 68.1
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00180",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 106.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.5
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00240",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 106.2,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 66.7
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00300",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 108.2,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 66.3
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00360",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 114.2,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 61.1
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00420",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 109.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 62.9
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00480",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 111.1,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 66.8
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00540",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 108.3,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.1
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00600",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 113.3,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 68.6
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00660",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 107.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.5
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00720",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 110.9,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.8
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00780",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 114.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 61.9
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00840",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 105.4,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 66.2
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00900",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 111.2,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 59.8
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00960",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 113.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.6
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01020",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 110.0,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 67.2
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01080",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 108.8,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 69.1
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01140",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 111.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 61.6
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01200",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 108.3,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 69.1
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01260",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 119.1,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.2
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01320",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 107.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.6
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01380",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 106.3,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 69.0
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01440",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 111.2,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 61.9
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01500",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 108.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 68.0
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01560",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 108.3,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 67.7
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01620",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 108.8,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 67.3
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01680",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 106.8,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 70.0
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01740",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 108.8,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 69.1
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01800",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 109.5,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.3
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01860",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 107.8,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 68.9
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01920",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 109.6,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.6
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01980",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 109.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 63.3
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02040",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 109.5,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.4
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02100",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 110.3,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.6
+    },
+    {
+      "task_id": "T-HYD-1784554139312-02160",
+      "test_case": "早期轴承磨损 — 轻度振动增大",
+      "latency_ms": 107.9,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 67.3
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00000",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 112.3,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 62.7
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00060",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 110.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 62.2
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00120",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 109.8,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.9
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00180",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 108.3,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 66.5
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00240",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 110.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 63.3
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00300",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 106.8,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.8
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00360",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 109.6,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 68.2
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00420",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 111.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 68.1
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00480",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 108.2,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.6
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00540",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 111.3,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 68.0
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00600",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 105.8,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 69.0
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00660",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 107.0,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 66.9
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00720",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 105.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 68.7
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00780",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 107.6,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 67.0
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00840",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 111.0,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 62.2
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00900",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 111.0,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 66.6
+    },
+    {
+      "task_id": "T-HYD-1784554139311-00960",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 107.5,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 67.0
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01020",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 110.1,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 62.8
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01080",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 108.9,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 64.8
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01140",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 110.3,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.1
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01200",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 110.0,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 67.4
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01260",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 122.9,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.6
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01320",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 107.5,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 65.6
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01380",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 109.7,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 61.3
+    },
+    {
+      "task_id": "T-HYD-1784554139311-01440",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 112.3,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 66.3
+    },
+    {
+      "task_id": "T-HYD-1784554139312-01500",
+      "test_case": "轴承严重故障 — 振动温度均超标",
+      "latency_ms": 105.4,
+      "response": "1",
+      "tokens": 2,
+      "tokens_per_sec": 68.4
+    }
+  ]
+}

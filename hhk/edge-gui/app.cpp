@@ -44,6 +44,7 @@ const char * mem_fit_str(MemFit f) {
 EdgeApp::EdgeApp()
     : _task_scheduler()
 {
+    _pipeline.set_engine(&_engine);
     memset(_input_buf, 0, sizeof(_input_buf));
     _models_dir = detect_project_root() + "/models";
     if (_models_dir.empty() || _models_dir == "/models") {
@@ -112,6 +113,7 @@ void EdgeApp::shutdown() {
     _task_scheduler.stop();
     _p2p.stop();
     if (_model_load_thread.joinable()) _model_load_thread.join();
+    if (_pipeline_thread.joinable()) _pipeline_thread.join();
 }
 
 // ── 内存估算 ─────────────────────────────────────────────────
@@ -286,6 +288,7 @@ void EdgeApp::render() {
     if (_show_peers)         render_peers_panel();
     if (_show_conflicts)     render_conflicts_panel();
     if (_show_tasks)         render_tasks_panel();
+    if (_show_data_pipeline) render_data_pipeline_panel();
     if (!_model_error.empty()) render_error_popup();
 
     // Periodic updates
@@ -293,6 +296,20 @@ void EdgeApp::render() {
     _task_scheduler.process_queue();
 
     process_incoming_tokens();
+
+    // Pipeline progress: drain one batch per frame if running
+    if (_pipeline_running && !_pipeline_finished) {
+        auto & batches = _pipeline.batches();
+        if (_pipeline_next_batch < (int)batches.size()) {
+            auto r = _pipeline.classify_batch(batches[_pipeline_next_batch]);
+            _pipeline.results().push_back(r);
+            _pipeline_next_batch++;
+            _pipeline_progress = (float)_pipeline_next_batch / (float)batches.size();
+        } else {
+            _pipeline_finished = true;
+            _pipeline_running = false;
+        }
+    }
 
     double now = ImGui::GetTime();
     if (now - _power_last_check > 30.0) {
@@ -427,6 +444,11 @@ void EdgeApp::render_top_bar() {
         if (ImGui::Button("\xe5\x8a\xa0\xe8\xbd\xbd"))      // 加载
             load_session_dialog();
     }
+
+    // 数据流 button (outside model-loaded check — file selection works without model)
+    ImGui::SameLine();
+    if (ImGui::Button("\xe6\x95\xb0\xe6\x8d\xae\xe6\xb5\x81"))  // 数据流
+        _show_data_pipeline = !_show_data_pipeline;
 
     ImGui::EndChild();
     ImGui::Separator();
@@ -1079,6 +1101,145 @@ void EdgeApp::render_tasks_panel() {
         int n = _task_scheduler.poll_cloud_tasks();
         if (n > 0) {
             fprintf(stderr, "Received %d tasks from cloud\n", n);
+        }
+    }
+
+    ImGui::End();
+}
+
+// ── Data pipeline panel ──────────────────────────────────────────
+
+void EdgeApp::render_data_pipeline_panel() {
+    ImGui::SetNextWindowSize(ImVec2(620, 480), ImGuiCond_FirstUseEver);
+    ImGui::Begin("\xe6\x95\xb0\xe6\x8d\xae\xe6\xb5\x81\xe5\xa4\x84\xe7\x90\x86", &_show_data_pipeline);
+
+    // ── File selection ──────────────────────────────────────────
+    ImGui::Text("\xe6\x95\xb0\xe6\x8d\xae\xe6\x96\x87\xe4\xbb\xb6:"); ImGui::SameLine();
+    ImGui::InputText("##DataFile", _data_file_path, sizeof(_data_file_path));
+    ImGui::SameLine();
+    if (ImGui::Button("\xe6\xb5\x8f\xe8\xa7\x88...##DataFile")) {
+        std::string picked = file_dialog_open("\xe9\x80\x89\xe6\x8b\xa9\xe4\xbc\xa0\xe6\x84\x9f\xe5\x99\xa8\xe6\x95\xb0\xe6\x8d\xae\xe6\x96\x87\xe4\xbb\xb6", "*.csv;*.txt;*.CSV;*.TXT");
+        if (!picked.empty())
+            strncpy(_data_file_path, picked.c_str(), sizeof(_data_file_path) - 1);
+    }
+
+    // ── Info bar ─────────────────────────────────────────────────
+    if (_pipeline.is_open()) {
+        ImGui::SameLine();
+        ImGui::TextColored(ImVec4(0.3f, 1.0f, 0.3f, 1.0f),
+            "\xe2\x9c\x93 %s  (%d \xe8\xa1\x8c, %d \xe5\x88\x97)",
+            _pipeline.data_type().c_str(),
+            _pipeline.row_count(), _pipeline.column_count());
+    }
+
+    // ── Actions ──────────────────────────────────────────────────
+    bool has_model = _engine.is_loaded();
+    bool can_start = _pipeline.is_open() && has_model && !_pipeline_running;
+    bool can_stop  = _pipeline_running;
+
+    if (!has_model && _pipeline.is_open()) {
+        ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.2f, 1.0f),
+            "\xe2\x9a\xa0 \xe8\xaf\xb7\xe5\x85\x88\xe5\x8a\xa0\xe8\xbd\xbd\xe6\xa8\xa1\xe5\x9e\x8b");
+    }
+
+    if (!can_start) ImGui::BeginDisabled();
+    if (ImGui::Button("\xe2\x96\xb6 \xe5\xbc\x80\xe5\xa7\x8b\xe5\xa4\x84\xe7\x90\x86")) {
+        _pipeline.prepare_batches(60);
+        _pipeline.results().clear();
+        _pipeline_next_batch = 0;
+        _pipeline_progress   = 0.0f;
+        _pipeline_running    = true;
+        _pipeline_finished   = false;
+    }
+    if (!can_start) ImGui::EndDisabled();
+
+    ImGui::SameLine();
+    if (!can_stop) ImGui::BeginDisabled();
+    if (ImGui::Button("\xe2\x8f\xb9 \xe5\x81\x9c\xe6\xad\xa2")) {
+        _pipeline_running = false;
+        _pipeline_finished = true;
+        if (_pipeline_thread.joinable()) _pipeline_thread.join();
+    }
+    if (!can_stop) ImGui::EndDisabled();
+
+    // ── Progress ─────────────────────────────────────────────────
+    if (_pipeline_running || _pipeline_finished) {
+        ImGui::SameLine();
+        ImGui::Text("%d/%d \xe6\x89\xb9", _pipeline_next_batch, (int)_pipeline.batches().size());
+        ImGui::ProgressBar(_pipeline_progress, ImVec2(-1, 0));
+    }
+
+    ImGui::Separator();
+
+    // ── Results table ────────────────────────────────────────────
+    const auto & results = _pipeline.results();
+    if (!results.empty()) {
+        if (ImGui::BeginTable("ResultsTable", 6,
+                ImGuiTableFlags_ScrollY | ImGuiTableFlags_RowBg | ImGuiTableFlags_Borders)) {
+            ImGui::TableSetupColumn("\xe6\x89\xb9\xe6\xac\xa1");
+            ImGui::TableSetupColumn("\xe5\x88\x86\xe7\xb1\xbb");
+            ImGui::TableSetupColumn("\xe5\x8a\xa8\xe4\xbd\x9c");
+            ImGui::TableSetupColumn("\xe7\xbd\xae\xe4\xbf\xa1\xe5\xba\xa6");
+            ImGui::TableSetupColumn("\xe5\xbb\xb6\xe8\xbf\x9f");
+            ImGui::TableSetupColumn("\xe7\x94\xa9\xe4\xba\x91");
+            ImGui::TableHeadersRow();
+
+            for (const auto & r : results) {
+                ImGui::TableNextRow();
+
+                ImGui::TableSetColumnIndex(0);
+                ImGui::Text("%d", r.batch_index);
+
+                ImGui::TableSetColumnIndex(1);
+                if (r.success) {
+                    ImVec4 color(1,1,1,1);
+                    if (r.category == 0)      color = ImVec4(0.3f, 1.0f, 0.3f, 1.0f); // 正常 green
+                    else if (r.category >= 2)  color = ImVec4(1.0f, 0.3f, 0.3f, 1.0f); // 严重 red
+                    else                      color = ImVec4(1.0f, 0.9f, 0.2f, 1.0f); // 警告 yellow
+                    ImGui::TextColored(color, "%s", r.category_name.c_str());
+                } else {
+                    ImGui::TextColored(ImVec4(1,0.3f,0.3f,1), "ERR");
+                }
+
+                ImGui::TableSetColumnIndex(2);
+                ImGui::Text("%s", r.success ? r.action.c_str() : "-");
+
+                ImGui::TableSetColumnIndex(3);
+                ImGui::Text("%.0f%%", r.confidence * 100);
+
+                ImGui::TableSetColumnIndex(4);
+                ImGui::Text("%.0fms", r.latency_ms);
+
+                ImGui::TableSetColumnIndex(5);
+                if (r.escalate_to_cloud)
+                    ImGui::TextColored(ImVec4(1,0.5f,0.2f,1), "\xe2\x9c\x93");
+                else
+                    ImGui::Text("-");
+            }
+            ImGui::EndTable();
+        }
+
+        ImGui::Separator();
+
+        // ── Stats summary ────────────────────────────────────────
+        auto stats = _pipeline.compute_stats();
+        ImGui::Text("\xf0\x9f\x93\x88 \xe7\xbb\x9f\xe8\xae\xa1:");
+        ImGui::Text("  \xe6\x80\xbb\xe8\xaf\xb7\xe6\xb1\x82: %d  \xe6\x88\x90\xe5\x8a\x9f: %d  "
+                    "\xe5\xb9\xb3\xe5\x9d\x87: %.0fms  P95: %.0fms",
+                    stats.total_batches, stats.success_count,
+                    stats.avg_latency_ms, stats.p95_latency_ms);
+        ImGui::Text("  200ms\xe8\xbe\xbe\xe6\xa0\x87: %d/%d (%.0f%%)  \xe7\x94\xa9\xe4\xba\x91: %d",
+                    stats.under_200ms, stats.success_count,
+                    stats.success_count > 0 ? (float)stats.under_200ms/stats.success_count*100 : 0,
+                    stats.escalated_count);
+
+        if (!stats.category_distribution.empty()) {
+            ImGui::Text("  \xe5\x88\x86\xe5\xb8\x83:");
+            for (const auto & [cat, cnt] : stats.category_distribution) {
+                auto * info = SensorPipeline::lookup_category(cat);
+                ImGui::SameLine();
+                ImGui::Text("%s:%d", info ? info->name : ("?"+std::to_string(cat)).c_str(), cnt);
+            }
         }
     }
 

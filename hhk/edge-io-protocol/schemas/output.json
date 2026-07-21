@@ -1,0 +1,138 @@
+{
+  "$schema": "边端模型输出格式 v1.0",
+  "description": "模型推理完成后返回的结果格式，下游系统（SCADA、报警、云端）直接消费",
+
+  "fields": {
+    "task_id": {
+      "type": "string",
+      "required": true,
+      "说明": "关联输入的任务编号"
+    },
+    "node_id": {
+      "type": "string",
+      "required": true,
+      "说明": "执行推理的边缘节点"
+    },
+    "timestamp": {
+      "type": "string(ISO8601)",
+      "required": true,
+      "说明": "推理完成时间"
+    },
+    "latency_ms": {
+      "type": "float",
+      "required": true,
+      "说明": "本次推理实际耗时（毫秒），用于监控 ≤200ms 指标"
+    },
+    "decision": {
+      "type": "object",
+      "required": true,
+      "fields": {
+        "action": {
+          "type": "enum",
+          "说明": "结论动作",
+          "options": [
+            "normal",      // 正常，无需处理
+            "warning",     // 警告，需注意
+            "alert",       // 报警，需立即响应
+            "maintain",    // 建议维护
+            "shutdown"     // 建议停机
+          ]
+        },
+        "level": {
+          "type": "enum",
+          "说明": "严重程度",
+          "options": ["info", "warning", "critical"]
+        },
+        "summary": {
+          "type": "string",
+          "说明": "一句话结论，给人看的摘要"
+        },
+        "detail": {
+          "type": "object",
+          "说明": "详细诊断结果，内容随 task_type 不同",
+          "fields": {
+            "root_cause": "根因分析",
+            "evidence": ["支撑结论的关键证据列表"],
+            "recommendation": "具体操作建议"
+          }
+        }
+      }
+    },
+    "confidence": {
+      "type": "float(0-1)",
+      "required": true,
+      "说明": "模型对结论的置信度。低于阈值则甩给云端二次确认"
+    },
+    "escalate_to_cloud": {
+      "type": "boolean",
+      "required": true,
+      "说明": "是否需要甩给云端大模型重新推理。confidence < 阈值 或 action=critical 时通常为 true"
+    },
+    "escalate_reason": {
+      "type": "string",
+      "required": false,
+      "说明": "甩给云端的原因（方便日志追踪）"
+    },
+    "consistency": {
+      "type": "object",
+      "required": false,
+      "说明": "多节点一致性校验用（同一区域有多个边缘节点时才填）",
+      "fields": {
+        "decision_hash": "决策的 SHA256 哈希值，用于多节点对比检测冲突",
+        "zone": "区域标识",
+        "node_count": "同一区域内边缘节点总数"
+      }
+    }
+  },
+
+  "examples": {
+    "故障诊断(高置信度)": {
+      "task_id": "T-001",
+      "node_id": "edge-workshop3",
+      "timestamp": "2026-07-15T14:30:00.148",
+      "latency_ms": 145,
+      "decision": {
+        "action": "alert",
+        "level": "critical",
+        "summary": "电机A01振动严重超标，疑似轴承磨损，建议立即停机检修",
+        "detail": {
+          "root_cause": "轴承长时间未维护导致磨损加剧，产生异常振动",
+          "evidence": [
+            "振动值5.1mm/s，超出报警值4.5mm/s",
+            "轴承温度85°C，远超正常值65°C",
+            "三相电流不平衡度8%，存在电气故障风险"
+          ],
+          "recommendation": "1.立即停机 2.检查轴承磨损情况 3.更换轴承后重新对中 4.三天后复查振动数据"
+        }
+      },
+      "confidence": 0.92,
+      "escalate_to_cloud": false,
+      "consistency": {
+        "decision_hash": "sha256:a1b2c3...",
+        "zone": "workshop-3"
+      }
+    },
+    "故障诊断(低置信度→甩云端)": {
+      "task_id": "T-003",
+      "node_id": "edge-workshop1",
+      "timestamp": "2026-07-15T14:35:00.180",
+      "latency_ms": 178,
+      "decision": {
+        "action": "warning",
+        "level": "warning",
+        "summary": "设备存在异常趋势但原因不明确，已上报云端分析",
+        "detail": {
+          "root_cause": "待云端确认",
+          "evidence": ["电流小幅波动", "噪声增加但未超阈值"],
+          "recommendation": "继续监测，等待云端分析结果"
+        }
+      },
+      "confidence": 0.52,
+      "escalate_to_cloud": true,
+      "escalate_reason": "置信度0.52低于阈值0.75，症状模糊需云端深度分析",
+      "consistency": {
+        "decision_hash": "sha256:d4e5f6..."
+      }
+    }
+  }
+}
