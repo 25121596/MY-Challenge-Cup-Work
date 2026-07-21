@@ -191,6 +191,7 @@ private:
     int  _pipeline_next_batch = 0;
     char _data_file_path[512] = {};
     std::thread _pipeline_thread;
+    std::mutex  _pipeline_mutex;
 
     // ── Cloud-edge callbacks ─────────────────────────────────
     void on_peer_perception(const PerceptionReport & report);

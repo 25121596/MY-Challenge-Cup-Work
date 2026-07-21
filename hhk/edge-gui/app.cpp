@@ -297,17 +297,15 @@ void EdgeApp::render() {
 
     process_incoming_tokens();
 
-    // Pipeline progress: drain one batch per frame if running
-    if (_pipeline_running && !_pipeline_finished) {
-        auto & batches = _pipeline.batches();
-        if (_pipeline_next_batch < (int)batches.size()) {
-            auto r = _pipeline.classify_batch(batches[_pipeline_next_batch]);
-            _pipeline.results().push_back(r);
-            _pipeline_next_batch++;
-            _pipeline_progress = (float)_pipeline_next_batch / (float)batches.size();
-        } else {
+    // Pipeline progress: update progress from background thread results
+    if (_pipeline_running) {
+        std::lock_guard<std::mutex> lock(_pipeline_mutex);
+        _pipeline_progress = _pipeline.batches().empty() ? 0.0f :
+            (float)_pipeline.results().size() / (float)_pipeline.batches().size();
+        if (_pipeline.results().size() >= _pipeline.batches().size() &&
+            !_pipeline.batches().empty()) {
             _pipeline_finished = true;
-            _pipeline_running = false;
+            _pipeline_running  = false;
         }
     }
 
@@ -1150,6 +1148,19 @@ void EdgeApp::render_data_pipeline_panel() {
         _pipeline_progress   = 0.0f;
         _pipeline_running    = true;
         _pipeline_finished   = false;
+
+        // Run batch inference on background thread to keep UI responsive
+        if (_pipeline_thread.joinable()) _pipeline_thread.join();
+        _pipeline_thread = std::thread([this]() {
+            auto & batches = _pipeline.batches();
+            for (int i = 0; i < (int)batches.size() && _pipeline_running; i++) {
+                auto r = _pipeline.classify_batch(batches[i]);
+                {
+                    std::lock_guard<std::mutex> lock(_pipeline_mutex);
+                    _pipeline.results().push_back(r);
+                }
+            }
+        });
     }
     if (!can_start) ImGui::EndDisabled();
 
