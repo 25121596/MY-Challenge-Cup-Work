@@ -237,6 +237,11 @@ CATEGORY_NAMES = {
     3: "current_imbalance", 4: "overheat", 5: "flow_blockage", 6: "sensor_drift",
 }
 
+# 泛化模式: 4 级异常严重度
+GENERIC_SEVERITY_NAMES = {
+    0: "normal", 1: "mild_anomaly", 2: "moderate_anomaly", 3: "severe_anomaly",
+}
+
 # fault_type (anomaly_injector) → category code
 FAULT_TO_CLASS = {
     "normal": 0, "bearing_wear": 1, "bearing_failure": 2,
@@ -246,18 +251,25 @@ FAULT_TO_CLASS = {
 RISK_NAMES = {0: "low", 1: "medium", 2: "high", 3: "critical"}
 
 
-def load_grammar():
+def load_grammar(generic=False):
     """加载 GBNF grammar"""
-    gpath = Path(r"D:\Challenge Cup\edge-io-protocol\grammars\short_decision.gbnf")
+    hhk_dir = Path(__file__).resolve().parent.parent
+    gname = "generic_decision.gbnf" if generic else "short_decision.gbnf"
+    gpath = hhk_dir / "edge-io-protocol" / "grammars" / gname
     if gpath.exists():
         with open(gpath, "r", encoding="utf-8") as f:
             return f.read()
     return None
 
 
-def parse_short_decision(raw_text):
-    """解析单数字类别码 (e.g. '1') 或 'class,risk' (e.g. '1,2')"""
+def parse_short_decision(raw_text, generic=False):
+    """解析单数字类别码 (e.g. '1') 或 'class,risk' (e.g. '1,2')
+
+    generic=True: 接受 [0-3] 泛化异常等级
+    generic=False: 接受 [0-6] 已知故障类别
+    """
     import re
+    max_cat = 3 if generic else 6
     text = raw_text.strip()
     if text.startswith("```"):
         text = text.replace("```", "").strip()
@@ -267,19 +279,23 @@ def parse_short_decision(raw_text):
     if m:
         cls = int(m.group(1))
         risk = int(m.group(2))
-        if cls <= 6:
+        if cls <= max_cat:
             return cls, min(risk, 3), None
 
     # 尝试单数字
-    m = re.search(r'\b([0-6])\b', text)
+    m = re.search(r'\b(\d)\b', text)
     if m:
-        return int(m.group(1)), 1, None  # 默认中风险
+        cls = int(m.group(1))
+        if cls <= max_cat:
+            return cls, 1, None  # 默认中风险
+        return max_cat, 0, "UNKNOWN_CLASS"
 
     # JSON 兼容
     try:
         obj = json.loads(text)
         if "c" in obj:
-            return int(obj["c"]), 1, None
+            c = int(obj["c"])
+            return min(c, max_cat), 1, None
     except json.JSONDecodeError:
         pass
 
@@ -378,14 +394,30 @@ def compute_classification_metrics(results):
 
 def build_prompt(entry, task_type, scenario_name):
     """构建 prompt — 使用 edge-io-protocol 短决策模板"""
-    prompt_dir = Path(r"D:\Challenge Cup\edge-io-protocol\prompts")
-    tmpl_path = prompt_dir / "fault_diagnosis.txt"
+    hhk_dir = Path(__file__).resolve().parent.parent
+    prompt_dir = hhk_dir / "edge-io-protocol" / "prompts"
+
+    # 泛化模式: 使用通用异常检测模板
+    generic = entry.get("data", {}).get("generic_mode", False)
+    if generic:
+        tmpl_path = prompt_dir / "generic_anomaly.txt"
+    else:
+        tmpl_path = prompt_dir / "fault_diagnosis.txt"
+
     template = None
     if tmpl_path.exists():
         with open(tmpl_path, "r", encoding="utf-8") as f:
             template = f.read()
 
-    data_text = json.dumps(entry.get("data", entry), ensure_ascii=False, indent=2)
+    # 泛化模式: 数据中的 context 已含统计基线
+    if generic:
+        data_text = entry.get("data", {}).get("context", "")
+        readings = entry.get("data", {}).get("readings", {})
+        if readings:
+            data_text += "\n\n当前读数: " + " ".join(f"{k}={v}" for k, v in readings.items())
+    else:
+        data_text = json.dumps(entry.get("data", entry), ensure_ascii=False, indent=2)
+
     if template and "{input_data}" in template:
         return template.replace("{input_data}", data_text)
     elif template:
@@ -414,9 +446,13 @@ def run_inference_batch(test_file, scenario, endpoint=DEFAULT_EDGE_ENDPOINT,
     if stratified:
         total = len(inputs)  # stratified 时用全部抽样结果
 
+    # 自动检测泛化模式 (第一个条目的 generic_mode 标志)
+    first_entry = inputs[0] if inputs else {}
+    is_generic = first_entry.get("data", {}).get("generic_mode", False)
+
     # 加载 grammar (一次)
-    grammar = load_grammar()
-    grammar_status = "GBNF" if grammar else "无"
+    grammar = load_grammar(generic=is_generic)
+    grammar_status = f"GBNF({'泛化' if is_generic else '分类'})" if grammar else "无"
 
     results = []
     latencies = []
@@ -427,6 +463,7 @@ def run_inference_batch(test_file, scenario, endpoint=DEFAULT_EDGE_ENDPOINT,
 
     for i, entry in enumerate(inputs[:total]):
         task_type = entry.get("task_type", "fault_diagnosis")
+        entry_generic = entry.get("data", {}).get("generic_mode", False)
         prompt = build_prompt(entry, task_type, scenario["name"])
 
         payload = {
@@ -457,8 +494,10 @@ def run_inference_batch(test_file, scenario, endpoint=DEFAULT_EDGE_ENDPOINT,
             tokens = body.get("tokens_predicted", 0)
             prompt_ms = round(body.get("timings", {}).get("prompt_ms", 0), 1)
 
-            # 解析短决策 (v3: class,risk)
-            category, risk_level, parse_error = parse_short_decision(response_text)
+            # 解析短决策
+            category, risk_level, parse_error = parse_short_decision(
+                response_text, generic=entry_generic
+            )
 
             if parse_error:
                 format_errors += 1

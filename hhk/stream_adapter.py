@@ -165,8 +165,11 @@ def run_tcp_mode(port, worker, node_id):
     while worker.running:
         try:
             conn, addr = server.accept()
-            print(f"  📎 连接: {addr}")
-            handle_tcp_client(conn, worker, node_id)
+            print(f"  📎 连接: {addr} (多路并发)")
+            # 每个客户端独立线程, 支持多路传感器/视频同时推送
+            threading.Thread(target=handle_tcp_client,
+                             args=(conn, worker, node_id),
+                             daemon=True).start()
         except socket.timeout:
             continue
         except KeyboardInterrupt:

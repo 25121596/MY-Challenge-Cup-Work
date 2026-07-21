@@ -99,14 +99,90 @@ def read_sensor_file(filepath, max_rows=None):
     return headers, rows
 
 
+def _compute_column_stats(rows, col_indices):
+    """对所有数值列计算统计基线 (mean, std, min, max)。
+    用于泛化模式：给 LLM 提供每列的统计参考，不依赖列名语义。
+    """
+    stats = {}
+    for ci in col_indices:
+        vals = []
+        for r in rows[:2000]:  # 采样前2000行计算基线
+            if ci < len(r) and r[ci] is not None:
+                vals.append(r[ci])
+        if not vals:
+            continue
+        n = len(vals)
+        mean = sum(vals) / n
+        variance = sum((v - mean) ** 2 for v in vals) / n
+        std = variance ** 0.5
+        stats[ci] = {
+            "mean": round(mean, 4), "std": round(std, 4),
+            "min": round(min(vals), 4), "max": round(max(vals), 4),
+            "n_samples": n,
+        }
+    return stats
+
+
+def _build_readings_generic(batch, col_indices, headers):
+    """泛化模式：所有数值列直接作为 readings，不依赖列名映射。
+    返回 (readings_dict, deviation_summary)
+    """
+    readings = {}
+    deviations = []
+    for ci in col_indices:
+        vals = [r[ci] for r in batch if ci < len(r) and r[ci] is not None]
+        if not vals:
+            continue
+        key = headers[ci] if ci < len(headers) else f"col_{ci}"
+        # 清理列名：去除 BOM、首尾空格
+        key = key.strip().strip("﻿").replace(" ", "_")
+        if not key:
+            key = f"col_{ci}"
+        avg = sum(vals) / len(vals)
+        readings[key] = round(avg, 4)
+    return readings
+
+
+def _build_deviation_text(current_readings, col_stats, headers):
+    """构建偏离分析文本：标注哪些通道显著偏离基线（>2σ）。"""
+    lines = []
+    for ci, st in sorted(col_stats.items()):
+        key = headers[ci] if ci < len(headers) else f"col_{ci}"
+        key = key.strip().strip("﻿").replace(" ", "_")
+        cur = current_readings.get(key)
+        if cur is None or st["std"] < 1e-12:
+            continue
+        z = abs(cur - st["mean"]) / st["std"]
+        flag = "⚠️ 显著偏离" if z > 3.0 else ("⚡ 轻微偏离" if z > 2.0 else "正常")
+        lines.append(f"  {key}: 当前={cur:.4f}, 基线μ={st['mean']:.4f} σ={st['std']:.4f}, z={z:.2f} → {flag}")
+    return "\n".join(lines)
+
+
 def to_standard_input(headers, rows, channel_map, device_type, device_id, node_id, task_type, batch_size=60):
     """将原始数据转为标准 input.json 格式的列表"""
     header_map = map_headers(headers, channel_map)
 
-    if not header_map:
-        print(f"⚠️ 无法匹配传感器通道! 数据集列: {headers}")
-        print(f"   期望的别名: {[v for aliases in channel_map.values() for v in aliases]}")
-        return []
+    # ── 泛化模式：无法匹配列名时，所有数值列直接作为 readings ──
+    use_generic = not header_map
+    if use_generic:
+        # 找出所有数值列索引
+        numeric_cols = []
+        for ci in range(len(headers)):
+            # 检查该列前几行是否可转为数值
+            num_count = 0
+            for r in rows[:10]:
+                if ci < len(r) and r[ci] is not None:
+                    num_count += 1
+            if num_count >= 5:  # 至少一半是数值
+                numeric_cols.append(ci)
+
+        if not numeric_cols:
+            print(f"⚠️ 未检测到数值列! 数据集列: {headers}")
+            return []
+
+        col_stats = _compute_column_stats(rows, numeric_cols)
+        print(f"  [generic] {len(numeric_cols)}/{len(headers)} numeric columns -> readings")
+        print(f"  [generic] baseline stats: {len(col_stats)} columns (sampled {next(iter(col_stats.values())).get('n_samples',0) if col_stats else 0} rows)")
 
     inputs = []
     for batch_start in range(0, len(rows), batch_size):
@@ -114,16 +190,40 @@ def to_standard_input(headers, rows, channel_map, device_type, device_id, node_i
         if len(batch) < 5:
             break
 
-        # 取这个批次的平均值作为"当前读数"
-        readings = {}
-        for col_idx, (col_name, std_name) in enumerate(
-            [(h, header_map.get(h)) for h in headers if h in header_map]
-        ):
-            if col_idx >= len(batch[0]):
-                continue
-            values = [r[col_idx] for r in batch if col_idx < len(r) and r[col_idx] is not None]
-            if values:
-                readings[std_name] = round(sum(values) / len(values), 4)
+        if use_generic:
+            readings = _build_readings_generic(batch, numeric_cols, headers)
+            deviation_text = _build_deviation_text(readings, col_stats, headers)
+
+            # 构建含统计基线的上下文
+            stats_lines = []
+            for ci in numeric_cols[:20]:  # 限制20列避免prompt过长
+                key = headers[ci] if ci < len(headers) else f"col_{ci}"
+                key = key.strip().strip("﻿").replace(" ", "_")
+                st = col_stats.get(ci, {})
+                stats_lines.append(
+                    f"  {key}: μ={st.get('mean','?')} σ={st.get('std','?')} "
+                    f"范围=[{st.get('min','?')}, {st.get('max','?')}]"
+                )
+
+            context = (
+                f"批次 {batch_start}-{batch_start+batch_size}, 共{len(batch)}条记录\n"
+                f"传感器数量: {len(numeric_cols)}\n"
+                f"统计基线 (从历史数据自动计算):\n"
+                + "\n".join(stats_lines) +
+                f"\n\n偏离分析:\n{deviation_text}"
+            )
+        else:
+            # 原有已知列名映射模式
+            readings = {}
+            for col_idx, (col_name, std_name) in enumerate(
+                [(h, header_map.get(h)) for h in headers if h in header_map]
+            ):
+                if col_idx >= len(batch[0]):
+                    continue
+                values = [r[col_idx] for r in batch if col_idx < len(r) and r[col_idx] is not None]
+                if values:
+                    readings[std_name] = round(sum(values) / len(values), 4)
+            context = f"批次 {batch_start}-{batch_start+batch_size}, 共{len(batch)}条记录"
 
         if not readings:
             continue
@@ -138,11 +238,8 @@ def to_standard_input(headers, rows, channel_map, device_type, device_id, node_i
                 "device_id": device_id,
                 "device_type": device_type,
                 "readings": readings,
-                "context": f"批次 {batch_start}-{batch_start+batch_size}, 共{len(batch)}条记录",
-                "raw_stats": {
-                    "batch_size": len(batch),
-                    "sample_period_ms": 10,  # 假设10ms采样
-                }
+                "context": context,
+                "generic_mode": use_generic,
             }
         }
         inputs.append(input_entry)
