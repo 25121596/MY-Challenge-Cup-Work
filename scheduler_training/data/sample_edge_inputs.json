@@ -1,0 +1,1922 @@
+[
+  {
+    "task_id": "T-PHASE2-0001",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:00.000",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "max_latency_ms": 213,
+    "payload_size_mb": 0.21218,
+    "estimated_edge_confidence": 0.742,
+    "data": {
+      "device_id": "device-00",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.2243,
+        "feature_std": 1.7702,
+        "feature_peak": 3.5975
+      },
+      "context": "故障诊断预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0002",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:00.150",
+    "task_type": "quality_inspection",
+    "priority": "high",
+    "max_latency_ms": 274,
+    "payload_size_mb": 0.61442,
+    "estimated_edge_confidence": 0.663,
+    "data": {
+      "device_id": "device-01",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.9071,
+        "feature_std": 0.7164,
+        "feature_peak": 5.4269
+      },
+      "context": "质量检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0003",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:00.300",
+    "task_type": "safety_check",
+    "priority": "high",
+    "max_latency_ms": 170,
+    "payload_size_mb": 0.18258,
+    "estimated_edge_confidence": 0.737,
+    "data": {
+      "device_id": "device-02",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.652,
+        "feature_std": 1.1424,
+        "feature_peak": 5.4093
+      },
+      "context": "安全识别预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0004",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:00.450",
+    "task_type": "data_analysis",
+    "priority": "medium",
+    "max_latency_ms": 464,
+    "payload_size_mb": 0.09554,
+    "estimated_edge_confidence": 0.634,
+    "data": {
+      "device_id": "device-03",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.535,
+        "feature_std": 0.7393,
+        "feature_peak": 0.8534
+      },
+      "context": "数据分析预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0005",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:00.600",
+    "task_type": "status_monitoring",
+    "priority": "low",
+    "max_latency_ms": 126,
+    "payload_size_mb": 0.02717,
+    "estimated_edge_confidence": 0.923,
+    "data": {
+      "device_id": "device-04",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.1468,
+        "feature_std": 1.9755,
+        "feature_peak": 7.738
+      },
+      "context": "状态监控预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0006",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:00.750",
+    "task_type": "predictive_maintenance",
+    "priority": "medium",
+    "max_latency_ms": 715,
+    "payload_size_mb": 0.07675,
+    "estimated_edge_confidence": 0.679,
+    "data": {
+      "device_id": "device-05",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 1.6647,
+        "feature_std": 1.1309,
+        "feature_peak": 5.8209
+      },
+      "context": "预测性维护预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0007",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:00.900",
+    "task_type": "generic_anomaly",
+    "priority": "high",
+    "max_latency_ms": 193,
+    "payload_size_mb": 0.18689,
+    "estimated_edge_confidence": 0.637,
+    "data": {
+      "device_id": "device-06",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.0183,
+        "feature_std": 1.6152,
+        "feature_peak": 4.9752
+      },
+      "context": "通用异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0008",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:01.050",
+    "task_type": "video_anomaly",
+    "priority": "high",
+    "max_latency_ms": 322,
+    "payload_size_mb": 0.43233,
+    "estimated_edge_confidence": 0.709,
+    "data": {
+      "device_id": "device-07",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.6548,
+        "feature_std": 1.5624,
+        "feature_peak": 4.0516
+      },
+      "context": "视频异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0009",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:01.200",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "max_latency_ms": 281,
+    "payload_size_mb": 0.26674,
+    "estimated_edge_confidence": 0.838,
+    "data": {
+      "device_id": "device-08",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.8495,
+        "feature_std": 0.26,
+        "feature_peak": 1.8616
+      },
+      "context": "故障诊断预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0010",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:01.350",
+    "task_type": "quality_inspection",
+    "priority": "high",
+    "max_latency_ms": 273,
+    "payload_size_mb": 0.30775,
+    "estimated_edge_confidence": 0.699,
+    "data": {
+      "device_id": "device-09",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -1.3435,
+        "feature_std": 0.9158,
+        "feature_peak": 6.2577
+      },
+      "context": "质量检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0011",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:01.500",
+    "task_type": "safety_check",
+    "priority": "high",
+    "max_latency_ms": 147,
+    "payload_size_mb": 0.7431,
+    "estimated_edge_confidence": 0.751,
+    "data": {
+      "device_id": "device-10",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.3885,
+        "feature_std": 1.1929,
+        "feature_peak": 4.2259
+      },
+      "context": "安全识别预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0012",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:01.650",
+    "task_type": "data_analysis",
+    "priority": "medium",
+    "max_latency_ms": 459,
+    "payload_size_mb": 0.25077,
+    "estimated_edge_confidence": 0.72,
+    "data": {
+      "device_id": "device-11",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.3603,
+        "feature_std": 0.4776,
+        "feature_peak": 1.5446
+      },
+      "context": "数据分析预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0013",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:01.800",
+    "task_type": "status_monitoring",
+    "priority": "low",
+    "max_latency_ms": 145,
+    "payload_size_mb": 0.04746,
+    "estimated_edge_confidence": 0.937,
+    "data": {
+      "device_id": "device-12",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.199,
+        "feature_std": 0.1637,
+        "feature_peak": 4.5158
+      },
+      "context": "状态监控预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0014",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:01.950",
+    "task_type": "predictive_maintenance",
+    "priority": "medium",
+    "max_latency_ms": 500,
+    "payload_size_mb": 0.43995,
+    "estimated_edge_confidence": 0.731,
+    "data": {
+      "device_id": "device-13",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -2.95,
+        "feature_std": 1.3168,
+        "feature_peak": 6.3564
+      },
+      "context": "预测性维护预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0015",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:02.100",
+    "task_type": "generic_anomaly",
+    "priority": "high",
+    "max_latency_ms": 242,
+    "payload_size_mb": 0.08409,
+    "estimated_edge_confidence": 0.618,
+    "data": {
+      "device_id": "device-14",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.903,
+        "feature_std": 1.5299,
+        "feature_peak": 0.9826
+      },
+      "context": "通用异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0016",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:02.250",
+    "task_type": "video_anomaly",
+    "priority": "high",
+    "max_latency_ms": 367,
+    "payload_size_mb": 1.17932,
+    "estimated_edge_confidence": 0.758,
+    "data": {
+      "device_id": "device-15",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.0902,
+        "feature_std": 1.5014,
+        "feature_peak": 6.0138
+      },
+      "context": "视频异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0017",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:02.400",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "max_latency_ms": 240,
+    "payload_size_mb": 0.07077,
+    "estimated_edge_confidence": 0.685,
+    "data": {
+      "device_id": "device-16",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.3476,
+        "feature_std": 0.8365,
+        "feature_peak": 1.576
+      },
+      "context": "故障诊断预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0018",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:02.550",
+    "task_type": "quality_inspection",
+    "priority": "high",
+    "max_latency_ms": 285,
+    "payload_size_mb": 0.39227,
+    "estimated_edge_confidence": 0.796,
+    "data": {
+      "device_id": "device-17",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -1.1881,
+        "feature_std": 0.9642,
+        "feature_peak": 0.8195
+      },
+      "context": "质量检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0019",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:02.700",
+    "task_type": "safety_check",
+    "priority": "high",
+    "max_latency_ms": 177,
+    "payload_size_mb": 0.29356,
+    "estimated_edge_confidence": 0.839,
+    "data": {
+      "device_id": "device-18",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.2666,
+        "feature_std": 0.3921,
+        "feature_peak": 5.7136
+      },
+      "context": "安全识别预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0020",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:02.850",
+    "task_type": "data_analysis",
+    "priority": "medium",
+    "max_latency_ms": 494,
+    "payload_size_mb": 0.11591,
+    "estimated_edge_confidence": 0.698,
+    "data": {
+      "device_id": "device-19",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.6691,
+        "feature_std": 0.1154,
+        "feature_peak": 1.2919
+      },
+      "context": "数据分析预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0021",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:03.000",
+    "task_type": "status_monitoring",
+    "priority": "low",
+    "max_latency_ms": 104,
+    "payload_size_mb": 0.03525,
+    "estimated_edge_confidence": 0.883,
+    "data": {
+      "device_id": "device-00",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.791,
+        "feature_std": 0.8617,
+        "feature_peak": 1.0774
+      },
+      "context": "状态监控预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0022",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:03.150",
+    "task_type": "predictive_maintenance",
+    "priority": "medium",
+    "max_latency_ms": 546,
+    "payload_size_mb": 0.30466,
+    "estimated_edge_confidence": 0.691,
+    "data": {
+      "device_id": "device-01",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.7236,
+        "feature_std": 0.7212,
+        "feature_peak": 1.3319
+      },
+      "context": "预测性维护预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0023",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:03.300",
+    "task_type": "generic_anomaly",
+    "priority": "high",
+    "max_latency_ms": 290,
+    "payload_size_mb": 0.13142,
+    "estimated_edge_confidence": 0.641,
+    "data": {
+      "device_id": "device-02",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.8141,
+        "feature_std": 1.0034,
+        "feature_peak": 1.0108
+      },
+      "context": "通用异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0024",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:03.450",
+    "task_type": "video_anomaly",
+    "priority": "high",
+    "max_latency_ms": 289,
+    "payload_size_mb": 0.32761,
+    "estimated_edge_confidence": 0.796,
+    "data": {
+      "device_id": "device-03",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 1.4303,
+        "feature_std": 0.7333,
+        "feature_peak": 2.1931
+      },
+      "context": "视频异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0025",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:03.600",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "max_latency_ms": 209,
+    "payload_size_mb": 0.10495,
+    "estimated_edge_confidence": 0.868,
+    "data": {
+      "device_id": "device-04",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -1.0073,
+        "feature_std": 1.3517,
+        "feature_peak": 6.9135
+      },
+      "context": "故障诊断预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0026",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:03.750",
+    "task_type": "quality_inspection",
+    "priority": "high",
+    "max_latency_ms": 297,
+    "payload_size_mb": 1.05738,
+    "estimated_edge_confidence": 0.776,
+    "data": {
+      "device_id": "device-05",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.3316,
+        "feature_std": 1.8952,
+        "feature_peak": 5.0908
+      },
+      "context": "质量检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0027",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:03.900",
+    "task_type": "safety_check",
+    "priority": "high",
+    "max_latency_ms": 197,
+    "payload_size_mb": 0.28132,
+    "estimated_edge_confidence": 0.755,
+    "data": {
+      "device_id": "device-06",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 1.3552,
+        "feature_std": 0.439,
+        "feature_peak": 0.6796
+      },
+      "context": "安全识别预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0028",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:04.050",
+    "task_type": "data_analysis",
+    "priority": "medium",
+    "max_latency_ms": 414,
+    "payload_size_mb": 0.17423,
+    "estimated_edge_confidence": 0.63,
+    "data": {
+      "device_id": "device-07",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.9975,
+        "feature_std": 1.9692,
+        "feature_peak": 4.8569
+      },
+      "context": "数据分析预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0029",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:04.200",
+    "task_type": "status_monitoring",
+    "priority": "low",
+    "max_latency_ms": 137,
+    "payload_size_mb": 0.05467,
+    "estimated_edge_confidence": 0.88,
+    "data": {
+      "device_id": "device-08",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.5907,
+        "feature_std": 0.9866,
+        "feature_peak": 4.1911
+      },
+      "context": "状态监控预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0030",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:04.350",
+    "task_type": "predictive_maintenance",
+    "priority": "medium",
+    "max_latency_ms": 715,
+    "payload_size_mb": 0.09117,
+    "estimated_edge_confidence": 0.795,
+    "data": {
+      "device_id": "device-09",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -2.1879,
+        "feature_std": 1.4351,
+        "feature_peak": 2.178
+      },
+      "context": "预测性维护预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0031",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:04.500",
+    "task_type": "generic_anomaly",
+    "priority": "high",
+    "max_latency_ms": 221,
+    "payload_size_mb": 0.05818,
+    "estimated_edge_confidence": 0.755,
+    "data": {
+      "device_id": "device-10",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 1.8054,
+        "feature_std": 0.3055,
+        "feature_peak": 6.7734
+      },
+      "context": "通用异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0032",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:04.650",
+    "task_type": "video_anomaly",
+    "priority": "high",
+    "max_latency_ms": 356,
+    "payload_size_mb": 0.57036,
+    "estimated_edge_confidence": 0.655,
+    "data": {
+      "device_id": "device-11",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -2.2568,
+        "feature_std": 0.6564,
+        "feature_peak": 5.3488
+      },
+      "context": "视频异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0033",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:04.800",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "max_latency_ms": 276,
+    "payload_size_mb": 0.15301,
+    "estimated_edge_confidence": 0.693,
+    "data": {
+      "device_id": "device-12",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.9496,
+        "feature_std": 0.3639,
+        "feature_peak": 1.9785
+      },
+      "context": "故障诊断预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0034",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:04.950",
+    "task_type": "quality_inspection",
+    "priority": "high",
+    "max_latency_ms": 260,
+    "payload_size_mb": 0.50712,
+    "estimated_edge_confidence": 0.736,
+    "data": {
+      "device_id": "device-13",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.2031,
+        "feature_std": 0.491,
+        "feature_peak": 2.044
+      },
+      "context": "质量检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0035",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:05.100",
+    "task_type": "safety_check",
+    "priority": "high",
+    "max_latency_ms": 194,
+    "payload_size_mb": 0.2097,
+    "estimated_edge_confidence": 0.708,
+    "data": {
+      "device_id": "device-14",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 1.671,
+        "feature_std": 0.954,
+        "feature_peak": 1.69
+      },
+      "context": "安全识别预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0036",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:05.250",
+    "task_type": "data_analysis",
+    "priority": "medium",
+    "max_latency_ms": 351,
+    "payload_size_mb": 0.20236,
+    "estimated_edge_confidence": 0.722,
+    "data": {
+      "device_id": "device-15",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.143,
+        "feature_std": 0.5936,
+        "feature_peak": 5.6882
+      },
+      "context": "数据分析预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0037",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:05.400",
+    "task_type": "status_monitoring",
+    "priority": "low",
+    "max_latency_ms": 116,
+    "payload_size_mb": 0.01432,
+    "estimated_edge_confidence": 0.87,
+    "data": {
+      "device_id": "device-16",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.8132,
+        "feature_std": 0.7085,
+        "feature_peak": 5.9125
+      },
+      "context": "状态监控预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0038",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:05.550",
+    "task_type": "predictive_maintenance",
+    "priority": "medium",
+    "max_latency_ms": 671,
+    "payload_size_mb": 0.09412,
+    "estimated_edge_confidence": 0.595,
+    "data": {
+      "device_id": "device-17",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -1.0307,
+        "feature_std": 0.3063,
+        "feature_peak": 4.8979
+      },
+      "context": "预测性维护预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0039",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:05.700",
+    "task_type": "generic_anomaly",
+    "priority": "high",
+    "max_latency_ms": 226,
+    "payload_size_mb": 0.01684,
+    "estimated_edge_confidence": 0.643,
+    "data": {
+      "device_id": "device-18",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -2.1564,
+        "feature_std": 0.5035,
+        "feature_peak": 4.7167
+      },
+      "context": "通用异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0040",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:05.850",
+    "task_type": "video_anomaly",
+    "priority": "high",
+    "max_latency_ms": 251,
+    "payload_size_mb": 0.48856,
+    "estimated_edge_confidence": 0.815,
+    "data": {
+      "device_id": "device-19",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.0257,
+        "feature_std": 0.1752,
+        "feature_peak": 2.6429
+      },
+      "context": "视频异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0041",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:06.000",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "max_latency_ms": 282,
+    "payload_size_mb": 0.09096,
+    "estimated_edge_confidence": 0.704,
+    "data": {
+      "device_id": "device-00",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.9411,
+        "feature_std": 1.8492,
+        "feature_peak": 5.5365
+      },
+      "context": "故障诊断预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0042",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:06.150",
+    "task_type": "quality_inspection",
+    "priority": "high",
+    "max_latency_ms": 294,
+    "payload_size_mb": 0.9932,
+    "estimated_edge_confidence": 0.652,
+    "data": {
+      "device_id": "device-01",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 2.111,
+        "feature_std": 1.8571,
+        "feature_peak": 3.1659
+      },
+      "context": "质量检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0043",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:06.300",
+    "task_type": "safety_check",
+    "priority": "high",
+    "max_latency_ms": 214,
+    "payload_size_mb": 0.22785,
+    "estimated_edge_confidence": 0.861,
+    "data": {
+      "device_id": "device-02",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.2308,
+        "feature_std": 1.4783,
+        "feature_peak": 6.6653
+      },
+      "context": "安全识别预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0044",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:06.450",
+    "task_type": "data_analysis",
+    "priority": "medium",
+    "max_latency_ms": 456,
+    "payload_size_mb": 0.04224,
+    "estimated_edge_confidence": 0.734,
+    "data": {
+      "device_id": "device-03",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.2181,
+        "feature_std": 0.7404,
+        "feature_peak": 0.8334
+      },
+      "context": "数据分析预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0045",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:06.600",
+    "task_type": "status_monitoring",
+    "priority": "low",
+    "max_latency_ms": 138,
+    "payload_size_mb": 0.00525,
+    "estimated_edge_confidence": 0.922,
+    "data": {
+      "device_id": "device-04",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -1.4756,
+        "feature_std": 0.7907,
+        "feature_peak": 3.5151
+      },
+      "context": "状态监控预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0046",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:06.750",
+    "task_type": "predictive_maintenance",
+    "priority": "medium",
+    "max_latency_ms": 713,
+    "payload_size_mb": 0.52421,
+    "estimated_edge_confidence": 0.634,
+    "data": {
+      "device_id": "device-05",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.7341,
+        "feature_std": 1.8331,
+        "feature_peak": 7.872
+      },
+      "context": "预测性维护预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0047",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:06.900",
+    "task_type": "generic_anomaly",
+    "priority": "high",
+    "max_latency_ms": 195,
+    "payload_size_mb": 0.06386,
+    "estimated_edge_confidence": 0.786,
+    "data": {
+      "device_id": "device-06",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -1.5006,
+        "feature_std": 1.6544,
+        "feature_peak": 6.6498
+      },
+      "context": "通用异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0048",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:07.050",
+    "task_type": "video_anomaly",
+    "priority": "high",
+    "max_latency_ms": 249,
+    "payload_size_mb": 0.96142,
+    "estimated_edge_confidence": 0.624,
+    "data": {
+      "device_id": "device-07",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.2058,
+        "feature_std": 1.7624,
+        "feature_peak": 1.4577
+      },
+      "context": "视频异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0049",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:07.200",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "max_latency_ms": 290,
+    "payload_size_mb": 0.03085,
+    "estimated_edge_confidence": 0.806,
+    "data": {
+      "device_id": "device-08",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -1.8173,
+        "feature_std": 1.6747,
+        "feature_peak": 6.5364
+      },
+      "context": "故障诊断预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0050",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:07.350",
+    "task_type": "quality_inspection",
+    "priority": "high",
+    "max_latency_ms": 299,
+    "payload_size_mb": 0.32515,
+    "estimated_edge_confidence": 0.662,
+    "data": {
+      "device_id": "device-09",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 1.1153,
+        "feature_std": 1.32,
+        "feature_peak": 5.6795
+      },
+      "context": "质量检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0051",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:07.500",
+    "task_type": "safety_check",
+    "priority": "high",
+    "max_latency_ms": 212,
+    "payload_size_mb": 0.73502,
+    "estimated_edge_confidence": 0.873,
+    "data": {
+      "device_id": "device-10",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.322,
+        "feature_std": 0.962,
+        "feature_peak": 3.4834
+      },
+      "context": "安全识别预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0052",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:07.650",
+    "task_type": "data_analysis",
+    "priority": "medium",
+    "max_latency_ms": 335,
+    "payload_size_mb": 0.17504,
+    "estimated_edge_confidence": 0.817,
+    "data": {
+      "device_id": "device-11",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.3224,
+        "feature_std": 0.9852,
+        "feature_peak": 1.4211
+      },
+      "context": "数据分析预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0053",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:07.800",
+    "task_type": "status_monitoring",
+    "priority": "low",
+    "max_latency_ms": 147,
+    "payload_size_mb": 0.01062,
+    "estimated_edge_confidence": 0.934,
+    "data": {
+      "device_id": "device-12",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.7562,
+        "feature_std": 1.9638,
+        "feature_peak": 5.9925
+      },
+      "context": "状态监控预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0054",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:07.950",
+    "task_type": "predictive_maintenance",
+    "priority": "medium",
+    "max_latency_ms": 669,
+    "payload_size_mb": 0.20294,
+    "estimated_edge_confidence": 0.79,
+    "data": {
+      "device_id": "device-13",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -1.7764,
+        "feature_std": 1.0681,
+        "feature_peak": 2.9384
+      },
+      "context": "预测性维护预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0055",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:08.100",
+    "task_type": "generic_anomaly",
+    "priority": "high",
+    "max_latency_ms": 263,
+    "payload_size_mb": 0.02482,
+    "estimated_edge_confidence": 0.626,
+    "data": {
+      "device_id": "device-14",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.9408,
+        "feature_std": 1.1054,
+        "feature_peak": 6.6422
+      },
+      "context": "通用异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0056",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:08.250",
+    "task_type": "video_anomaly",
+    "priority": "high",
+    "max_latency_ms": 369,
+    "payload_size_mb": 0.35055,
+    "estimated_edge_confidence": 0.712,
+    "data": {
+      "device_id": "device-15",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 1.4289,
+        "feature_std": 1.4291,
+        "feature_peak": 2.3217
+      },
+      "context": "视频异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0057",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:08.400",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "max_latency_ms": 193,
+    "payload_size_mb": 0.16428,
+    "estimated_edge_confidence": 0.695,
+    "data": {
+      "device_id": "device-16",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 2.0455,
+        "feature_std": 0.9666,
+        "feature_peak": 4.4588
+      },
+      "context": "故障诊断预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0058",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:08.550",
+    "task_type": "quality_inspection",
+    "priority": "high",
+    "max_latency_ms": 215,
+    "payload_size_mb": 0.75213,
+    "estimated_edge_confidence": 0.658,
+    "data": {
+      "device_id": "device-17",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 1.1394,
+        "feature_std": 0.3111,
+        "feature_peak": 3.8247
+      },
+      "context": "质量检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0059",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:08.700",
+    "task_type": "safety_check",
+    "priority": "high",
+    "max_latency_ms": 200,
+    "payload_size_mb": 0.33365,
+    "estimated_edge_confidence": 0.819,
+    "data": {
+      "device_id": "device-18",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.0305,
+        "feature_std": 1.1372,
+        "feature_peak": 4.6769
+      },
+      "context": "安全识别预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0060",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:08.850",
+    "task_type": "data_analysis",
+    "priority": "medium",
+    "max_latency_ms": 523,
+    "payload_size_mb": 0.14202,
+    "estimated_edge_confidence": 0.679,
+    "data": {
+      "device_id": "device-19",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.7736,
+        "feature_std": 1.4216,
+        "feature_peak": 7.2196
+      },
+      "context": "数据分析预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0061",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:09.000",
+    "task_type": "status_monitoring",
+    "priority": "low",
+    "max_latency_ms": 102,
+    "payload_size_mb": 0.0267,
+    "estimated_edge_confidence": 0.879,
+    "data": {
+      "device_id": "device-00",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.3932,
+        "feature_std": 0.1579,
+        "feature_peak": 2.6209
+      },
+      "context": "状态监控预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0062",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:09.150",
+    "task_type": "predictive_maintenance",
+    "priority": "medium",
+    "max_latency_ms": 696,
+    "payload_size_mb": 0.10125,
+    "estimated_edge_confidence": 0.765,
+    "data": {
+      "device_id": "device-01",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 1.1237,
+        "feature_std": 0.1045,
+        "feature_peak": 0.7804
+      },
+      "context": "预测性维护预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0063",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:09.300",
+    "task_type": "generic_anomaly",
+    "priority": "high",
+    "max_latency_ms": 281,
+    "payload_size_mb": 0.19093,
+    "estimated_edge_confidence": 0.743,
+    "data": {
+      "device_id": "device-02",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -1.5405,
+        "feature_std": 1.7319,
+        "feature_peak": 5.7295
+      },
+      "context": "通用异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0064",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:09.450",
+    "task_type": "video_anomaly",
+    "priority": "high",
+    "max_latency_ms": 276,
+    "payload_size_mb": 1.12646,
+    "estimated_edge_confidence": 0.773,
+    "data": {
+      "device_id": "device-03",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 1.2592,
+        "feature_std": 1.711,
+        "feature_peak": 5.0976
+      },
+      "context": "视频异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0065",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:09.600",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "max_latency_ms": 253,
+    "payload_size_mb": 0.10565,
+    "estimated_edge_confidence": 0.761,
+    "data": {
+      "device_id": "device-04",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.0124,
+        "feature_std": 0.2677,
+        "feature_peak": 5.5181
+      },
+      "context": "故障诊断预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0066",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:09.750",
+    "task_type": "quality_inspection",
+    "priority": "high",
+    "max_latency_ms": 275,
+    "payload_size_mb": 0.5846,
+    "estimated_edge_confidence": 0.749,
+    "data": {
+      "device_id": "device-05",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.5831,
+        "feature_std": 0.7435,
+        "feature_peak": 5.3025
+      },
+      "context": "质量检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0067",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:09.900",
+    "task_type": "safety_check",
+    "priority": "high",
+    "max_latency_ms": 190,
+    "payload_size_mb": 0.19208,
+    "estimated_edge_confidence": 0.702,
+    "data": {
+      "device_id": "device-06",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.6266,
+        "feature_std": 0.9759,
+        "feature_peak": 0.7079
+      },
+      "context": "安全识别预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0068",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:10.050",
+    "task_type": "data_analysis",
+    "priority": "medium",
+    "max_latency_ms": 482,
+    "payload_size_mb": 0.03004,
+    "estimated_edge_confidence": 0.697,
+    "data": {
+      "device_id": "device-07",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.2875,
+        "feature_std": 1.833,
+        "feature_peak": 7.4596
+      },
+      "context": "数据分析预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0069",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:10.200",
+    "task_type": "status_monitoring",
+    "priority": "low",
+    "max_latency_ms": 111,
+    "payload_size_mb": 0.01309,
+    "estimated_edge_confidence": 0.941,
+    "data": {
+      "device_id": "device-08",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.6447,
+        "feature_std": 0.231,
+        "feature_peak": 4.4412
+      },
+      "context": "状态监控预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0070",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:10.350",
+    "task_type": "predictive_maintenance",
+    "priority": "medium",
+    "max_latency_ms": 498,
+    "payload_size_mb": 0.05687,
+    "estimated_edge_confidence": 0.744,
+    "data": {
+      "device_id": "device-09",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 1.3344,
+        "feature_std": 0.994,
+        "feature_peak": 5.3488
+      },
+      "context": "预测性维护预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0071",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:10.500",
+    "task_type": "generic_anomaly",
+    "priority": "high",
+    "max_latency_ms": 195,
+    "payload_size_mb": 0.14989,
+    "estimated_edge_confidence": 0.725,
+    "data": {
+      "device_id": "device-10",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.9927,
+        "feature_std": 1.9924,
+        "feature_peak": 1.0658
+      },
+      "context": "通用异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0072",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:10.650",
+    "task_type": "video_anomaly",
+    "priority": "high",
+    "max_latency_ms": 341,
+    "payload_size_mb": 0.65287,
+    "estimated_edge_confidence": 0.768,
+    "data": {
+      "device_id": "device-11",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.7489,
+        "feature_std": 0.2482,
+        "feature_peak": 0.7297
+      },
+      "context": "视频异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0073",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:10.800",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "max_latency_ms": 190,
+    "payload_size_mb": 0.16906,
+    "estimated_edge_confidence": 0.735,
+    "data": {
+      "device_id": "device-12",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 1.272,
+        "feature_std": 0.7557,
+        "feature_peak": 5.5045
+      },
+      "context": "故障诊断预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0074",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:10.950",
+    "task_type": "quality_inspection",
+    "priority": "high",
+    "max_latency_ms": 239,
+    "payload_size_mb": 0.36079,
+    "estimated_edge_confidence": 0.82,
+    "data": {
+      "device_id": "device-13",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.1276,
+        "feature_std": 1.7535,
+        "feature_peak": 2.0521
+      },
+      "context": "质量检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0075",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:11.100",
+    "task_type": "safety_check",
+    "priority": "high",
+    "max_latency_ms": 200,
+    "payload_size_mb": 0.14023,
+    "estimated_edge_confidence": 0.706,
+    "data": {
+      "device_id": "device-14",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -1.3129,
+        "feature_std": 0.5156,
+        "feature_peak": 3.9324
+      },
+      "context": "安全识别预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0076",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:11.250",
+    "task_type": "data_analysis",
+    "priority": "medium",
+    "max_latency_ms": 333,
+    "payload_size_mb": 0.26284,
+    "estimated_edge_confidence": 0.698,
+    "data": {
+      "device_id": "device-15",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 2.6885,
+        "feature_std": 0.1105,
+        "feature_peak": 5.4699
+      },
+      "context": "数据分析预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0077",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:11.400",
+    "task_type": "status_monitoring",
+    "priority": "low",
+    "max_latency_ms": 95,
+    "payload_size_mb": 0.01211,
+    "estimated_edge_confidence": 0.918,
+    "data": {
+      "device_id": "device-16",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.0697,
+        "feature_std": 1.9345,
+        "feature_peak": 0.985
+      },
+      "context": "状态监控预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0078",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:11.550",
+    "task_type": "predictive_maintenance",
+    "priority": "medium",
+    "max_latency_ms": 558,
+    "payload_size_mb": 0.2816,
+    "estimated_edge_confidence": 0.783,
+    "data": {
+      "device_id": "device-17",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.8667,
+        "feature_std": 0.4313,
+        "feature_peak": 0.6217
+      },
+      "context": "预测性维护预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0079",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:11.700",
+    "task_type": "generic_anomaly",
+    "priority": "high",
+    "max_latency_ms": 206,
+    "payload_size_mb": 0.07427,
+    "estimated_edge_confidence": 0.785,
+    "data": {
+      "device_id": "device-18",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.6024,
+        "feature_std": 0.7956,
+        "feature_peak": 3.8685
+      },
+      "context": "通用异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0080",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:11.850",
+    "task_type": "video_anomaly",
+    "priority": "high",
+    "max_latency_ms": 349,
+    "payload_size_mb": 1.08587,
+    "estimated_edge_confidence": 0.79,
+    "data": {
+      "device_id": "device-19",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -1.0248,
+        "feature_std": 1.0349,
+        "feature_peak": 4.8392
+      },
+      "context": "视频异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0081",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:12.000",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "max_latency_ms": 254,
+    "payload_size_mb": 0.07359,
+    "estimated_edge_confidence": 0.843,
+    "data": {
+      "device_id": "device-00",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.7315,
+        "feature_std": 0.9063,
+        "feature_peak": 1.0313
+      },
+      "context": "故障诊断预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0082",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:12.150",
+    "task_type": "quality_inspection",
+    "priority": "high",
+    "max_latency_ms": 237,
+    "payload_size_mb": 0.97566,
+    "estimated_edge_confidence": 0.626,
+    "data": {
+      "device_id": "device-01",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.636,
+        "feature_std": 1.5775,
+        "feature_peak": 3.761
+      },
+      "context": "质量检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0083",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:12.300",
+    "task_type": "safety_check",
+    "priority": "high",
+    "max_latency_ms": 196,
+    "payload_size_mb": 0.67191,
+    "estimated_edge_confidence": 0.799,
+    "data": {
+      "device_id": "device-02",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.5938,
+        "feature_std": 0.9598,
+        "feature_peak": 7.3565
+      },
+      "context": "安全识别预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0084",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:12.450",
+    "task_type": "data_analysis",
+    "priority": "medium",
+    "max_latency_ms": 516,
+    "payload_size_mb": 0.03409,
+    "estimated_edge_confidence": 0.609,
+    "data": {
+      "device_id": "device-03",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.0421,
+        "feature_std": 0.392,
+        "feature_peak": 3.1092
+      },
+      "context": "数据分析预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0085",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:12.600",
+    "task_type": "status_monitoring",
+    "priority": "low",
+    "max_latency_ms": 127,
+    "payload_size_mb": 0.00571,
+    "estimated_edge_confidence": 0.878,
+    "data": {
+      "device_id": "device-04",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 1.8354,
+        "feature_std": 1.4743,
+        "feature_peak": 5.2748
+      },
+      "context": "状态监控预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0086",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:12.750",
+    "task_type": "predictive_maintenance",
+    "priority": "medium",
+    "max_latency_ms": 749,
+    "payload_size_mb": 0.14249,
+    "estimated_edge_confidence": 0.629,
+    "data": {
+      "device_id": "device-05",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.9248,
+        "feature_std": 0.3866,
+        "feature_peak": 6.3118
+      },
+      "context": "预测性维护预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0087",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:12.900",
+    "task_type": "generic_anomaly",
+    "priority": "high",
+    "max_latency_ms": 205,
+    "payload_size_mb": 0.20805,
+    "estimated_edge_confidence": 0.642,
+    "data": {
+      "device_id": "device-06",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.913,
+        "feature_std": 0.2707,
+        "feature_peak": 3.2656
+      },
+      "context": "通用异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0088",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:13.050",
+    "task_type": "video_anomaly",
+    "priority": "high",
+    "max_latency_ms": 360,
+    "payload_size_mb": 1.03191,
+    "estimated_edge_confidence": 0.731,
+    "data": {
+      "device_id": "device-07",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 1.2805,
+        "feature_std": 1.149,
+        "feature_peak": 5.9225
+      },
+      "context": "视频异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0089",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:13.200",
+    "task_type": "fault_diagnosis",
+    "priority": "high",
+    "max_latency_ms": 291,
+    "payload_size_mb": 0.06671,
+    "estimated_edge_confidence": 0.793,
+    "data": {
+      "device_id": "device-08",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.8353,
+        "feature_std": 1.2369,
+        "feature_peak": 1.2641
+      },
+      "context": "故障诊断预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0090",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:13.350",
+    "task_type": "quality_inspection",
+    "priority": "high",
+    "max_latency_ms": 206,
+    "payload_size_mb": 0.75466,
+    "estimated_edge_confidence": 0.808,
+    "data": {
+      "device_id": "device-09",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.56,
+        "feature_std": 0.2961,
+        "feature_peak": 3.7707
+      },
+      "context": "质量检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0091",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:13.500",
+    "task_type": "safety_check",
+    "priority": "high",
+    "max_latency_ms": 155,
+    "payload_size_mb": 0.18423,
+    "estimated_edge_confidence": 0.782,
+    "data": {
+      "device_id": "device-10",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.0445,
+        "feature_std": 1.5439,
+        "feature_peak": 2.354
+      },
+      "context": "安全识别预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0092",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:13.650",
+    "task_type": "data_analysis",
+    "priority": "medium",
+    "max_latency_ms": 363,
+    "payload_size_mb": 0.06744,
+    "estimated_edge_confidence": 0.714,
+    "data": {
+      "device_id": "device-11",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -0.2002,
+        "feature_std": 1.0044,
+        "feature_peak": 3.9352
+      },
+      "context": "数据分析预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0093",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:13.800",
+    "task_type": "status_monitoring",
+    "priority": "low",
+    "max_latency_ms": 101,
+    "payload_size_mb": 0.0382,
+    "estimated_edge_confidence": 0.895,
+    "data": {
+      "device_id": "device-12",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": -1.1317,
+        "feature_std": 0.567,
+        "feature_peak": 5.2841
+      },
+      "context": "状态监控预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0094",
+    "node_id": "edge-node-01",
+    "timestamp": "2026-07-24T09:00:13.950",
+    "task_type": "predictive_maintenance",
+    "priority": "medium",
+    "max_latency_ms": 734,
+    "payload_size_mb": 0.1117,
+    "estimated_edge_confidence": 0.764,
+    "data": {
+      "device_id": "device-13",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 1.0536,
+        "feature_std": 0.8134,
+        "feature_peak": 4.9644
+      },
+      "context": "预测性维护预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0095",
+    "node_id": "edge-node-02",
+    "timestamp": "2026-07-24T09:00:14.100",
+    "task_type": "generic_anomaly",
+    "priority": "high",
+    "max_latency_ms": 240,
+    "payload_size_mb": 0.04476,
+    "estimated_edge_confidence": 0.591,
+    "data": {
+      "device_id": "device-14",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.2644,
+        "feature_std": 0.5814,
+        "feature_peak": 6.6251
+      },
+      "context": "通用异常检测预处理特征样例"
+    }
+  },
+  {
+    "task_id": "T-PHASE2-0096",
+    "node_id": "edge-node-03",
+    "timestamp": "2026-07-24T09:00:14.250",
+    "task_type": "video_anomaly",
+    "priority": "high",
+    "max_latency_ms": 294,
+    "payload_size_mb": 0.37849,
+    "estimated_edge_confidence": 0.6,
+    "data": {
+      "device_id": "device-15",
+      "device_type": "industrial_device",
+      "readings": {
+        "feature_mean": 0.1622,
+        "feature_std": 1.424,
+        "feature_peak": 1.1026
+      },
+      "context": "视频异常检测预处理特征样例"
+    }
+  }
+]

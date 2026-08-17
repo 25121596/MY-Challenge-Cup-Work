@@ -1,0 +1,1 @@
+{"task_id":"T-001","ground_truth":{"action":"alarm","level":"high","category":"bearing_fault","summary":"示例：轴承故障","reason":"示例标签，请替换为专家或数据集真实标签"},"label_source":"example_only_not_real"}

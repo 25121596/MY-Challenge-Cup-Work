@@ -1,0 +1,24 @@
+{
+  "teacher": {
+    "backend": "api",
+    "api_base": "http://127.0.0.1:8080/v1",
+    "model": "qwen3-8b-teacher",
+    "api_key": "not-needed",
+    "temperature": 0.1,
+    "max_tokens": 256,
+    "timeout_s": 120.0,
+    "retries": 1,
+    "no_think": true
+  },
+  "dataset": {
+    "target_policy": "prefer-ground-truth",
+    "test_ratio": 0.2,
+    "seed": 42,
+    "min_teacher_confidence": 0.0,
+    "require_ground_truth_for_test": false
+  },
+  "student": {
+    "model_path": null,
+    "note": "边端学生模型尚未确定，当前蒸馏管线不写死模型，也不会自动部署。"
+  }
+}
