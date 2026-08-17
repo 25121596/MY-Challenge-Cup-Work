@@ -1,0 +1,20 @@
+{
+  "task_id": "TEST-001",
+  "node_id": "edge-node-test",
+  "timestamp": "2026-08-13T20:00:00+08:00",
+  "task_type": "fault_diagnosis",
+  "priority": "high",
+  "max_latency_ms": 220,
+  "payload_size_mb": 0.2,
+  "estimated_edge_confidence": 0.72,
+  "data": {
+    "device_id": "motor-test-01",
+    "device_type": "industrial_device",
+    "readings": {
+      "feature_mean": -0.2243,
+      "feature_std": 1.7702,
+      "feature_peak": 3.5975
+    },
+    "context": "Integration 双模型服务验证样本"
+  }
+}

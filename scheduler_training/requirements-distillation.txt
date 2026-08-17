@@ -1,0 +1,7 @@
+# 先安装 requirements.txt，再在确定学生模型并需要LoRA训练时安装本文件。
+torch>=2.2
+transformers>=4.51,<5.0
+peft>=0.14,<1.0
+accelerate>=1.2,<2.0
+# load-in-4bit为可选功能，并依赖当前平台可用的bitsandbytes：
+# bitsandbytes>=0.45

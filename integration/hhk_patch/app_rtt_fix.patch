@@ -1,0 +1,23 @@
+--- a/edge-gui/app.cpp
++++ b/edge-gui/app.cpp
+@@ -929,15 +929,14 @@ void EdgeApp::update_device_metrics() {
+         _heartbeat.update_perf(_last_perf.tg_tokens_per_sec,
+                                _engine.is_running() ? 1 : 0);
+     }
+-    // Feed network status
+-    _heartbeat.set_network_rtt(
+-        _cloud_client.is_reachable() ? 0 : -1,
+-        _cloud_client.is_reachable());
++
++    // Measure once and feed the real RTT into the heartbeat.
++    int  rtt    = _device_monitor.measure_rtt_ms(_cloud_endpoint);
++    bool cloud  = _cloud_client.is_reachable();
++    _heartbeat.set_network_rtt(rtt, cloud);
+ 
+     // ── Edge autonomy: track network transitions ───────────────
+     // Re-assess network condition at 1 Hz so the UI stays current.
+     NetworkCondition prev_cond = _local_decision.current_condition();
+-    int  rtt    = _device_monitor.measure_rtt_ms(_cloud_endpoint);
+-    bool cloud  = _cloud_client.is_reachable();
+     int  hb_fail = _heartbeat.consecutive_failures();
+     NetworkCondition new_cond = _local_decision.assess_network(rtt, cloud, hb_fail);
