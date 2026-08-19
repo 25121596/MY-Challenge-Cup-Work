@@ -1,0 +1,2 @@
+# Single digit class output
+root ::= [0-6]

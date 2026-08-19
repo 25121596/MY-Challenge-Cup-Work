@@ -1,0 +1,32 @@
+{
+  "$schema": "edge-input/v3",
+  "description": "General edge input contract. The AI4I route additionally requires the frozen ai4i_8d_v1 features-only contract.",
+  "fields": {
+    "task_id": {"type": "string", "required": true},
+    "node_id": {"type": "string", "required": true},
+    "timestamp": {"type": "RFC3339 timestamp", "required": true},
+    "task_type": {
+      "type": "enum",
+      "required": true,
+      "options": ["fault_diagnosis", "quality_inspection", "safety_check", "data_analysis", "status_monitoring", "predictive_maintenance"],
+      "description": "Compatibility subset. task_types.json remains the canonical 8-type source."
+    },
+    "max_latency_ms": {"type": "integer", "required": false, "minimum": 1, "default": 200},
+    "data": {
+      "type": "object",
+      "required": true,
+      "fields": {
+        "device_id": {"type": "string"},
+        "device_type": {"type": "string"},
+        "readings": {"type": "object"},
+        "context": {"type": "string"},
+        "safety_trigger": {"type": ["string", "null"], "options": ["emergency_stop", "interlock_trip", "overtemperature_trip", "pressure_relief_trip", null]}
+      }
+    }
+  },
+  "invariants": [
+    "No input field creates business priority.",
+    "A safety_trigger must be supplied by an authoritative interlock or safety source, not a model output.",
+    "AI4I online input uses data.features plus feature_schema_id, model_route, and preprocessing_version; it must not include data.readings or ground_truth."
+  ]
+}

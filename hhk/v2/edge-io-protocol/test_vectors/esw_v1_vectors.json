@@ -1,0 +1,58 @@
+{
+  "schema": "esw-v1-test-vectors/1",
+  "wire_byte_order": "big-endian",
+  "valid": [
+    {
+      "name": "ai4i_normal_accept_local",
+      "fields": {"risk_q8": 5, "risk_valid": true, "calibrated": true, "local_prediction": "NORMAL", "review": "NONE", "safety": "P2", "edge_availability": "AVAILABLE", "next_action": "ACCEPT_LOCAL"},
+      "word_hex": "01054705"
+    },
+    {
+      "name": "ai4i_fault_cloud_review",
+      "fields": {"risk_q8": 128, "risk_valid": true, "calibrated": true, "local_prediction": "FAULT", "review": "REQUIRED", "safety": "P1", "edge_availability": "AVAILABLE", "next_action": "CLOUD_REVIEW"},
+      "word_hex": "010DAB80"
+    },
+    {
+      "name": "qwen_uncalibrated_review",
+      "fields": {"risk_q8": 0, "risk_valid": false, "calibrated": false, "local_prediction": "FAULT", "review": "REQUIRED", "safety": "P1", "edge_availability": "AVAILABLE", "next_action": "CLOUD_REVIEW"},
+      "word_hex": "010DA800"
+    },
+    {
+      "name": "p0_cloud_review",
+      "fields": {"risk_q8": 255, "risk_valid": true, "calibrated": true, "local_prediction": "FAULT", "review": "REQUIRED", "safety": "P0", "edge_availability": "AVAILABLE", "next_action": "CLOUD_REVIEW"},
+      "word_hex": "010DEBFF"
+    },
+    {
+      "name": "direct_cloud_without_edge_result",
+      "fields": {"risk_q8": 0, "risk_valid": false, "calibrated": false, "local_prediction": "UNKNOWN", "review": "NONE", "safety": "UNKNOWN", "edge_availability": "UNAVAILABLE", "next_action": "DIRECT_CLOUD"},
+      "word_hex": "010A0000"
+    },
+    {
+      "name": "known_version_unknown_state",
+      "fields": {"risk_q8": 0, "risk_valid": false, "calibrated": false, "local_prediction": "UNKNOWN", "review": "NONE", "safety": "UNKNOWN", "edge_availability": "UNKNOWN", "next_action": "UNKNOWN"},
+      "word_hex": "01000000"
+    }
+  ],
+  "quantization": [
+    {"probability": 0.0, "risk_q8": 0},
+    {"probability": 0.00392156862745098, "risk_q8": 1},
+    {"probability": 0.5, "risk_q8": 128},
+    {"probability": 0.996078431372549, "risk_q8": 254},
+    {"probability": 1.0, "risk_q8": 255}
+  ],
+  "invalid": [
+    {"name": "reserved_local_prediction", "word_hex": "01004C00", "status": "ESW_INVALID", "reason": "reserved_local_prediction", "fallback": "CLOUD_REVIEW"},
+    {"name": "reserved_review", "word_hex": "01003000", "status": "ESW_INVALID", "reason": "reserved_review", "fallback": "CLOUD_REVIEW"},
+    {"name": "reserved_bits_set", "word_hex": "01100000", "status": "ESW_INVALID", "reason": "nonzero_reserved_bits", "fallback": "CLOUD_REVIEW"},
+    {"name": "unknown_schema", "word_hex": "02000000", "status": "ESW_UNSUPPORTED", "reason": "unknown_schema_version", "fallback": "CLOUD_REVIEW"},
+    {"name": "risk_q8_without_validity", "word_hex": "01000001", "status": "ESW_INVALID", "reason": "risk_q8_requires_risk_valid", "fallback": "CLOUD_REVIEW"},
+    {"name": "valid_risk_without_calibration", "word_hex": "01000500", "status": "ESW_INVALID", "reason": "risk_valid_must_equal_calibrated", "fallback": "CLOUD_REVIEW"},
+    {"name": "calibrated_without_valid_risk", "word_hex": "01000600", "status": "ESW_INVALID", "reason": "risk_valid_must_equal_calibrated", "fallback": "CLOUD_REVIEW"},
+    {"name": "p0_accept_local", "word_hex": "0105C400", "status": "ESW_INVALID", "reason": "p0_cannot_accept_local", "fallback": "CLOUD_REVIEW"},
+    {"name": "unavailable_accept_local", "word_hex": "01060400", "status": "ESW_INVALID", "reason": "accept_local_requires_available_edge", "fallback": "CLOUD_REVIEW"},
+    {"name": "required_accept_local", "word_hex": "01052400", "status": "ESW_INVALID", "reason": "review_required_requires_cloud_review", "fallback": "CLOUD_REVIEW"},
+    {"name": "direct_cloud_with_local_result", "word_hex": "01090400", "status": "ESW_INVALID", "reason": "direct_cloud_requires_no_edge_result", "fallback": "CLOUD_REVIEW"},
+    {"name": "all_zero", "word_hex": "00000000", "status": "ESW_UNSUPPORTED", "reason": "unknown_schema_version", "fallback": "CLOUD_REVIEW"},
+    {"name": "all_ones", "word_hex": "FFFFFFFF", "status": "ESW_UNSUPPORTED", "reason": "unknown_schema_version", "fallback": "CLOUD_REVIEW"}
+  ]
+}

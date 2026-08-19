@@ -1,0 +1,83 @@
+{
+  "scenario_id": "traffic_monitoring_v1",
+  "name": "城市交通监控与事件检测",
+  "description": "模拟路侧边缘节点处理交通摄像头和传感器数据, 检测拥堵/事故/违章事件",
+  "application_domain": "智慧城市",
+
+  "edge_config": {
+    "model": "qwen3-1.7b-iq4_xs",
+    "model_type": "text",
+    "ngl": 0,
+    "ctx_size": 2048,
+    "memory_budget_mb": 1536,
+    "max_latency_ms": 200,
+    "confidence_threshold": 0.75
+  },
+
+  "cloud_config": {
+    "model": "qwen3-32b",
+    "endpoint": "http://localhost:8080",
+    "capabilities": ["traffic_flow_analysis", "multi_intersection_coordination", "historical_pattern"]
+  },
+
+  "task_types": ["data_analysis", "status_monitoring", "safety_check"],
+
+  "data_sources": [
+    {
+      "source_id": "intersection-north-03",
+      "device_type": "路侧监控单元(RSU)",
+      "sensor_types": ["vehicle_count", "avg_speed", "queue_length", "occupancy"],
+      "sample_rate_hz": 1,
+      "zone": "intersection-03"
+    },
+    {
+      "source_id": "intersection-south-03",
+      "device_type": "路侧监控单元(RSU)",
+      "sensor_types": ["vehicle_count", "avg_speed", "queue_length", "occupancy"],
+      "sample_rate_hz": 1,
+      "zone": "intersection-03"
+    }
+  ],
+
+  "overlap_zones": [
+    {
+      "zone_id": "intersection-03",
+      "nodes": ["edge-intersection-north", "edge-intersection-south"],
+      "overlap_type": "shared_field_of_view"
+    }
+  ],
+
+  "test_cases": [
+    {
+      "name": "正常交通流",
+      "description": "车流量在正常范围内, 无拥堵",
+      "traffic_state": "normal",
+      "expected": {"action": "normal", "escalate": false}
+    },
+    {
+      "name": "轻度拥堵 — 车速下降",
+      "description": "平均车速下降到正常值的60%",
+      "traffic_state": "light_congestion",
+      "expected": {"action": "warning", "escalate": false}
+    },
+    {
+      "name": "严重拥堵 — 排队溢出",
+      "description": "排队长度超过路段容量",
+      "traffic_state": "severe_congestion",
+      "expected": {"action": "alert", "escalate": true}
+    },
+    {
+      "name": "疑似事故 — 速度骤降",
+      "description": "某方向车速突然降到接近0",
+      "traffic_state": "suspected_accident",
+      "expected": {"action": "alert", "escalate": true}
+    }
+  ],
+
+  "metrics_targets": {
+    "end_to_end_latency_ms": 200,
+    "conflict_rate_pct": 5.0,
+    "conflict_resolution_rate_pct": 90.0,
+    "network_outage_availability_pct": 90.0
+  }
+}
