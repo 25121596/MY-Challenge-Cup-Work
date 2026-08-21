@@ -166,7 +166,7 @@ class SchedulerCoreTests(unittest.TestCase):
         result = sim.completed_tasks[0]
         self.assertEqual(result["pre_route_action"], "LOCAL_FIRST")
         self.assertEqual(result["post_edge_decision"], "CLOUD_REVIEW")
-        self.assertEqual(result["post_edge_rule_version"], "post-edge-v1")
+        self.assertEqual(result["post_edge_rule_version"], "post-edge-ai4i-v2")
         self.assertEqual(result["route"], "COLLABORATIVE")
         self.assertFalse(result["timeout"])
         self.assertEqual(result["execution_stage"], "FINISHED")
@@ -215,6 +215,10 @@ class SchedulerCoreTests(unittest.TestCase):
             self.assertEqual(
                 report["action_mapping"],
                 {"0": "LOCAL_FIRST", "1": "DIRECT_CLOUD"},
+            )
+            self.assertEqual(
+                report["calibration_status"],
+                "legacy_parameters_not_real_calibrated",
             )
 
     def test_legacy_numeric_parameters_unchanged(self):

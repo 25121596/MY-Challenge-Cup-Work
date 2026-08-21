@@ -874,11 +874,24 @@ class RealTaskManager:
             "post_edge_review_recommended": post_edge.get("review_recommended"),
             "post_edge_cloud_review_feasible": post_edge.get("cloud_review_feasible"),
             "post_edge_confidence_threshold": post_edge.get("confidence_threshold"),
+            "post_edge_failure_probability_threshold": post_edge.get(
+                "failure_probability_threshold"
+            ),
+            "post_edge_evidence_source": post_edge.get("evidence_source"),
+            "post_edge_producer_review_state": post_edge.get("producer_review_state"),
+            "post_edge_producer_rule_consistent": post_edge.get(
+                "producer_rule_consistent"
+            ),
             "edge_confidence": env.edge_signals.get("confidence"),
             "edge_level": env.edge_signals.get("level"),
             "edge_category": env.edge_signals.get("category"),
             "edge_output_valid": env.edge_signals.get("output_valid"),
             "edge_ood": env.edge_signals.get("ood"),
+            "edge_failure_probability": env.edge_signals.get("failure_probability"),
+            "edge_model_route": env.edge_signals.get("model_route"),
+            "edge_calibration_version": env.edge_signals.get("calibration_version"),
+            "edge_feature_schema_id": env.edge_signals.get("feature_schema_id"),
+            "edge_local_prediction": env.edge_signals.get("local_prediction"),
             "edge_escalation_hint": env.edge_signals.get("edge_escalation_hint"),
             "status": env.status,
             "execution_stage": env.execution_stage,

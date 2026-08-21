@@ -46,10 +46,11 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--task-source",
-        choices=["typed_simulation", "edge_input", "legacy_simulation"],
+        choices=["typed_simulation", "edge_input", "hhk_v2_replay", "legacy_simulation"],
         default="typed_simulation",
     )
     parser.add_argument("--edge-input-path", default=None)
+    parser.add_argument("--edge-result-path", default=None)
     parser.add_argument("--edge-input-non-strict", action="store_true")
     parser.add_argument("--edge-input-interval-s", type=float, default=0.05)
     parser.add_argument("--ppo-reward-scale", type=float, default=0.05)
@@ -70,11 +71,16 @@ def validate_args(args: argparse.Namespace) -> None:
     if not args.policy_version.strip():
         raise ValueError("policy-version不能为空")
     PostEdgePolicy.from_json(args.post_edge_rules)
-    if args.task_source == "edge_input":
+    if args.task_source in {"edge_input", "hhk_v2_replay"}:
         if not args.edge_input_path:
             raise ValueError("edge_input模式必须提供--edge-input-path")
         if not Path(args.edge_input_path).is_file():
             raise FileNotFoundError(args.edge_input_path)
+    if args.task_source == "hhk_v2_replay":
+        if not args.edge_result_path:
+            raise ValueError("hhk_v2_replay模式必须提供--edge-result-path")
+        if not Path(args.edge_result_path).is_file():
+            raise FileNotFoundError(args.edge_result_path)
 
 
 def create_env(seed: int, args: argparse.Namespace) -> CloudEdgeGymEnv:
@@ -89,6 +95,7 @@ def create_env(seed: int, args: argparse.Namespace) -> CloudEdgeGymEnv:
         reward_mode=args.reward_mode,
         task_source=args.task_source,
         edge_input_path=args.edge_input_path,
+        edge_result_path=args.edge_result_path,
         edge_input_strict=not args.edge_input_non_strict,
         edge_input_interval_s=args.edge_input_interval_s,
         ppo_reward_scale=args.ppo_reward_scale,
@@ -136,6 +143,7 @@ def main() -> None:
         f"obs={len(OBSERVATION_NAMES)}维"
     )
     model.learn(total_timesteps=args.timesteps, reset_num_timesteps=True)
+    actual_timesteps = int(model.num_timesteps)
     model.save(str(output_path))
 
     evaluation_env = Monitor(create_env(args.seed + 10_000, args))
@@ -148,11 +156,21 @@ def main() -> None:
     evaluation_env.close()
     training_env.close()
 
+    replay_report = None
+    report_env = create_env(args.seed, args)
+    _, report_info = report_env.reset()
+    replay_report = report_info.get("hhk_v2_replay")
+    report_env.close()
+    calibration_status = (
+        "partial_hhk_v2_ai4i_edge_result_replay"
+        if replay_report is not None
+        else "legacy_parameters_not_real_calibrated"
+    )
     metadata = {
         "phase": "4.5",
         "algorithm": "stable_baselines3_ppo",
         "time_engine": "continuous_event",
-        "calibration_status": "legacy_parameters_not_real_calibrated",
+        "calibration_status": calibration_status,
         "observation_schema_version": "pre-route-observation/2.0",
         "action_schema_version": "pre-route-action/2.0",
         "action_mapping": {"0": "LOCAL_FIRST", "1": "DIRECT_CLOUD"},
@@ -160,9 +178,12 @@ def main() -> None:
         "post_edge_rules": str(Path(args.post_edge_rules).resolve()),
         "mean_eval_reward": float(mean_reward),
         "std_eval_reward": float(std_reward),
+        "requested_timesteps": args.timesteps,
+        "actual_timesteps": actual_timesteps,
         "observation_names": OBSERVATION_NAMES,
         "environment": vars(args),
         "task_profiles": profiles_as_dict(),
+        "hhk_v2_replay_report": replay_report,
     }
     with (results_dir / f"{output_path.stem}_metadata.json").open(
         "w", encoding="utf-8"
@@ -182,11 +203,21 @@ def main() -> None:
         policy_version=args.policy_version,
         training_metadata={
             "seed": args.seed,
-            "timesteps": args.timesteps,
+            "requested_timesteps": args.timesteps,
+            "actual_timesteps": actual_timesteps,
             "episode_steps": args.episode_steps,
             "mean_eval_reward": float(mean_reward),
             "std_eval_reward": float(std_reward),
             "environment": vars(args),
+        },
+        calibration_metadata={
+            "calibration_status": calibration_status,
+            "scope": (
+                "HHK V2 AI4I matched edge-result replay; network, cloud and resource dynamics remain simulated"
+                if replay_report is not None
+                else "legacy simulator parameters"
+            ),
+            "hhk_v2_replay_report": replay_report,
         },
     )
     print(f"模型已保存：{output_path.with_suffix('.zip')}")

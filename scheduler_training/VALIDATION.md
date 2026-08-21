@@ -1,6 +1,6 @@
 # Scheduler Training Validation Report
 
-验证日期：2026-08-16。
+验证日期：2026-08-20。
 
 ## 已通过
 
@@ -15,10 +15,13 @@
 - policy bundle manifest、artifact 哈希和 schema 校验；
 - 原 resource/network/reward 数值参数保持不变；
 - `edge_input` 样例 96 条加载与事件式 rollout。
+- HHK V2 AI4I input/result按task_id联结、覆盖率审计和相同时间戳回放间隔兜底；
+- `failure_probability` Post-edge v2方向、阈值和生产端规则一致性检查；
+- bundle中的`calibration_manifest.json`及其哈希检查。
 
 ### Python unittest
 
-`python -m unittest discover -s tests -p 'test*.py' -v`：12项通过。
+`python -m unittest discover -s tests -p 'test*.py' -v`：15项通过。
 
 其中包括：
 
@@ -39,9 +42,11 @@
 
 旧 25D / `Discrete(3)` PPO 与当前契约明确不兼容，必须重新训练。加载器和 bundle 校验器都会拒绝空间不匹配的模型。
 
-## 未执行 SB3 训练的原因
+## 当前 AI4I 回放边界
 
-当前可用的本地 Python runtime 未安装 `gymnasium` 和 `stable-baselines3`，因此没有虚构训练成功结果，也没有下载或升级依赖。安装项目依赖后可执行：
+工作区现有AI4I标准输入有10000条，HHK V2边端结果有100条；当前可联结回放100条，覆盖率1%。这100条的边端输出、failure probability和边端耗时来自HHK V2结果；网络、云端、资源、deadline、accuracy prior和reward仍为仿真/配置值。
+
+未在本次代码验证中执行长时间PPO训练。可在已有Anaconda环境中执行：
 
 ```powershell
 python train_ppo.py --timesteps 2048 --episode-steps 50 --eval-episodes 2

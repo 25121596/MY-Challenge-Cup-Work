@@ -1,0 +1,28 @@
+{
+  "schema_version": "post-edge-rules/2.0",
+  "rule_version": "post-edge-ai4i-v2",
+  "default_failure_probability_threshold": 0.027514,
+  "honor_producer_threshold": true,
+  "threshold_review_margin": 0.0,
+  "require_calibration_version": true,
+  "require_feature_schema_id": true,
+  "always_review_model_routes": [
+    "qwen_fallback_v1"
+  ],
+  "legacy_confidence_fallback_threshold": 0.78,
+  "task_confidence_thresholds": {},
+  "force_review_on_parse_failure": true,
+  "force_review_on_ood": true,
+  "force_review_levels": [
+    "critical"
+  ],
+  "force_review_categories": [
+    "unknown_fault",
+    "unknown_defect",
+    "unknown_hazard",
+    "unknown"
+  ],
+  "require_deadline_feasibility": true,
+  "cloud_review_deadline_margin_s": 0.0,
+  "deadline_infeasible_action": "ACCEPT_EDGE"
+}

@@ -69,6 +69,9 @@ class Task:
     collaborative_payload_ratio: float = 0.20
 
     edge_input: dict[str, Any] = field(default_factory=dict)
+    edge_result_evidence: dict[str, Any] | None = None
+    edge_result_source: str = "simulated_profile_result"
+    edge_latency_source: str = "profile_prior"
     confidence_source: str = "profile_prior"
     size_source: str = "profile_prior"
     deadline_source: str = "profile_prior"

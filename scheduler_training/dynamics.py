@@ -80,7 +80,7 @@ class LegacyTaskArrivalModel(TaskArrivalModel):
 
     def reset(self, *, rng: np.random.Generator, now_s: float = 0.0) -> None:
         self._external_index = 0
-        if self.task_source == "edge_input":
+        if self.task_source in {"edge_input", "hhk_v2_replay"}:
             self._next = self._external_time(0)
         else:
             first = self._sample_initial(rng)
@@ -90,7 +90,7 @@ class LegacyTaskArrivalModel(TaskArrivalModel):
         return self._next
 
     def consume_arrival(self, *, rng: np.random.Generator, now_s: float) -> None:
-        if self.task_source == "edge_input":
+        if self.task_source in {"edge_input", "hhk_v2_replay"}:
             self._external_index += 1
             self._next = self._external_time(self._external_index)
         else:

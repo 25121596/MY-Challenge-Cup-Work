@@ -51,6 +51,7 @@ def publish_policy_bundle(
     rules_path: str | Path,
     policy_version: str,
     training_metadata: dict[str, Any] | None = None,
+    calibration_metadata: dict[str, Any] | None = None,
 ) -> Path:
     """Publish model, schemas, rules and hashes into one release directory."""
     source_model = _zip_path(model_path)
@@ -89,11 +90,19 @@ def publish_policy_bundle(
     action_path = release / "action_schema.json"
     _write_json(observation_path, observation_schema)
     _write_json(action_path, action_schema)
+    calibration_path = release / "calibration_manifest.json"
+    calibration_payload = dict(calibration_metadata or {
+        "calibration_status": "legacy_parameters_not_real_calibrated",
+        "scope": "legacy simulator parameters",
+    })
+    _write_json(calibration_path, calibration_payload)
 
     manifest = {
         "bundle_schema_version": BUNDLE_SCHEMA_VERSION,
         "policy_version": policy_version,
-        "calibration_status": "legacy_parameters_not_real_calibrated",
+        "calibration_status": calibration_payload.get(
+            "calibration_status", "legacy_parameters_not_real_calibrated"
+        ),
         "compatibility": {
             "legacy_25d_discrete3_ppo": False,
             "reason": "Observation is 24D and action space is Discrete(2).",
@@ -116,6 +125,10 @@ def publish_policy_bundle(
                 "sha256": sha256_file(rules_target),
                 "rule_schema_version": rules_policy.schema_version,
                 "rule_version": rules_policy.rule_version,
+            },
+            "calibration_manifest": {
+                "path": calibration_path.name,
+                "sha256": sha256_file(calibration_path),
             },
         },
         "training": dict(training_metadata or {}),
@@ -163,6 +176,14 @@ def validate_policy_bundle(
         if sha256_file(path) != entry.get("sha256"):
             raise ValueError(f"artifact哈希不匹配：{name}")
         resolved[name] = path
+    calibration_entry = artifacts.get("calibration_manifest")
+    if isinstance(calibration_entry, dict):
+        calibration_path = (bundle_dir / str(calibration_entry.get("path", ""))).resolve()
+        if calibration_path.parent != bundle_dir or not calibration_path.is_file():
+            raise ValueError("calibration_manifest路径非法或文件不存在")
+        if sha256_file(calibration_path) != calibration_entry.get("sha256"):
+            raise ValueError("artifact哈希不匹配：calibration_manifest")
+        resolved["calibration_manifest"] = calibration_path
 
     observation = _load_json(resolved["observation_schema"])
     if observation.get("schema_version") != OBSERVATION_SCHEMA_VERSION:
@@ -182,6 +203,13 @@ def validate_policy_bundle(
     rule_entry = artifacts["post_edge_rules"]
     if rules.rule_version != rule_entry.get("rule_version"):
         raise ValueError("manifest与Post-edge规则版本不一致")
+    calibration = (
+        _load_json(resolved["calibration_manifest"])
+        if "calibration_manifest" in resolved
+        else {"calibration_status": manifest.get("calibration_status", "legacy_parameters_not_real_calibrated")}
+    )
+    if not isinstance(calibration, dict) or not calibration.get("calibration_status"):
+        raise ValueError("calibration_manifest缺少calibration_status")
 
     if load_ppo:
         try:
@@ -201,5 +229,6 @@ def validate_policy_bundle(
         "observation_dimension": 24,
         "action_mapping": dict(ACTION_MAPPING),
         "post_edge_rule_version": rules.rule_version,
+        "calibration_status": calibration["calibration_status"],
         "ppo_loaded": bool(load_ppo),
     }

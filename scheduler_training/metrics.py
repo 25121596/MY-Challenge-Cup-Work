@@ -92,6 +92,11 @@ class MetricsTracker:
             else float("nan")
         )
         action_ratio_sum = edge_ratio + cloud_ratio + collaborative_ratio
+        decision_consistency = float("nan")
+        if not finished.empty and "scheduler_matches_producer_review" in finished:
+            comparable = finished["scheduler_matches_producer_review"].dropna()
+            if not comparable.empty:
+                decision_consistency = float(comparable.astype(bool).mean())
 
         return {
             "generated_tasks": generated_tasks,
@@ -123,6 +128,7 @@ class MetricsTracker:
             "direct_cloud_ratio": direct_cloud_ratio,
             "action_ratio_sum": action_ratio_sum,
             "upload_mb": upload_mb,
+            "post_edge_producer_consistency_rate": decision_consistency,
             "in_system_tasks": in_system_tasks,
         }
 

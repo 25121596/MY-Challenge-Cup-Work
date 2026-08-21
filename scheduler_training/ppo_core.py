@@ -40,6 +40,7 @@ class CloudEdgePPOCore:
         reward_mode: str = "deadline_aware",
         task_source: str = "typed_simulation",
         edge_input_path: str | None = None,
+        edge_result_path: str | None = None,
         edge_input_strict: bool = True,
         edge_input_interval_s: float = 0.05,
         ppo_reward_scale: float = 0.05,
@@ -67,6 +68,7 @@ class CloudEdgePPOCore:
         self.reward_mode = reward_mode
         self.task_source = task_source
         self.edge_input_path = edge_input_path
+        self.edge_result_path = edge_result_path
         self.edge_input_strict = edge_input_strict
         self.edge_input_interval_s = edge_input_interval_s
         self.ppo_reward_scale = float(ppo_reward_scale)
@@ -97,6 +99,7 @@ class CloudEdgePPOCore:
             reward_mode=self.reward_mode,
             task_source=self.task_source,
             edge_input_path=self.edge_input_path,
+            edge_result_path=self.edge_result_path,
             edge_input_strict=self.edge_input_strict,
             edge_input_interval_s=self.edge_input_interval_s,
         )
@@ -122,6 +125,7 @@ class CloudEdgePPOCore:
         state = self.simulator.get_system_state() if self.context is None else self.context["state_before"]
         observation = build_observation(None if self.context is None else self.context["task"], state)
         report = self.simulator.edge_input_load_report
+        replay_report = self.simulator.hhk_v2_replay_report
         return observation, {
             "episode_seed": episode_seed,
             "queue_policy": self.queue_policy,
@@ -131,6 +135,7 @@ class CloudEdgePPOCore:
             # Kept for old logging scripts; it is now only a reporting equivalent.
             "initial_idle_slots": int(round(advance_info.get("advanced_time_s", 0.0) / self.slot_duration)),
             "edge_inputs_loaded": 0 if report is None else report.loaded_count,
+            "hhk_v2_replay": None if replay_report is None else replay_report.to_dict(),
         }
 
     def step(self, action: int) -> tuple[np.ndarray, float, bool, bool, dict]:

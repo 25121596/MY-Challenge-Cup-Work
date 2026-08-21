@@ -79,13 +79,34 @@ Waiting queues remain non-preemptive EDF. Simulation time is continuous seconds;
 The default versioned rules are in:
 
 ```text
-config/post_edge_rules_v1.json
+config/post_edge_rules_v2.json
 ```
 
-`post_edge_policy.py` is dependency-light and configuration-driven so the same
-rule contract can later be consumed by Integration. In Phase4.5, edge output and
-confidence remain simulated/profile-based values and must not be described as
-real measurements.
+The v2 rule consumes HHK V2's calibrated `failure_probability`: a value above
+the configured/producer threshold requests cloud review. Missing calibration,
+invalid output and safety triggers also request review. The old v1 confidence
+rule remains loadable for old bundles. Integration has not been changed in this
+round and must be aligned separately before deploying the v2 rule there.
+
+## HHK V2 AI4I replay
+
+`hhk_v2_replay` joins an external standard-input JSON and HHK V2 edge-result
+JSON by `task_id`. Only matched tasks are replayed. HHK files are read-only and
+Scheduler does not import HHK implementation code.
+
+```powershell
+python inspect_hhk_v2_replay.py `
+  --edge-input-path ..\hhk_v2_snapshot\data\standard_inputs\ai4i_milling_inference_v1.json `
+  --edge-result-path ..\hhk_v2_snapshot\edge_run_ai4i_v3_results.json
+```
+
+If source timestamps are identical or non-increasing, Scheduler uses
+`--edge-input-interval-s` (default 0.05s) and records this fallback in the replay
+report. The measured HHK edge latency is used as an edge latency base; cloud,
+network, resources, deadlines, accuracy priors and reward remain simulated or
+profile-based. This mode is therefore partially evidence-replayed, not a fully
+real-calibrated simulator. The pre-route observation remains 24D and never
+contains `failure_probability`.
 
 ## Policy bundle
 
@@ -97,6 +118,7 @@ models/releases/pre_route_v2/
     observation_schema.json
     action_schema.json
     post_edge_rules.json
+    calibration_manifest.json
     policy_bundle.json
 ```
 
@@ -118,7 +140,9 @@ ppo_env.py                 Gymnasium 24D / Discrete(2) wrapper
 ppo_core.py                PPO decision-event core
 simulator.py               continuous-event lifecycle and PostEdgePolicy call
 post_edge_policy.py        ACCEPT_EDGE / CLOUD_REVIEW rule evaluator
-config/post_edge_rules_v1.json
+config/post_edge_rules_v2.json
+hhk_v2_replay.py           read-only AI4I input/result join and replay report
+inspect_hhk_v2_replay.py   replay contract inspection CLI
 policy_bundle.py           publish and validate policy bundles
 validate_policy_bundle.py  bundle validation CLI
 train_ppo.py               PPO training and release publishing
