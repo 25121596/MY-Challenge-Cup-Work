@@ -87,14 +87,24 @@ bundle/PPO loading smoke check; canonical simulation remains in
 
 ## Post-edge signals
 
-The edge response adapter reads measured or model-returned fields only:
+The edge response adapter reads measured or model-returned fields only. Current
+HHK V2 / `post-edge-rules/2.0` signals are:
+
+```text
+failure_probability, threshold_used, threshold_review_margin,
+model_route, calibration_version, feature_schema_id,
+review_state, local_prediction, safety_priority, safety_trigger
+```
+
+Legacy `post-edge-rules/1.0` bundles remain readable through:
 
 ```text
 confidence, level, category, output_valid, ood
 ```
 
-Missing confidence is not fabricated. Plain text or invalid structured output
-is marked invalid and follows the versioned Post-edge rules. An HHK
+Missing probability or confidence is not fabricated, and one is not converted
+into the other. Plain text or invalid structured output is marked invalid and
+follows the versioned Post-edge rules. An HHK
 `escalate_to_cloud` field is recorded only as a legacy hint; Integration's
 bundle PostEdgePolicy is authoritative.
 
@@ -116,6 +126,18 @@ Trace v2 separates:
 
 Unavailable TTFT, TPS, token counts, GPU metrics, confidence, or OOD values are
 stored as null/unavailable rather than invented.
+
+## AI4I real cloud review
+
+`run_ai4i_cloud_review.py` provides a resumable, deterministic Qwen3-8B shadow
+review for the HHK V2 AI4I held-out test records. It joins edge predictions and
+cloud prompts by `task_id`, calls the real cloud model only for the Post-edge
+review subset by default, and publishes raw cloud results, HHK-compatible
+`edge-cloud-feedback/v1` records, machine-readable metrics, and a Markdown
+report. Cloud disagreement and label-confirmed correction remain separate.
+
+See [AI4I_CLOUD_REVIEW.md](AI4I_CLOUD_REVIEW.md) for the Anaconda Prompt pilot,
+full-run, resume, and report commands.
 
 ## Validation
 
