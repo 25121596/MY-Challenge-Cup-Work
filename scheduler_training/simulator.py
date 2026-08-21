@@ -33,6 +33,7 @@ from dynamics import (
     TaskArrivalModel,
 )
 from edge_input_adapter import EdgeInputLoadReport, load_edge_inputs
+from hhk_v2_replay import HhkV2ReplayReport, load_hhk_v2_replay
 from edf_queue import EDFTaskQueue, QueueItem
 from lifecycle import (
     CLOUD_REVIEW_RUNNING,
@@ -62,7 +63,7 @@ from task_profiles import sample_profile_values, sample_task_type
 
 
 VALID_QUEUE_POLICIES = {"fifo", "edf"}
-VALID_TASK_SOURCES = {"legacy_simulation", "typed_simulation", "edge_input"}
+VALID_TASK_SOURCES = {"legacy_simulation", "typed_simulation", "edge_input", "hhk_v2_replay"}
 EPS = 1e-10
 
 
@@ -87,8 +88,10 @@ class CloudEdgeSimulator:
         reward_mode: str = "deadline_aware",
         task_source: str = "typed_simulation",
         edge_input_path: str | None = None,
+        edge_result_path: str | None = None,
         edge_input_strict: bool = True,
         edge_input_interval_s: float = 0.05,
+        replay_require_full_coverage: bool = False,
         *,
         arrival_model: TaskArrivalModel | None = None,
         service_time_model: ServiceTimeModel | None = None,
@@ -132,17 +135,33 @@ class CloudEdgeSimulator:
         self.reward_mode = reward_mode
         self.task_source = task_source
         self.edge_input_path = None if edge_input_path is None else str(Path(edge_input_path))
+        self.edge_result_path = None if edge_result_path is None else str(Path(edge_result_path))
         self.edge_input_strict = bool(edge_input_strict)
         self.edge_input_interval_s = float(edge_input_interval_s)
+        self.replay_require_full_coverage = bool(replay_require_full_coverage)
 
         self._external_task_template: list[Task] = []
         self.edge_input_load_report: EdgeInputLoadReport | None = None
+        self.hhk_v2_replay_report: HhkV2ReplayReport | None = None
         if self.task_source == "edge_input":
             if not self.edge_input_path:
                 raise ValueError("edge_input模式必须提供edge_input_path")
             tasks, report = load_edge_inputs(self.edge_input_path, strict=self.edge_input_strict)
             self._external_task_template = tasks
             self.edge_input_load_report = report
+        elif self.task_source == "hhk_v2_replay":
+            if not self.edge_input_path or not self.edge_result_path:
+                raise ValueError("hhk_v2_replay模式必须同时提供edge_input_path和edge_result_path")
+            tasks, input_report, replay_report = load_hhk_v2_replay(
+                self.edge_input_path,
+                self.edge_result_path,
+                strict=self.edge_input_strict,
+                replay_interval_s=self.edge_input_interval_s,
+                require_full_coverage=self.replay_require_full_coverage,
+            )
+            self._external_task_template = tasks
+            self.edge_input_load_report = input_report
+            self.hhk_v2_replay_report = replay_report
 
         external_offsets = [
             float(t.source_arrival_offset_s) if t.source_arrival_offset_s is not None else -1.0
@@ -324,7 +343,7 @@ class CloudEdgeSimulator:
         due = self.arrival_model.next_arrival_time_s()
         if due is None or due > self.current_time_s + EPS:
             return None
-        if self.task_source == "edge_input":
+        if self.task_source in {"edge_input", "hhk_v2_replay"}:
             if not self.external_tasks:
                 return None
             task = self.external_tasks.popleft()
@@ -450,6 +469,8 @@ class CloudEdgeSimulator:
 
     @staticmethod
     def _simulated_edge_result(task: Task) -> dict[str, Any]:
+        if task.edge_result_evidence is not None:
+            return dict(task.edge_result_evidence)
         return {
             "category": f"simulated_{task.task_type}_prediction",
             "level": "high" if task.priority == "high" else "medium",
@@ -513,6 +534,18 @@ class CloudEdgeSimulator:
         task.post_edge_decision = policy_result.decision.value
         task.post_edge_reason = policy_result.reason
         task.post_edge_rule_version = policy_result.rule_version
+        if task.edge_draft_result is not None:
+            producer_state = task.edge_draft_result.get("review_state")
+            expected = (
+                PostEdgeDecision.CLOUD_REVIEW.value
+                if producer_state == "required"
+                else PostEdgeDecision.ACCEPT_EDGE.value
+                if producer_state == "not_required"
+                else None
+            )
+            task.edge_draft_result["scheduler_matches_producer_review"] = (
+                None if expected is None else policy_result.decision.value == expected
+            )
         edge_item.metadata["post_edge_policy"] = policy_result.to_dict()
         edge_item.metadata["transition_details"] = transition_details
 
@@ -608,6 +641,15 @@ class CloudEdgeSimulator:
             "transmission_start_time": task.transmission_start_time,
             "transmission_ready_time": task.transmission_ready_time,
             "cloud_stage_start_time": task.cloud_stage_start_time,
+            "edge_result_source": task.edge_result_source,
+            "edge_latency_source": task.edge_latency_source,
+            "failure_probability": None if task.edge_draft_result is None else task.edge_draft_result.get("failure_probability"),
+            "edge_model_route": None if task.edge_draft_result is None else task.edge_draft_result.get("model_route"),
+            "edge_model_version": None if task.edge_draft_result is None else task.edge_draft_result.get("model_version"),
+            "edge_calibration_version": None if task.edge_draft_result is None else task.edge_draft_result.get("calibration_version"),
+            "producer_review_state": None if task.edge_draft_result is None else task.edge_draft_result.get("review_state"),
+            "producer_rule_consistent": None if task.edge_draft_result is None else task.edge_draft_result.get("producer_rule_consistent"),
+            "scheduler_matches_producer_review": None if task.edge_draft_result is None else task.edge_draft_result.get("scheduler_matches_producer_review"),
         }
         if final_route == "COLLABORATIVE":
             now = self.current_time_s
@@ -950,7 +992,15 @@ class CloudEdgeSimulator:
             "complexity": np.nan if task is None else round(task.complexity, 3),
             "task_size_mb": np.nan if task is None else round(task.size_mb, 6),
             "deadline_s": np.nan if task is None else round(task.deadline_s, 4),
-            "latent_edge_confidence": np.nan if task is None else round(task.confidence, 3),
+            "latent_edge_confidence": (
+                np.nan if task is None or task.edge_result_source == "hhk_v2_edge_result_replay"
+                else round(task.confidence, 3)
+            ),
+            "edge_result_source": None if task is None else task.edge_result_source,
+            "failure_probability": (
+                np.nan if task is None or task.edge_result_evidence is None
+                else task.edge_result_evidence.get("failure_probability")
+            ),
             "action": ROUTE_TO_PPO_ACTION.get(action, -1),
             "internal_action_value": int(action),
             "action_name": action.name,
@@ -1030,7 +1080,7 @@ class CloudEdgeSimulator:
 
     def external_tasks_finished(self) -> bool:
         arrival_exhausted = self.arrival_model.next_arrival_time_s() is None
-        if self.task_source != "edge_input":
+        if self.task_source not in {"edge_input", "hhk_v2_replay"}:
             # Simulated arrivals are an open stream; PPO episodes terminate by
             # decision-step limit rather than source exhaustion.
             arrival_exhausted = False
@@ -1068,6 +1118,11 @@ class CloudEdgeSimulator:
         # deadline expiry while draining edge_input tasks). Keep the simulator
         # accumulator authoritative.
         summary["cumulative_reward"] = float(self.cumulative_reward)
+        if self.hhk_v2_replay_report is not None:
+            summary.update({
+                f"hhk_v2_{key}": value
+                for key, value in self.hhk_v2_replay_report.to_dict().items()
+            })
         return summary
 
     def reset(self) -> None:

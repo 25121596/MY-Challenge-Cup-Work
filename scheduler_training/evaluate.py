@@ -38,10 +38,12 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--task-source",
-        choices=["typed_simulation", "edge_input", "legacy_simulation"],
+        choices=["typed_simulation", "edge_input", "hhk_v2_replay", "legacy_simulation"],
         default="typed_simulation",
     )
     parser.add_argument("--edge-input-path", default=None)
+    parser.add_argument("--edge-result-path", default=None)
+    parser.add_argument("--post-edge-rules", default=None)
     parser.add_argument("--edge-input-non-strict", action="store_true")
     parser.add_argument("--edge-input-interval-s", type=float, default=0.05)
     parser.add_argument(
@@ -54,11 +56,16 @@ def parse_args() -> argparse.Namespace:
 def validate_args(args: argparse.Namespace) -> None:
     if args.steps <= 0:
         raise ValueError("steps必须大于0")
-    if args.task_source == "edge_input":
+    if args.task_source in {"edge_input", "hhk_v2_replay"}:
         if not args.edge_input_path:
             raise ValueError("edge_input模式必须提供--edge-input-path")
         if not Path(args.edge_input_path).is_file():
             raise FileNotFoundError(args.edge_input_path)
+    if args.task_source == "hhk_v2_replay":
+        if not args.edge_result_path:
+            raise ValueError("hhk_v2_replay模式必须提供--edge-result-path")
+        if not Path(args.edge_result_path).is_file():
+            raise FileNotFoundError(args.edge_result_path)
     if not args.skip_ppo:
         model_path = Path(args.ppo_model)
         if model_path.suffix == "":
@@ -101,10 +108,12 @@ def main() -> None:
                     reward_mode=args.reward_mode,
                     task_source=args.task_source,
                     edge_input_path=args.edge_input_path,
+                    edge_result_path=args.edge_result_path,
                     edge_input_strict=not args.edge_input_non_strict,
                     edge_input_interval_s=args.edge_input_interval_s,
+                    **({"post_edge_rules_path": args.post_edge_rules} if args.post_edge_rules else {}),
                 )
-                if args.task_source == "edge_input":
+                if args.task_source in {"edge_input", "hhk_v2_replay"}:
                     simulator.run_until_complete(max_steps=args.steps)
                 else:
                     simulator.run(args.steps)
@@ -138,7 +147,10 @@ def main() -> None:
 
     detailed_df = pd.DataFrame(summary_rows)
     id_columns = {"queue_policy", "strategy", "seed", "task_source"}
-    numeric_columns = [c for c in detailed_df.columns if c not in id_columns]
+    numeric_columns = [
+        c for c in detailed_df.select_dtypes(include="number").columns
+        if c not in id_columns
+    ]
     aggregate_df = (
         detailed_df.groupby(["queue_policy", "strategy", "task_source"])[numeric_columns]
         .mean()
