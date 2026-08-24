@@ -5,18 +5,6 @@
 #include <cstdio>
 
 // ═══════════════════════════════════════════════════════════════
-// Cloud parameter sync
-// ═══════════════════════════════════════════════════════════════
-
-void EdgeLocalDecision::update_cloud_params(float confidence_threshold,
-                                             float anomaly_threshold,
-                                             int   max_queue_len) {
-    _cloud_confidence_threshold = confidence_threshold;
-    _cloud_anomaly_threshold    = anomaly_threshold;
-    _cloud_max_queue_len        = max_queue_len;
-}
-
-// ═══════════════════════════════════════════════════════════════
 // Network assessment
 // ═══════════════════════════════════════════════════════════════
 
@@ -46,11 +34,11 @@ NetworkCondition EdgeLocalDecision::assess_network(int  rtt_ms,
 // Decision engine
 // ═══════════════════════════════════════════════════════════════
 
-LocalAction EdgeLocalDecision::decide(float confidence,
+LocalAction EdgeLocalDecision::decide(bool review_required,
                                        NetworkCondition network) {
     DecisionSnapshot snap;
     snap.condition              = network;
-    snap.confidence_threshold_used = active_confidence_threshold();
+    snap.review_required        = review_required;
 
     // Capture timestamp
     auto now = std::chrono::system_clock::now();
@@ -62,49 +50,31 @@ LocalAction EdgeLocalDecision::decide(float confidence,
 
     switch (network) {
         case NetworkCondition::Healthy: {
-            // Network is good — let cloud PPO handle decisions normally.
+            // Network is good — let the cloud review path handle it normally.
             action = LocalAction::FollowCloud;
-            snap.reason = "Network healthy: delegating to cloud PPO";
+            snap.reason = review_required ? "Network healthy: cloud review required"
+                                          : "Network healthy: local result may continue";
             break;
         }
 
         case NetworkCondition::Degraded: {
-            // Hybrid mode: high-confidence tasks run locally,
-            // low-confidence tasks are queued for later cloud review.
-            if (confidence >= _cloud_confidence_threshold) {
+            if (!review_required) {
                 action = LocalAction::LocalInfer;
-                snap.reason = "Degraded network, high confidence ("
-                              + std::to_string(confidence) + " >= "
-                              + std::to_string(_cloud_confidence_threshold)
-                              + "): local inference";
+                snap.reason = "Degraded network, review not required: local inference";
             } else {
                 action = LocalAction::QueueForCloud;
-                snap.reason = "Degraded network, low confidence ("
-                              + std::to_string(confidence) + " < "
-                              + std::to_string(_cloud_confidence_threshold)
-                              + "): queue for cloud review";
+                snap.reason = "Degraded network, review required: queue for cloud review";
             }
             break;
         }
 
         case NetworkCondition::Offline: {
-            float lowered = active_confidence_threshold(); // cloud - 0.15, min 0.5
-
-            if (confidence >= lowered) {
-                // Confident enough to act autonomously
+            if (!review_required) {
                 action = LocalAction::LocalInfer;
-                snap.reason = "Offline, sufficient confidence ("
-                              + std::to_string(confidence) + " >= "
-                              + std::to_string(lowered)
-                              + "): local inference (best effort)";
+                snap.reason = "Offline, review not required: local inference (best effort)";
             } else {
-                // Low confidence — attempt P2P consensus if peers are available.
-                // If no P2P peers, the caller should fall back to LocalInfer.
                 action = LocalAction::P2PConsensus;
-                snap.reason = "Offline, low confidence ("
-                              + std::to_string(confidence) + " < "
-                              + std::to_string(lowered)
-                              + "): seeking P2P consensus";
+                snap.reason = "Offline, review required: seeking P2P consensus";
             }
             break;
         }
@@ -121,10 +91,9 @@ LocalAction EdgeLocalDecision::decide(float confidence,
         _offline_log.push_back(snap);
     }
 
-    fprintf(stderr, "[EdgeLocalDecision] condition=%d confidence=%.2f "
-            "threshold=%.2f action=%d reason=%s\n",
-            static_cast<int>(network), confidence,
-            snap.confidence_threshold_used,
+    fprintf(stderr, "[EdgeLocalDecision] condition=%d review_required=%d "
+            "action=%d reason=%s\n",
+            static_cast<int>(network), review_required,
             static_cast<int>(action), snap.reason.c_str());
 
     return action;
@@ -140,19 +109,3 @@ std::vector<DecisionSnapshot> EdgeLocalDecision::flush_offline_decisions() {
     return result;
 }
 
-// ═══════════════════════════════════════════════════════════════
-// Queries
-// ═══════════════════════════════════════════════════════════════
-
-float EdgeLocalDecision::active_confidence_threshold() const {
-    switch (_current_condition) {
-        case NetworkCondition::Healthy:
-        case NetworkCondition::Degraded:
-            return _cloud_confidence_threshold;
-
-        case NetworkCondition::Offline:
-            // Lower the bar by 15% when offline, but never below 0.5
-            return std::max(0.5f, _cloud_confidence_threshold - 0.15f);
-    }
-    return _cloud_confidence_threshold;
-}

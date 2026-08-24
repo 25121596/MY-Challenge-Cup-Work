@@ -8,8 +8,8 @@
 // ── Network condition assessment ──────────────────────────────
 
 enum class NetworkCondition {
-    Healthy,     // RTT < 200ms, cloud reachable → cloud PPO makes decisions
-    Degraded,    // RTT 200-500ms → hybrid: high-conf local, low-conf queue
+    Healthy,     // RTT < 200ms, cloud reachable → cloud path is available
+    Degraded,    // RTT 200-500ms → review is queued when possible
     Offline,     // RTT > 500ms or heartbeat failed → fully autonomous
 };
 
@@ -27,7 +27,7 @@ enum class LocalAction {
 struct DecisionSnapshot {
     NetworkCondition condition;
     LocalAction      action;
-    float            confidence_threshold_used = 0.78f;
+    bool             review_required = true;
     std::string      reason;
     int64_t          timestamp_ms = 0;
 };
@@ -41,16 +41,9 @@ public:
     EdgeLocalDecision() = default;
     ~EdgeLocalDecision() = default;
 
-    // ── Cloud parameter sync (values to use when offline) ──────
-    // Called by ModelSyncManager when cloud pushes rule updates.
-    void update_cloud_params(float confidence_threshold,
-                             float anomaly_threshold,
-                             int   max_queue_len);
-
-    // ── Core: decide action based on network + task confidence ──
-    // confidence: local model's confidence in its output (0.0-1.0)
-    // network: current network condition from assess_network()
-    LocalAction decide(float confidence, NetworkCondition network);
+    // ── Core: decide transport handling, not model confidence ──
+    // Qwen results are uncalibrated and must set review_required=true.
+    LocalAction decide(bool review_required, NetworkCondition network);
 
     // ── Network assessment ─────────────────────────────────────
     // rtt_ms: measured RTT to cloud (-1 = unknown/unreachable)
@@ -67,19 +60,10 @@ public:
     // ── Queries ────────────────────────────────────────────────
     NetworkCondition current_condition() const { return _current_condition; }
 
-    // Returns the currently active confidence threshold.
-    // When offline, returns the lowered threshold (cloud value - 0.15).
-    float active_confidence_threshold() const;
-
     // Number of decisions made while offline (not yet flushed)
     size_t offline_decision_count() const { return _offline_log.size(); }
 
 private:
-    // Cloud-synced parameters (the "survival kit" when network drops)
-    float _cloud_confidence_threshold = 0.78f;
-    float _cloud_anomaly_threshold   = 0.85f;
-    int   _cloud_max_queue_len       = 10;
-
     NetworkCondition _current_condition = NetworkCondition::Healthy;
 
     // Offline decision log

@@ -216,7 +216,7 @@ def validate_policy_bundle(
             from stable_baselines3 import PPO
         except ImportError as exc:
             raise ImportError("加载PPO校验需要stable-baselines3") from exc
-        model = PPO.load(str(resolved["ppo_model"]))
+        model = PPO.load(str(resolved["ppo_model"]), device="cpu")
         if getattr(getattr(model, "action_space", None), "n", None) != 2:
             raise ValueError("bundle PPO不是Discrete(2)")
         if tuple(getattr(getattr(model, "observation_space", None), "shape", ())) != (24,):

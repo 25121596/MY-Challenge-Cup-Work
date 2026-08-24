@@ -52,6 +52,8 @@ async def chat_completions(request: Request, body: ChatCompletionRequest):
                 top_p=body.top_p,
                 max_tokens=body.max_tokens,
                 seed=body.seed,
+                cache_prompt=body.cache_prompt,
+                chat_template_kwargs=body.chat_template_kwargs,
             ):
                 yield chunk
         except Exception as exc:

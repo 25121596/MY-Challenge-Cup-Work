@@ -386,7 +386,8 @@ void P2PMesh::handle_peer_connection(int client_fd) {
             di.node_id         = j.value("node_id", "");
             di.target_id       = j.value("target_id", "");
             di.proposed_action = j.value("proposed_action", "");
-            di.confidence      = j.value("confidence", 0.0f);
+            di.review_state    = j.value("review_state", "required");
+            di.safety_priority = j.value("safety_priority", "P1");
             di.rationale       = j.value("rationale", "");
             di.timestamp_ms    = j.value("timestamp_ms", 0);
             if (on_decision_intent) on_decision_intent(di);
@@ -546,7 +547,8 @@ std::string P2PMesh::serialize_intent(const DecisionIntent & i) const {
     j["node_id"]         = i.node_id;
     j["target_id"]       = i.target_id;
     j["proposed_action"] = i.proposed_action;
-    j["confidence"]      = i.confidence;
+    j["review_state"]    = i.review_state;
+    j["safety_priority"] = i.safety_priority;
     j["rationale"]       = i.rationale;
     j["timestamp_ms"]    = i.timestamp_ms;
     return j.dump();

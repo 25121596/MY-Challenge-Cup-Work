@@ -80,6 +80,23 @@ Run:
 python run_runtime.py --policy-bundle <release>/policy_bundle.json
 ```
 
+For local end-to-end validation in WSL, use the tracked launcher below. It
+starts IQ4_XS as the edge endpoint and the same-source BF16 GGUF as a
+**loopback-only cloud simulation**; it is not a substitute for a deployed
+cloud endpoint, cloud credentials, or cloud scheduler.
+
+```powershell
+wsl.exe -d Ubuntu-22.04 -- bash competition/integration/scripts/start_local_model_services.sh
+python validate_model_services.py
+python check_setup.py
+```
+
+The launcher binds only `127.0.0.1`, uses eight threads and context 512 by
+default, writes PID/log files under `integration/outputs/local_services/`, and
+refuses to overwrite an occupied 8080 or 8081. `LLAMA_SERVER`, `EDGE_MODEL`,
+`CLOUD_MODEL`, `LLAMA_THREADS`, and `LLAMA_CONTEXT_SIZE` can be overridden for
+another local layout.
+
 `check_setup.py` validates the bundle, Integration input loader, Python dependencies,
 optional metrics sources, and model endpoints. `validate_bundle_runtime.py` is a
 bundle/PPO loading smoke check; canonical simulation remains in
@@ -87,30 +104,41 @@ bundle/PPO loading smoke check; canonical simulation remains in
 
 ## Post-edge signals
 
-The edge response adapter reads measured or model-returned fields only. Current
-HHK V2 / `post-edge-rules/2.0` signals are:
+The edge response adapter reads measured or model-returned fields only. For
+the current HHK edge-output/v3 contract it preserves these fields separately:
 
 ```text
-failure_probability, threshold_used, threshold_review_margin,
-model_route, calibration_version, feature_schema_id,
-review_state, local_prediction, safety_priority, safety_trigger
+failure_probability, local_prediction, review_state, safety_priority,
+safety_trigger, action, model_route, level, category, output_valid, ood
 ```
 
-Legacy `post-edge-rules/1.0` bundles remain readable through:
-
-```text
-confidence, level, category, output_valid, ood
-```
-
-Missing probability or confidence is not fabricated, and one is not converted
-into the other. Plain text or invalid structured output is marked invalid and
-follows the versioned Post-edge rules. An HHK
-`escalate_to_cloud` field is recorded only as a legacy hint; Integration's
-bundle PostEdgePolicy is authoritative.
+`failure_probability` is never converted to `confidence`. A v3 result with
+`review_state=required` requests `CLOUD_REVIEW`; a calibrated AI4I result with
+`review_state=not_required` can be accepted without a fabricated confidence.
+Uncalibrated Qwen output already carries `review_state=required`. Plain text or
+invalid structured output is marked invalid and follows the versioned Post-edge
+rules. An HHK `escalate_to_cloud` field is recorded only as a legacy hint;
+Integration's bundle PostEdgePolicy remains authoritative for queue lifecycle.
 
 If the cloud is measured unreachable, a requested `DIRECT_CLOUD` is safely
 overridden to `LOCAL_FIRST`. A Post-edge `CLOUD_REVIEW` is similarly reduced to
 `ACCEPT_EDGE`. Both overrides are explicit in trace v2.
+
+## Asset Routing Before Inference
+
+`config/asset_routing_v1.json` is a separate, versioned pre-route policy. It
+is intentionally empty until an authoritative asset registry is supplied.
+When enabled, exact matches in `designated_cloud_device_ids` or
+`designated_cloud_device_types` bypass edge inference and go directly to
+cloud. Every non-matching asset is forced to `LOCAL_FIRST`; its calibrated
+AI4I `failure_probability` is then evaluated by the normal post-edge review
+policy.
+
+Asset importance is neither `safety_priority` nor model confidence. The task
+payload cannot self-declare importance, and this policy does not inspect a
+model-generated field. Use `--asset-routing-policy <path>` to point the
+runtime at a registry export. A designated asset falls back to edge only when
+cloud reachability is measured false, and that exception is recorded in trace.
 
 ## Trace v2
 
@@ -126,18 +154,6 @@ Trace v2 separates:
 
 Unavailable TTFT, TPS, token counts, GPU metrics, confidence, or OOD values are
 stored as null/unavailable rather than invented.
-
-## AI4I real cloud review
-
-`run_ai4i_cloud_review.py` provides a resumable, deterministic Qwen3-8B shadow
-review for the HHK V2 AI4I held-out test records. It joins edge predictions and
-cloud prompts by `task_id`, calls the real cloud model only for the Post-edge
-review subset by default, and publishes raw cloud results, HHK-compatible
-`edge-cloud-feedback/v1` records, machine-readable metrics, and a Markdown
-report. Cloud disagreement and label-confirmed correction remain separate.
-
-See [AI4I_CLOUD_REVIEW.md](AI4I_CLOUD_REVIEW.md) for the Anaconda Prompt pilot,
-full-run, resume, and report commands.
 
 ## Validation
 

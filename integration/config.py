@@ -23,6 +23,10 @@ DEFAULT_EDGE_INPUT = Path(
     )
 ).resolve()
 
+DEFAULT_ASSET_ROUTING_POLICY = Path(
+    os.environ.get("ASSET_ROUTING_POLICY", str(ROOT / "config" / "asset_routing_v1.json"))
+).resolve()
+
 EDGE_ENDPOINT = os.environ.get("EDGE_ENDPOINT", "http://127.0.0.1:8080").rstrip("/")
 CLOUD_ENDPOINT = os.environ.get("CLOUD_ENDPOINT", "http://127.0.0.1:8081").rstrip("/")
 

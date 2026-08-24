@@ -27,4 +27,10 @@ async def health_check():
         load=decision_engine.load,
         version=config.version,
         max_split_layer=config.max_split_layer,
+        backend=config.model_backend,
+        # A reachable mock server is useful for API tests but cannot be used
+        # as a cloud inference expert. Split continuation is not implemented
+        # for any current backend because hidden states are not injected.
+        inference_ready=backend_ok and config.model_backend in {"llama", "vllm"},
+        split_inference_ready=False,
     )

@@ -15,6 +15,7 @@ from __future__ import annotations
 import asyncio
 import logging
 from typing import AsyncIterator
+from typing import Any
 
 from config import config
 
@@ -64,6 +65,8 @@ class ModelManager:
         top_p: float = 0.9,
         max_tokens: int = 512,
         seed: int = 42,
+        cache_prompt: bool = False,
+        chat_template_kwargs: dict[str, Any] | None = None,
     ) -> AsyncIterator[str]:
         """Stream chat completions as SSE text.
 
@@ -79,7 +82,9 @@ class ModelManager:
                 top_p=top_p,
                 max_tokens=max_tokens,
                 seed=seed,
+                cache_prompt=cache_prompt,
                 stream=True,
+                chat_template_kwargs=chat_template_kwargs or {},
             ):
                 yield chunk
         else:

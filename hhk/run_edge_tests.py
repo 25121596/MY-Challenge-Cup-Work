@@ -141,40 +141,43 @@ def group_inference(ck):
         return
 
     def t_parse_single():
-        c, s, r, err = EI.parse_short_decision("2")
+        c, err = EI.parse_short_decision("2")
         return c == 2 and err is None
 
-    def t_parse_classrisk():
-        c, s, r, err = EI.parse_short_decision("1,2")
-        return c == 1 and r == 1 and err is None
+    def t_parse_legacy_json_rejected():
+        c, err = EI.parse_short_decision('{"c":1,"s":2,"r":1}')
+        return c is None and err == "FORMAT_ERROR"
 
     def t_parse_json():
-        # 注: GBNF 约束真实输出为裸数字; JSON 仅为兼容回退。单数字正则会先命中
-        # "c":2 中的 2, 故类别可正确恢复 (s/r 取默认值, 生产链路不受影响)。
-        c, s, r, err = EI.parse_short_decision('{"c":2,"s":80,"r":1}')
+        # 真实链路由 GBNF 约束为裸数字；JSON 仅接受严格的 {"c":N}
+        # 兼容对象，避免静默丢弃旧式 score/routing 字段。
+        c, err = EI.parse_short_decision('{"c":2}')
         return c == 2 and err is None
 
     def t_parse_garbage():
-        c, s, r, err = EI.parse_short_decision("hello world")
+        c, err = EI.parse_short_decision("hello world")
         return c is None and err == "FORMAT_ERROR"
 
     def t_parse_generic_clamp():
         # generic_mode: 超范围(>3)应被夹到 3 并标记 UNKNOWN_CLASS
-        c, s, r, err = EI.parse_short_decision("5", generic_mode=True)
+        c, err = EI.parse_short_decision("5", generic_mode=True)
         return c == 3 and err == "UNKNOWN_CLASS"
 
     def t_make_output():
-        o = EI.make_output("T-1", "edge-zoneX-01", 2, 85, 0, 12.3)
-        return (o["decision"]["category"] == 2
-                and o["decision"]["action"] == "shutdown"
+        o = EI.make_output("T-1", "edge-zoneX-01", 2, 12.3)
+        return (o["decision"]["provisional_category"]["code"] == 2
+                and o["decision"]["action"] == "continue_with_review"
                 and o["consistency"]["zone"] == "edge-zoneX"
                 and len(o["consistency"]["decision_hash"]) == 16
-                and o["escalate_to_cloud"] is False)
+                and o["failure_probability"] is None
+                and o["local_prediction"] is None
+                and o["threshold_review_margin"] is None
+                and "confidence" not in o)
 
     def t_make_output_generic():
-        o = EI.make_output("T-2", "edge-01", 3, 60, 1, 30.0, generic_mode=True)
-        return (o["decision"]["category_name"] == "severe_anomaly"
-                and o["escalate_to_cloud"] is True)
+        o = EI.make_output("T-2", "edge-01", 3, 30.0, generic_mode=True)
+        return (o["decision"]["provisional_category"]["name"] == "severe_anomaly"
+                and o["review_state"] == "required")
 
     def t_build_prompt():
         p = EI.build_prompt("fault_diagnosis",
@@ -190,12 +193,12 @@ def group_inference(ck):
         return g is not None and "[0-3]" in g
 
     ck.check("parse: 单数字 '2'", t_parse_single)
-    ck.check("parse: class,risk '1,2'", t_parse_classrisk)
-    ck.check("parse: JSON 包裹仍恢复类别 (GBNF 保证裸数字)", t_parse_json)
+    ck.check("parse: legacy JSON score/routing fields are rejected", t_parse_legacy_json_rejected)
+    ck.check("parse: strict JSON compatibility restores only its class", t_parse_json)
     ck.check("parse: 乱码 → FORMAT_ERROR", t_parse_garbage)
     ck.check("parse: generic 越界 → 夹取+UNKNOWN", t_parse_generic_clamp)
-    ck.check("make_output: 7类故障结构+hash+zone", t_make_output)
-    ck.check("make_output: 泛化4级+甩云", t_make_output_generic)
+    ck.check("make_output: provisional Qwen class + mandatory review", t_make_output)
+    ck.check("make_output: generic provisional class + mandatory review", t_make_output_generic)
     ck.check("build_prompt: readings 注入模板", t_build_prompt)
     ck.check("load_grammar: fault → [0-6]", t_grammar_fault)
     ck.check("load_grammar: generic → [0-3]", t_grammar_generic)
@@ -338,7 +341,7 @@ def group_online(ck, endpoint):
         }
         res = EI.infer(sample, use_grammar=True)
         o = res["output"]
-        return "decision" in o and "latency_ms" in o and "escalate_to_cloud" in o
+        return "decision" in o and "latency_ms" in o and o.get("review_state") == "required"
     ck.check("真实 infer 产出标准 output", t_infer)
 
 

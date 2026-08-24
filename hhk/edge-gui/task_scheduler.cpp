@@ -140,7 +140,10 @@ bool TaskScheduler::request_cloud_review(const std::string & context_json,
                 FusedResult fr;
                 fr.final_text = text;
                 fr.source     = err.empty() ? "cloud" : "local";
-                fr.confidence = err.empty() ? 0.9 : 0.5;
+                // Streaming text has no calibrated probability.  The
+                // structured edge/cloud contract owns confidence; zero here
+                // forces review instead of fabricating a score.
+                fr.confidence = 0.0;
                 if (on_fused_result) on_fused_result(fr);
             }
         },

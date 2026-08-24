@@ -9,16 +9,18 @@ v2 adds explicit two-stage scheduling fields:
 * final `EDGE`, `CLOUD`, or `COLLABORATIVE` route;
 * Post-edge policy decision, effective decision, rule ID, reason, feasibility,
   threshold, and recommendation;
-* measured legacy confidence signals or HHK V2 failure-probability,
-  model-route, calibration, feature-schema, local-prediction and producer-review signals;
+* measured edge output signals, including edge-output/v3 failure probability,
+  local prediction, review state, safety urgency, and legacy escalation hint;
 * runtime safety override;
 * ordered `observation_24d`.
+
+Asset-routing fields record a versioned external registry decision before model
+execution. `asset_routing_route=LOCAL_FIRST` means the asset was not
+designated and must receive an edge result first. `DIRECT_CLOUD` means an exact
+registry match bypassed edge inference. `ppo_action_*` retains the PPO proposal
+for analysis; it is not effective when asset routing is enabled. Asset routing
+is unrelated to `safety_priority` and never derives from `failure_probability`.
 
 Stage timings, resource snapshots, network observations, model identity, and
 available llama.cpp profile fields remain available. Missing fields remain
 null. This document describes the only active export schema.
-
-For `post-edge-rules/2.0`, the trace also records the effective
-failure-probability threshold, evidence source, producer review state, and
-producer-rule consistency. Legacy confidence is not synthesized from HHK V2
-failure probability.

@@ -28,6 +28,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--arrival-probability", type=float, default=0.10)
     parser.add_argument("--slot-duration", type=float, default=0.05)
     parser.add_argument("--torch-threads", type=int, default=1)
+    parser.add_argument("--device", choices=["cpu", "auto"], default="cpu")
     parser.add_argument("--output", default="models/checkpoints/pre_route_v2/pre_route_ppo")
     parser.add_argument("--release-dir", default="models/releases/pre_route_v2")
     parser.add_argument("--policy-version", default="pre-route-ppo-v2")
@@ -135,7 +136,7 @@ def main() -> None:
         policy_kwargs={"net_arch": [64, 64]},
         verbose=1,
         seed=args.seed,
-        device="auto",
+        device=args.device,
     )
     print(
         f"开始Phase4.5 PPO训练：actions=2, queue={args.queue_policy}, "

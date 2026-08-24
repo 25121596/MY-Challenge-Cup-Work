@@ -17,6 +17,10 @@
 #ifdef _WIN32
 #  define WIN32_LEAN_AND_MEAN
 #  include <windows.h>
+#else
+#  include <dirent.h>
+#  include <sys/stat.h>
+#  include <unistd.h>
 #endif
 
 // ── JSON 消息构建（用于云端请求）────────────────────────────────
@@ -341,7 +345,7 @@ void EdgeApp::render_top_bar() {
     // ── 中间：性能指标 ─────────────────────────────────────
     if (_last_perf.valid) {
         ImGui::SameLine(ImGui::GetWindowWidth() * 0.38f);
-        ImGui::TextDisabled("\xe9\xa2\x84%e5\xa4\x84%e7\x90\x86: %.1f t/s | \xe7\x94\x9f%e6\x88\x90: %.1f t/s | \xe9\xa6\x96token: %.0f ms",
+        ImGui::TextDisabled("Prefill: %.1f t/s | Generation: %.1f t/s | TTFT: %.0f ms",
                             _last_perf.pp_tokens_per_sec,
                             _last_perf.tg_tokens_per_sec,
                             _last_perf.ttft_ms);
@@ -484,7 +488,7 @@ void EdgeApp::render_chat_area() {
 
         if (!msg.reasoning_content.empty()) {
             ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.6f, 0.6f, 0.6f, 1.0f));
-            ImGui::TextWrapped("  [\xe6\x80\x9d%e8\x80\x83] %s", msg.reasoning_content.c_str());
+            ImGui::TextWrapped("  [reasoning] %s", msg.reasoning_content.c_str());
             ImGui::PopStyleColor();
         }
 
@@ -527,7 +531,7 @@ void EdgeApp::render_input_area() {
         }
         ImGui::PopStyleColor(2);
         ImGui::SameLine();
-        ImGui::TextDisabled(" \xe7\x94\x9f%e6\x88\x90\xe4\xb8\xad...");
+        ImGui::TextDisabled(" Generating...");
     } else {
         float btn_w = 70.0f;
         ImGui::PushItemWidth(ImGui::GetContentRegionAvail().x - btn_w - 10);
@@ -633,9 +637,9 @@ void EdgeApp::render_settings_panel() {
     if (ImGui::CollapsingHeader("\xe4\xb8\x8a\xe6\xac\xa1\xe6\x8e\xa8\xe7\x90\x86")) {
         if (_last_perf.valid) {
             ImGui::Text("Prompt Token:     %d", _last_perf.n_p_tokens);
-            ImGui::Text("\xe7\x94\x9f%e6\x88\x90 Token:     %d", _last_perf.n_g_tokens);
+            ImGui::Text("Generated tokens: %d", _last_perf.n_g_tokens);
             ImGui::Text("\xe9\xa2\x84\xe5\xa4\x84\xe7\x90\x86\xe9\x80\x9f\xe5\xba\xa6:     %.1f t/s", _last_perf.pp_tokens_per_sec);
-            ImGui::Text("\xe7\x94\x9f%e6\x88\x90\xe9\x80\x9f\xe5\xba\xa6:     %.1f t/s", _last_perf.tg_tokens_per_sec);
+            ImGui::Text("Generation rate: %.1f t/s", _last_perf.tg_tokens_per_sec);
             ImGui::Text("\xe9\xa6\x96 Token \xe5\xbb\xb6\xe8\xbf\x9f: %.0f ms", _last_perf.ttft_ms);
         } else {
             ImGui::TextDisabled("\xe6\x9a\x82\xe6\x97\xa0\xe6\x8e\xa8\xe7\x90\x86\xe6\x95\xb0\xe6\x8d\xae");
@@ -798,10 +802,10 @@ void EdgeApp::submit_message(const std::string & text) {
     bool use_p2p     = false;
 
     if (net != NetworkCondition::Healthy) {
-        // Use a default confidence of 0.7 — wire to real inference
-        // confidence once the engine exposes per-token logprobs.
-        float confidence = 0.7f;
-        LocalAction action = _local_decision.decide(confidence, net);
+        // This native Qwen path has no retained-set calibration.  Route it by
+        // an explicit review state, never a GUI confidence placeholder.
+        constexpr bool review_required = true;
+        LocalAction action = _local_decision.decide(review_required, net);
 
         switch (action) {
             case LocalAction::LocalInfer:
@@ -845,7 +849,8 @@ void EdgeApp::submit_message(const std::string & text) {
                     intent.node_id    = _p2p_node_id;
                     intent.target_id  = "msg_" + std::to_string(_messages.size());
                     intent.proposed_action = "local_infer";
-                    intent.confidence = 0.7f;
+                    intent.review_state = "required";
+                    intent.safety_priority = "P1";
                     _p2p.send_decision_intent(peer.node_id, intent);
                 }
             }
@@ -1190,9 +1195,9 @@ void EdgeApp::render_data_pipeline_panel() {
             ImGui::TableSetupColumn("\xe6\x89\xb9\xe6\xac\xa1");
             ImGui::TableSetupColumn("\xe5\x88\x86\xe7\xb1\xbb");
             ImGui::TableSetupColumn("\xe5\x8a\xa8\xe4\xbd\x9c");
-            ImGui::TableSetupColumn("\xe7\xbd\xae\xe4\xbf\xa1\xe5\xba\xa6");
+            ImGui::TableSetupColumn("review state");
             ImGui::TableSetupColumn("\xe5\xbb\xb6\xe8\xbf\x9f");
-            ImGui::TableSetupColumn("\xe7\x94\xa9\xe4\xba\x91");
+            ImGui::TableSetupColumn("safety");
             ImGui::TableHeadersRow();
 
             for (const auto & r : results) {
@@ -1216,16 +1221,13 @@ void EdgeApp::render_data_pipeline_panel() {
                 ImGui::Text("%s", r.success ? r.action.c_str() : "-");
 
                 ImGui::TableSetColumnIndex(3);
-                ImGui::Text("%.0f%%", r.confidence * 100);
+                ImGui::Text("%s", r.review_state.empty() ? "-" : r.review_state.c_str());
 
                 ImGui::TableSetColumnIndex(4);
                 ImGui::Text("%.0fms", r.latency_ms);
 
                 ImGui::TableSetColumnIndex(5);
-                if (r.escalate_to_cloud)
-                    ImGui::TextColored(ImVec4(1,0.5f,0.2f,1), "\xe2\x9c\x93");
-                else
-                    ImGui::Text("-");
+                ImGui::Text("%s", r.safety_priority.empty() ? "-" : r.safety_priority.c_str());
             }
             ImGui::EndTable();
         }
@@ -1239,10 +1241,10 @@ void EdgeApp::render_data_pipeline_panel() {
                     "\xe5\xb9\xb3\xe5\x9d\x87: %.0fms  P95: %.0fms",
                     stats.total_batches, stats.success_count,
                     stats.avg_latency_ms, stats.p95_latency_ms);
-        ImGui::Text("  200ms\xe8\xbe\xbe\xe6\xa0\x87: %d/%d (%.0f%%)  \xe7\x94\xa9\xe4\xba\x91: %d",
+        ImGui::Text("  200ms\xe8\xbe\xbe\xe6\xa0\x87: %d/%d (%.0f%%)  review required: %d",
                     stats.under_200ms, stats.success_count,
                     stats.success_count > 0 ? (float)stats.under_200ms/stats.success_count*100 : 0,
-                    stats.escalated_count);
+                    stats.review_required_count);
 
         if (!stats.category_distribution.empty()) {
             ImGui::Text("  \xe5\x88\x86\xe5\xb8\x83:");

@@ -51,6 +51,8 @@ class LlamaServerBackend:
         max_tokens: int = 512,
         seed: int = 42,
         stream: bool = True,
+        cache_prompt: bool = False,
+        chat_template_kwargs: dict[str, Any] | None = None,
     ) -> AsyncIterator[str]:
         """Forward a chat completion request to llama-server and yield SSE chunks."""
         from inference.streaming import sse_event, sse_done_event
@@ -64,9 +66,12 @@ class LlamaServerBackend:
             "max_tokens": max_tokens,
             "seed": seed,
             "stream": stream,
+            "cache_prompt": cache_prompt,
         }
         if model:
             payload["model"] = model
+        if chat_template_kwargs:
+            payload["chat_template_kwargs"] = chat_template_kwargs
 
         try:
             async with client.stream(

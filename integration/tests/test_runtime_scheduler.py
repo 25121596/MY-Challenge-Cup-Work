@@ -17,6 +17,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from edge_input_loader import load_edge_inputs  # noqa: E402
+from asset_routing_policy import AssetRoutingPolicy  # noqa: E402
 from policy_bundle_loader import PolicyBundleError, load_policy_bundle  # noqa: E402
 from pre_route_observation import build_pre_route_observation  # noqa: E402
 from real_ppo_runtime import CyclicTestPolicy, RealPPORuntime  # noqa: E402
@@ -299,6 +300,53 @@ class RuntimeSchedulerTest(unittest.TestCase):
         finally:
             manager.close()
 
+    def test_asset_routing_overrides_ppo_before_model_execution(self):
+        network = FakeNetworkMonitor()
+        provider = RealStateProvider(
+            edge_source=StaticResourceSource(20.0, 0.8),
+            cloud_source=StaticResourceSource(20.0, 0.8),
+            network_monitor=network,
+            sample_ttl_s=0.0,
+        )
+        manager = RealTaskManager(
+            edge_client=FakeModelClient("edge"),
+            cloud_client=FakeModelClient("cloud"),
+            network_monitor=network,
+        )
+        policy = AssetRoutingPolicy({
+            "schema_version": "asset-routing/1.0",
+            "policy_version": "asset-registry-test-v1",
+            "enabled": True,
+            "default_route": "LOCAL_FIRST",
+            "designated_cloud_device_ids": ["critical-controller"],
+            "designated_cloud_device_types": [],
+        })
+        runtime = RealPPORuntime(
+            policy=CyclicTestPolicy((0, 1)),
+            policy_bundle=self.bundle,
+            state_provider=provider,
+            task_manager=manager,
+            asset_routing_policy=policy,
+        )
+        try:
+            designated = self.make_task(0)
+            designated.edge_input["data"]["device_id"] = "critical-controller"
+            env = manager.register_arrival(designated)
+            _, _, requested, effective, info = runtime._decision_for(env)
+            self.assertEqual((requested, effective), (1, 1))
+            self.assertEqual(info["asset_routing"]["matched_by"], "device_id")
+
+            ordinary = self.make_task(1)
+            ordinary.edge_input["asset_importance"] = "important"
+            ordinary.edge_input["data"]["device_id"] = "not-in-registry"
+            env = manager.register_arrival(ordinary)
+            _, _, requested, effective, info = runtime._decision_for(env)
+            self.assertEqual((requested, effective), (0, 0))
+            self.assertEqual(info["ppo_action_index"], 1)
+            self.assertEqual(info["asset_routing"]["reason"], "UNDESIGNATED_ASSET_LOCAL_FIRST")
+        finally:
+            manager.close()
+
 
     def test_metrics_agent_accepts_hhk_heartbeat(self):
         server = build_server("127.0.0.1", 0, quiet=True)
@@ -426,6 +474,10 @@ class RuntimeSchedulerTest(unittest.TestCase):
                 {"confidence": 0.40, "level": "warning", "category": "known", "output_valid": True, "ood": False},
                 {"confidence": 0.95, "level": "critical", "category": "known", "output_valid": True, "ood": False},
                 {"confidence": None, "level": "", "category": "", "output_valid": False, "ood": False},
+                {"confidence": None, "failure_probability": 0.021, "local_prediction": "normal",
+                 "review_state": "not_required", "level": "info", "category": "", "output_valid": True, "ood": None},
+                {"confidence": None, "failure_probability": None, "local_prediction": None,
+                 "review_state": "required", "level": "warning", "category": "", "output_valid": True, "ood": None},
             )
             for signals in cases:
                 integration_result = self.bundle.post_edge_policy.evaluate(

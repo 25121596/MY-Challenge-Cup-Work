@@ -62,7 +62,8 @@ struct DecisionIntent {
     std::string node_id;
     std::string target_id;
     std::string proposed_action;     // "stop_line", "alert_operator", etc.
-    float       confidence   = 0.0f;
+    std::string review_state = "required";
+    std::string safety_priority = "P1";  // safety urgency, not business priority
     std::string rationale;
     int64_t     timestamp_ms = 0;
 };

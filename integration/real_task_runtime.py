@@ -831,6 +831,8 @@ class RealTaskManager:
         policy_probs = env.policy_info.get("action_probabilities")
         policy_value = env.policy_info.get("value_estimate")
         post_edge = env.post_edge_result if isinstance(env.post_edge_result, dict) else {}
+        asset_routing = env.policy_info.get("asset_routing", {})
+        asset_routing = asset_routing if isinstance(asset_routing, dict) else {}
 
         edge_wait = duration("edge_waiting_at", "edge_running_start")
         cloud_wait = duration("cloud_waiting_at", "cloud_running_start")
@@ -861,6 +863,13 @@ class RealTaskManager:
             "arrival_wall_time_s": env.arrival_wall_time_s,
             "requested_action_index": env.requested_action_index,
             "requested_action_name": env.requested_action_name,
+            "ppo_action_index": env.policy_info.get("ppo_action_index"),
+            "ppo_action_name": env.policy_info.get("ppo_action_name"),
+            "asset_routing_enabled": asset_routing.get("enabled"),
+            "asset_routing_policy_version": asset_routing.get("policy_version"),
+            "asset_routing_reason": asset_routing.get("reason"),
+            "asset_routing_matched_by": asset_routing.get("matched_by"),
+            "asset_routing_route": asset_routing.get("route"),
             "action_index": env.action_index,
             "action_name": env.action_name,
             "final_route": env.final_route,
@@ -874,24 +883,20 @@ class RealTaskManager:
             "post_edge_review_recommended": post_edge.get("review_recommended"),
             "post_edge_cloud_review_feasible": post_edge.get("cloud_review_feasible"),
             "post_edge_confidence_threshold": post_edge.get("confidence_threshold"),
-            "post_edge_failure_probability_threshold": post_edge.get(
-                "failure_probability_threshold"
-            ),
-            "post_edge_evidence_source": post_edge.get("evidence_source"),
-            "post_edge_producer_review_state": post_edge.get("producer_review_state"),
-            "post_edge_producer_rule_consistent": post_edge.get(
-                "producer_rule_consistent"
-            ),
+            "post_edge_failure_probability": post_edge.get("failure_probability"),
+            "post_edge_review_state": post_edge.get("edge_review_state"),
             "edge_confidence": env.edge_signals.get("confidence"),
+            "edge_failure_probability": env.edge_signals.get("failure_probability"),
+            "edge_local_prediction": env.edge_signals.get("local_prediction"),
+            "edge_review_state": env.edge_signals.get("review_state"),
+            "edge_safety_priority": env.edge_signals.get("safety_priority"),
+            "edge_safety_trigger": env.edge_signals.get("safety_trigger"),
+            "edge_action": env.edge_signals.get("edge_action"),
+            "edge_model_route": env.edge_signals.get("model_route"),
             "edge_level": env.edge_signals.get("level"),
             "edge_category": env.edge_signals.get("category"),
             "edge_output_valid": env.edge_signals.get("output_valid"),
             "edge_ood": env.edge_signals.get("ood"),
-            "edge_failure_probability": env.edge_signals.get("failure_probability"),
-            "edge_model_route": env.edge_signals.get("model_route"),
-            "edge_calibration_version": env.edge_signals.get("calibration_version"),
-            "edge_feature_schema_id": env.edge_signals.get("feature_schema_id"),
-            "edge_local_prediction": env.edge_signals.get("local_prediction"),
             "edge_escalation_hint": env.edge_signals.get("edge_escalation_hint"),
             "status": env.status,
             "execution_stage": env.execution_stage,

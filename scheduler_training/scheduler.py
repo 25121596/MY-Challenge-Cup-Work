@@ -204,7 +204,7 @@ class PPOScheduler:
 
         self.model_path = str(path)
         self.deterministic = deterministic
-        self.model = PPO.load(str(path))
+        self.model = PPO.load(str(path), device="cpu")
         action_n = getattr(getattr(self.model, "action_space", None), "n", None)
         if action_n != 2:
             raise ValueError(

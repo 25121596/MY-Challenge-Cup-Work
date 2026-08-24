@@ -82,6 +82,8 @@ from api.chat import router as chat_router
 from api.model_updates import router as model_updates_router
 from api.neighbors import router as neighbors_router
 from api.conflicts import router as conflicts_router
+from api.escalations import router as escalations_router
+from api.esw import router as esw_router
 
 app.include_router(health_router)
 app.include_router(heartbeat_router)
@@ -91,6 +93,8 @@ app.include_router(chat_router)
 app.include_router(model_updates_router)
 app.include_router(neighbors_router)
 app.include_router(conflicts_router)
+app.include_router(escalations_router)
+app.include_router(esw_router)
 
 
 # ── CLI entry ────────────────────────────────────────────────────

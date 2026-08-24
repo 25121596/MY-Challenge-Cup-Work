@@ -7,6 +7,7 @@ from typing import Any, Protocol
 
 import numpy as np
 
+from asset_routing_policy import AssetRoutingPolicy
 from edge_input_loader import load_edge_inputs
 from policy_bundle_loader import PolicyBundle, load_policy_bundle
 from pre_route_observation import ACTION_MAPPING, build_pre_route_observation
@@ -40,7 +41,7 @@ class RealPPOPolicy:
             ) from exc
         self.path = path
         self.deterministic = bool(deterministic)
-        self.model = PPO.load(str(path))
+        self.model = PPO.load(str(path), device="cpu")
         action_n = getattr(getattr(self.model, "action_space", None), "n", None)
         obs_shape = getattr(getattr(self.model, "observation_space", None), "shape", None)
         if action_n != 2:
@@ -127,6 +128,7 @@ class RealPPORuntime:
         policy_bundle: PolicyBundle | str | Path,
         state_provider: Any,
         task_manager: RealTaskManager,
+        asset_routing_policy: AssetRoutingPolicy | None = None,
     ) -> None:
         self.bundle = (
             policy_bundle
@@ -137,6 +139,7 @@ class RealPPORuntime:
         self.policy = policy
         self.state_provider = state_provider
         self.task_manager = task_manager
+        self.asset_routing_policy = asset_routing_policy or AssetRoutingPolicy.disabled()
         self.task_manager.configure_policy_bundle(self.bundle)
         if len(self.observation_names) != 24:
             raise RuntimeError(f"bundle observation schema不是24维: {len(self.observation_names)}")
@@ -165,16 +168,30 @@ class RealPPORuntime:
         if requested_action not in (0, 1):
             raise ValueError(f"PPO输出非法pre-route动作: {requested_action}")
 
+        ppo_action = requested_action
+        asset_decision = self.asset_routing_policy.decide(env.raw_task)
+        if asset_decision.route == "LOCAL_FIRST":
+            requested_action = 0
+        elif asset_decision.route == "DIRECT_CLOUD":
+            requested_action = 1
+
         effective_action = requested_action
         runtime_override = None
         network = state.get("real_network_metrics", {})
         cloud_reachable = network.get("reachable") if isinstance(network, dict) else None
         if requested_action == 1 and cloud_reachable is False:
             effective_action = 0
-            runtime_override = "DIRECT_CLOUD_TO_LOCAL_FIRST_CLOUD_UNREACHABLE"
+            runtime_override = (
+                "DESIGNATED_ASSET_DIRECT_CLOUD_TO_LOCAL_FIRST_CLOUD_UNREACHABLE"
+                if asset_decision.route == "DIRECT_CLOUD"
+                else "DIRECT_CLOUD_TO_LOCAL_FIRST_CLOUD_UNREACHABLE"
+            )
         policy_info = dict(policy_info or {})
         policy_info.update({
             "policy_version": self.bundle.policy_version,
+            "ppo_action_index": ppo_action,
+            "ppo_action_name": ACTION_MAPPING[str(ppo_action)],
+            "asset_routing": asset_decision.to_dict(),
             "requested_action_index": requested_action,
             "requested_action_name": ACTION_MAPPING[str(requested_action)],
             "effective_action_index": effective_action,

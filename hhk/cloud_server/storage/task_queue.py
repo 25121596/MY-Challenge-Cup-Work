@@ -32,6 +32,8 @@ class TaskQueueManager:
         priority: int = 0,
         payload: dict[str, Any] | None = None,
         task_id: str | None = None,
+        deadline_at_ms: int = 0,
+        idempotency_key: str = "",
     ) -> str:
         """Push a task onto the device's queue. Returns the task_id."""
         if payload is None:
@@ -44,20 +46,28 @@ class TaskQueueManager:
             "task_id": task_id,
             "description": description,
             "priority": priority,
+            "deadline_at_ms": deadline_at_ms,
+            "enqueued_at_ms": int(time.time() * 1000),
+            "idempotency_key": idempotency_key,
             "payload": payload,
         }
         with self._lock:
             self._queues.setdefault(device_id, []).append(task)
-            # Sort by priority descending (higher = more urgent)
+            # Priority first, then earliest deadline, then FIFO. A zero
+            # deadline means best-effort and therefore sorts after deadlines.
             self._queues[device_id].sort(
-                key=lambda t: t.get("priority", 0), reverse=True
+                key=lambda t: (-t.get("priority", 0),
+                               t.get("deadline_at_ms", 0) or float("inf"),
+                               t.get("enqueued_at_ms", 0))
             )
         return task_id
 
     def drain(self, device_id: str) -> list[dict[str, Any]]:
         """Return (and remove) all pending tasks for *device_id*."""
         with self._lock:
-            tasks = self._queues.pop(device_id, [])
+            now_ms = int(time.time() * 1000)
+            tasks = [task for task in self._queues.pop(device_id, [])
+                     if not task.get("deadline_at_ms") or task["deadline_at_ms"] > now_ms]
             return list(tasks)
 
     def peek(self, device_id: str) -> list[dict[str, Any]]:

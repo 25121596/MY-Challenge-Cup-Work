@@ -8,6 +8,7 @@ from typing import Any
 from config import (
     CLOUD_ENDPOINT,
     CLOUD_METRICS_URL,
+    DEFAULT_ASSET_ROUTING_POLICY,
     DEFAULT_EDGE_INPUT_INTERVAL_S,
     DEFAULT_EDGE_INPUT,
     DEFAULT_POLICY_BUNDLE,
@@ -24,6 +25,7 @@ from config import (
     STATE_SAMPLE_TTL_S,
     VERSION,
 )
+from asset_routing_policy import AssetRoutingPolicy
 from model_client import ModelClient
 from profiling import RuntimeProfiler, TRACE_SCHEMA_VERSION
 from real_ppo_runtime import RealPPOPolicy, RealPPORuntime
@@ -46,6 +48,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--policy-bundle", default=str(DEFAULT_POLICY_BUNDLE))
     parser.add_argument("--input", default=str(DEFAULT_EDGE_INPUT))
+    parser.add_argument("--asset-routing-policy", default=str(DEFAULT_ASSET_ROUTING_POLICY))
     parser.add_argument("--limit", type=int, default=8, help="0=全部任务")
     parser.add_argument("--arrival-interval-s", type=float, default=DEFAULT_EDGE_INPUT_INTERVAL_S)
     parser.add_argument("--ignore-source-timestamps", action="store_true")
@@ -137,6 +140,7 @@ def main() -> int:
         policy_bundle=policy.bundle,
         state_provider=state_provider,
         task_manager=manager,
+        asset_routing_policy=AssetRoutingPolicy.from_json(args.asset_routing_policy),
     )
     collector = TraceCollector()
 
@@ -159,6 +163,8 @@ def main() -> int:
             "observation_names": runtime.observation_names,
             "policy_bundle": str(policy.bundle.manifest_path),
             "policy_version": policy.bundle.policy_version,
+            "asset_routing_policy": str(Path(args.asset_routing_policy).resolve()),
+            "asset_routing_policy_version": runtime.asset_routing_policy.policy_version,
             "post_edge_rule_version": policy.bundle.rule_version,
             "input_count": result.input_count,
             "submitted_count": result.submitted_count,

@@ -374,8 +374,11 @@ ClassificationResult SensorPipeline::parse_model_output(
     } else {
         r.success = false;
         r.error   = "无法解析模型输出: \"" + text + "\"";
-        r.escalate_to_cloud = true;
-        r.escalate_reason   = "FORMAT_ERROR";
+        r.review_state = "required";
+        r.review_reason = {"qwen_fallback_uncalibrated", "qwen_format_error"};
+        r.safety_priority = "P1";
+        r.action = "continue_with_review";
+        r.level = "warning";
         return r;
     }
 
@@ -393,17 +396,16 @@ ClassificationResult SensorPipeline::parse_model_output(
         r.summary = r.category_name;
     }
 
-    // Confidence: 85% default for grammar-constrained output
-    r.confidence = 0.85f;
-
-    // Escalation rules (from edge_inference.py make_output)
-    if (r.category >= 2) {
-        // Severe faults (bearing_failure=2, overheat=4) → escalate for cloud confirmation
-        r.escalate_to_cloud = true;
-        r.escalate_reason   = "HIGH_RISK";
-    } else {
-        r.escalate_to_cloud = false;
-    }
+    // A class token is an uncalibrated observation.  It cannot become a
+    // normal/fault prediction, a probability, or P0 by category alone.
+    r.local_prediction.clear();
+    r.review_state = "required";
+    r.review_reason = {"qwen_fallback_uncalibrated"};
+    r.safety_priority = "P1";
+    r.safety_trigger.clear();
+    r.action = "continue_with_review";
+    r.level = "warning";
+    r.summary = "Uncalibrated Qwen observation; cloud review required";
 
     r.success = true;
     return r;
@@ -423,7 +425,7 @@ PipelineStats SensorPipeline::compute_stats() const {
             s.success_count++;
             lats.push_back(r.latency_ms);
             if (r.latency_ms <= 200.0) s.under_200ms++;
-            if (r.escalate_to_cloud)   s.escalated_count++;
+            if (r.review_state == "required") s.review_required_count++;
             s.category_distribution[r.category]++;
         }
     }

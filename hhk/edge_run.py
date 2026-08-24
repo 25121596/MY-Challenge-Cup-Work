@@ -16,7 +16,7 @@
   python edge_run.py --data data/UCI_Hydraulic --endpoint http://127.0.0.1:8090
   python edge_run.py --data data/UCI_Hydraulic --max-samples 50
 """
-import sys, os, json, time, subprocess, csv, argparse, urllib.request
+import sys, os, json, time, subprocess, csv, argparse, urllib.request, math, hashlib
 from pathlib import Path
 
 # ══════════════════════════════════════════════════════
@@ -33,6 +33,10 @@ EDGE_IO_DIR = HHK_DIR / "edge-io-protocol"
 
 sys.path.insert(0, str(HHK_DIR))
 sys.path.insert(0, str(EDGE_IO_DIR))
+sys.path.insert(0, str(HHK_DIR / "data"))
+from decision_contract import ai4i_unscored_review_fields, compact_cloud_payload, utc_now
+from feedback_loop import append_observation, build_observation
+from routing_shadow import select_shadow
 
 DEFAULT_ENDPOINT = "http://127.0.0.1:8080"
 DEFAULT_CTX = 1024
@@ -205,7 +209,25 @@ def load_prompt_and_grammar():
     return template, grammar
 
 
-def run_inference(input_file, endpoint, max_samples=100):
+def submit_cloud_payload(payload, endpoint):
+    """Upload only the compact, program-generated escalation contract."""
+    request = urllib.request.Request(
+        endpoint,
+        data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=10) as response:
+            return {"http_status": response.status, "body": json.loads(response.read())}
+    except Exception as exc:
+        return {"error": f"{type(exc).__name__}: {exc}"}
+
+
+def run_inference(input_file, endpoint, max_samples=100, cloud_escalation_endpoint=None,
+                  feedback_log=None, routing_shadow_probability=None,
+                  routing_shadow_seed="20260823", routing_policy_version="routing-shadow-exploration/v1",
+                  routing_network=None):
     """批量短决策推理 — 复用 edge_inference.infer() 产出标准 output.json"""
     with open(input_file, "r", encoding="utf-8") as f:
         inputs = json.load(f)
@@ -214,6 +236,21 @@ def run_inference(input_file, endpoint, max_samples=100):
     import edge_inference
     edge_inference.LLAMA_SERVER = endpoint
 
+    # An explicit AI4I route must never silently fall back to Qwen when its
+    # schema or local artifact is broken.  Such a record is fail-closed and
+    # sent to review without a synthetic probability.
+    ai4i_requested = any(_declares_ai4i_route(entry) for entry in inputs[:max_samples])
+    moe = None
+    moe_init_error = None
+    if ai4i_requested:
+        try:
+            from ai4i_moe_inference import Ai4iMoeInference
+            moe = Ai4iMoeInference()
+            print("  AI4I route: 8 features -> local tabular MoE")
+        except Exception as exc:
+            moe_init_error = exc
+            print(f"  Local MoE unavailable; AI4I records will fail closed: {type(exc).__name__}")
+
     total = min(len(inputs), max_samples)
     results = []       # 标准 output.json 列表
     latencies = []
@@ -221,14 +258,80 @@ def run_inference(input_file, endpoint, max_samples=100):
     print(f"  🔮 推理中 ({total} 条, 标准输出 output.json)...")
 
     for i, entry in enumerate(inputs[:total]):
+        declared_ai4i = _declares_ai4i_route(entry)
+        started = time.perf_counter_ns()
         try:
-            r = edge_inference.infer(entry, use_grammar=True)
+            if declared_ai4i:
+                if moe is None:
+                    raise RuntimeError("AI4I local model initialization failed") from moe_init_error
+                r = {"output": moe.infer(entry), "raw_model_response": "", "route": "ai4i_tabular_moe"}
+            else:
+                r = edge_inference.infer(entry, use_grammar=True)
             out = r["output"]                       # 标准 output.json
             out["raw_model_response"] = r.get("raw_model_response", "")
+            out["route"] = r.get("route", "qwen_text")
+            if out.get("review_state") == "required" and "cloud_payload" not in out:
+                out["cloud_payload"] = compact_cloud_payload(
+                    entry, out
+                )
+            routing = None
+            if routing_shadow_probability is not None:
+                routing = select_shadow(
+                    entry, out, upload_probability=routing_shadow_probability,
+                    seed=routing_shadow_seed, policy_version=routing_policy_version,
+                    network=routing_network,
+                )
+                out["routing_shadow"] = routing
+            if cloud_escalation_endpoint and out.get("cloud_payload"):
+                out["cloud_ack"] = submit_cloud_payload(
+                    out["cloud_payload"], cloud_escalation_endpoint
+                )
+            if feedback_log:
+                append_observation(feedback_log, build_observation(
+                    entry, out, raw_model_response=out.get("raw_model_response", ""),
+                    timing=r.get("timing"), cloud_ack=out.get("cloud_ack"), routing=routing))
             results.append(out)
             latencies.append(out.get("latency_ms", 0))
-        except Exception as e:
-            results.append({"task_id": entry.get("task_id", f"T-{i}"), "error": str(e)})
+        except Exception as exc:
+            if not declared_ai4i:
+                results.append({"task_id": entry.get("task_id", f"T-{i}"), "error": str(exc)})
+                continue
+            reason = _ai4i_failure_reason(exc)
+            fields = ai4i_unscored_review_fields(entry, reason)
+            output = {
+                "task_id": entry.get("task_id", f"T-{i}"),
+                "node_id": entry.get("node_id", "edge-unknown"),
+                "observed_at": entry.get("observed_at", entry.get("timestamp")),
+                "received_at": utc_now(),
+                "decided_at": utc_now(),
+                "latency_ms": round((time.perf_counter_ns() - started) / 1_000_000, 3),
+                "decision": {
+                    "action": fields["action"],
+                    "level": "critical" if fields["action"] == "protect" else "warning",
+                    "summary": "AI4I result unavailable; fail-closed cloud review required",
+                },
+                "route": "ai4i_tabular_moe_fail_closed",
+                "execution_error": {"reason": reason, "exception_type": type(exc).__name__},
+            }
+            output.update(fields)
+            output["cloud_payload"] = compact_cloud_payload(entry, output)
+            routing = None
+            if routing_shadow_probability is not None:
+                routing = select_shadow(
+                    entry, output, upload_probability=routing_shadow_probability,
+                    seed=routing_shadow_seed, policy_version=routing_policy_version,
+                    network=routing_network,
+                )
+                output["routing_shadow"] = routing
+            if cloud_escalation_endpoint:
+                output["cloud_ack"] = submit_cloud_payload(
+                    output["cloud_payload"], cloud_escalation_endpoint
+                )
+            if feedback_log:
+                append_observation(feedback_log, build_observation(
+                    entry, output, cloud_ack=output.get("cloud_ack"), routing=routing))
+            results.append(output)
+            latencies.append(output["latency_ms"])
 
         if (i + 1) % 20 == 0:
             avg = sum(latencies) / len(latencies) if latencies else 0
@@ -256,11 +359,75 @@ def _is_standard_input_json(filepath):
         if isinstance(data, list) and len(data) > 0:
             entry = data[0]
             has_task = "task_id" in entry
-            has_readings = "readings" in entry.get("data", {})
-            return has_task and has_readings
+            data = entry.get("data", {})
+            has_readings = "readings" in data
+            has_bound_features = "features" in data and "feature_schema_id" in data
+            return has_task and (has_readings or has_bound_features)
     except (json.JSONDecodeError, Exception):
         pass
     return False
+
+
+def _declares_ai4i_route(record):
+    """Return true only for records explicitly claiming the AI4I route."""
+    data = record.get("data", {})
+    return (data.get("model_route") == "ai4i_tabular_moe_v1" or
+            data.get("feature_schema_id") == "ai4i_8d_v1")
+
+
+def _ai4i_failure_reason(exc):
+    """Map untrusted exception text into the closed protocol vocabulary."""
+    message = str(exc).lower()
+    schema_markers = (
+        "feature_schema", "model_route", "preprocessing_version", "features-only",
+        "exactly eight", "features must", "one-hot", "ground_truth",
+    )
+    return "feature_schema_mismatch" if any(marker in message for marker in schema_markers) else "model_exception"
+
+
+def _records_are_ai4i(records, max_samples):
+    """Strictly recognize the frozen AI4I eight-feature online contract."""
+    sample = records[:max_samples]
+    if not sample:
+        return False
+    for record in sample:
+        data = record.get("data", {})
+        features = data.get("features")
+        if data.get("device_id") != "milling-machine-01" or not isinstance(features, list) or len(features) != 8:
+            return False
+        if data.get("feature_schema_id") != "ai4i_8d_v1" or data.get("model_route") != "ai4i_tabular_moe_v1":
+            return False
+        schema_path = EDGE_IO_DIR / "feature_schemas" / "ai4i_8d_v1.json"
+        expected_version = "sha256:" + hashlib.sha256(schema_path.read_bytes()).hexdigest()
+        if data.get("preprocessing_version") != expected_version or "ground_truth" in data:
+            return False
+        if not all(isinstance(value, (int, float)) and math.isfinite(value) for value in features):
+            return False
+        if sum(features[:3]) != 1 or not all(value in (0, 1) for value in features[:3]):
+            return False
+    return True
+
+
+def _is_ai4i_moe_input(filepath, max_samples):
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            records = json.load(f)[:max_samples]
+        return bool(records) and all(_declares_ai4i_route(record) for record in records)
+    except (OSError, json.JSONDecodeError, TypeError):
+        return False
+
+
+def _load_routing_network(path):
+    """Load one decision-time network snapshot for a benchmark batch."""
+    if not path:
+        return None
+    with open(path, "r", encoding="utf-8") as handle:
+        value = json.load(handle)
+    if not isinstance(value, dict):
+        raise ValueError("routing network state must be a JSON object")
+    if value.get("cloud_reachable") not in (True, False):
+        raise ValueError("routing network state requires boolean cloud_reachable")
+    return value
 
 
 # ══════════════════════════════════════════════════════
@@ -278,9 +445,34 @@ def main():
     parser.add_argument("--ngl", type=int, default=DEFAULT_NGL, help="GPU 层数 (0=CPU)")
     parser.add_argument("--ctx", type=int, default=DEFAULT_CTX, help="上下文长度")
     parser.add_argument("--output", default=None, help="结果输出路径")
+    parser.add_argument("--results-output", default=None,
+                        help="path for the JSON execution report (defaults to edge_run_results.json)")
     parser.add_argument("--skip-preprocess", action="store_true",
                         help="跳过预处理，数据已是标准 input.json")
+    parser.add_argument("--latency-target-ms", type=float, default=200.0,
+                        help="completed local decision latency target")
+    parser.add_argument("--cloud-escalation-endpoint", default=None,
+                        help="optional POST endpoint, e.g. http://127.0.0.1:8080/api/v1/escalations")
+    parser.add_argument("--feedback-log", default=None,
+                        help="append version-bound edge/cloud shadow observations to JSONL")
+    parser.add_argument("--routing-shadow-probability", type=float, default=None,
+                        help="Phase-A randomized shadow probability for eligible local decisions")
+    parser.add_argument("--routing-shadow-seed", default="20260823",
+                        help="fixed seed recorded by deterministic routing exploration")
+    parser.add_argument("--routing-policy-version", default="routing-shadow-exploration/v1",
+                        help="version string recorded with every routing selection")
+    parser.add_argument("--routing-network-json", default=None,
+                        help="decision-time network JSON containing cloud_reachable")
     args = parser.parse_args()
+    if args.routing_shadow_probability is not None:
+        if not 0.0 <= args.routing_shadow_probability <= 1.0:
+            parser.error("--routing-shadow-probability must be in [0, 1]")
+        if not args.feedback_log:
+            parser.error("--routing-shadow-probability requires --feedback-log")
+    try:
+        routing_network = _load_routing_network(args.routing_network_json)
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        parser.error(f"invalid --routing-network-json: {exc}")
 
     print("=" * 60)
     print("  ⚡ 边端统一推理入口")
@@ -320,16 +512,29 @@ def main():
     # 3. 确保服务器运行
     print(f"\n{'─'*40}")
     print(f"  🖥️ 推理服务")
-    server_proc = ensure_server(args.endpoint, args.ngl, args.ctx)
-    if server_proc is False:
-        print("  ❌ 无法启动服务器, 退出")
-        return
+    ai4i_direct = _is_ai4i_moe_input(input_file, args.max_samples)
+    if ai4i_direct:
+        server_proc = None
+        print("  AI4I 8-feature contract confirmed: local MoE, 0 generated tokens; llama-server bypassed")
+    else:
+        server_proc = ensure_server(args.endpoint, args.ngl, args.ctx)
+        if server_proc is False:
+            print("  ❌ 无法启动服务器, 退出")
+            return
 
     # 4. 推理
     print(f"\n{'─'*40}")
     print(f"  🔮 短决策推理")
     try:
-        results, latencies = run_inference(input_file, args.endpoint, args.max_samples)
+        results, latencies = run_inference(
+            input_file, args.endpoint, args.max_samples,
+            cloud_escalation_endpoint=args.cloud_escalation_endpoint,
+            feedback_log=args.feedback_log,
+            routing_shadow_probability=args.routing_shadow_probability,
+            routing_shadow_seed=args.routing_shadow_seed,
+            routing_policy_version=args.routing_policy_version,
+            routing_network=routing_network,
+        )
     finally:
         # 如果我们启动了服务器, 结束后关闭
         if server_proc and server_proc is not None:
@@ -343,15 +548,15 @@ def main():
     if latencies:
         avg_lat = sum(latencies) / len(latencies)
         p95 = sorted(latencies)[int(len(latencies) * 0.95)]
-        within_200 = sum(1 for l in latencies if l <= 200)
-        escalated = sum(1 for r in results if r.get("escalate_to_cloud"))
+        within_target = sum(1 for l in latencies if l <= args.latency_target_ms)
+        escalated = sum(1 for r in results if r.get("review_state") == "required")
 
         print(f"  请求数:     {len(results)}")
         print(f"  成功数:     {sum(1 for r in results if 'error' not in r)}")
-        print(f"  平均时延:   {avg_lat:.1f} ms")
-        print(f"  P95 时延:   {p95:.1f} ms")
-        print(f"  200ms达标:  {within_200}/{len(latencies)} ({within_200/len(latencies)*100:.0f}%)")
-        print(f"  甩云建议:   {escalated}/{len(results)} ({escalated/max(len(results),1)*100:.0f}%)")
+        print(f"  平均时延:   {avg_lat:.3f} ms")
+        print(f"  P95 时延:   {p95:.3f} ms")
+        print(f"  {args.latency_target_ms:g}ms达标:  {within_target}/{len(latencies)} ({within_target/len(latencies)*100:.0f}%)")
+        print(f"  需要复核:   {escalated}/{len(results)} ({escalated/max(len(results),1)*100:.0f}%)")
 
         # 决策分布 (从标准 output 的 decision.action 提取)
         from collections import Counter
@@ -362,9 +567,10 @@ def main():
             print(f"    {name:<12}: {cnt}")
 
     # 保存结果
-    result_file = str(HHK_DIR / "edge_run_results.json")
+    result_file = args.results_output or str(HHK_DIR / "edge_run_results.json")
     with open(result_file, "w", encoding="utf-8") as f:
-        json.dump({"latency_avg_ms": round(avg_lat, 1) if latencies else 0,
+        json.dump({"measurement_scope": "per-record local inference output latency; excludes HTTP upload, cloud queueing, cloud inference, and cloud response",
+                   "latency_avg_ms": round(avg_lat, 3) if latencies else 0,
                    "total": len(results), "results": results},
                   f, ensure_ascii=False, indent=2)
     print(f"\n  📄 详细结果: {result_file}")

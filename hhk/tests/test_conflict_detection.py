@@ -29,16 +29,18 @@ sys.path.insert(0, str(HHK_DIR / "edge-io-protocol"))
 import edge_inference as ei
 
 
-def node_decision(node_id, category, confidence=85, request_cloud=0):
-    """用真实的 make_output 生成一个节点决策 (纯函数, 无网络)。"""
+def node_decision(node_id, category):
+    """Generate an uncalibrated Qwen observation (pure function, no network)."""
     return ei.make_output(
         task_id=f"T-{node_id}",
         node_id=node_id,
         category=category,
-        confidence=confidence,
-        request_cloud=request_cloud,
         latency_ms=10.0,
     )
+
+
+def provisional_category(output):
+    return output["decision"]["provisional_category"]["code"]
 
 
 def detect_conflicts(outputs):
@@ -59,7 +61,7 @@ def detect_conflicts(outputs):
         reports[zone] = {
             "nodes": len(outs),
             "distinct_decisions": len(hashes),
-            "categories": [o["decision"]["category"] for o in outs],
+            "categories": [provisional_category(o) for o in outs],
             "conflict": conflict,
         }
     return reports, conflict_zones, len(by_zone)
@@ -70,7 +72,7 @@ def majority_arbiter(outputs):
 
     resolvable = 存在唯一严格多数 (票数 > 半数)。否则需甩云裁决。
     """
-    cats = [o["decision"]["category"] for o in outputs]
+    cats = [provisional_category(o) for o in outputs]
     counts = Counter(cats)
     top_cat, top_n = counts.most_common(1)[0]
     tie = sum(1 for c, n in counts.items() if n == top_n) > 1
@@ -126,14 +128,14 @@ def test_arbiter():
         node_decision("edge-zoneB-03", 2),
     ]
     resolved, resolvable = majority_arbiter(outs)
-    print(f"  投票={[o['decision']['category'] for o in outs]} "
+    print(f"  投票={[provisional_category(o) for o in outs]} "
           f"-> 仲裁类别={resolved} 可本地解决={resolvable}")
     ok = check("多数决可解决 (类别1 严格多数)", resolvable is True and resolved == 1)
 
     # 平票场景 [1,2] -> 不可本地解决 -> 应甩云
     outs2 = [node_decision("edge-zoneC-01", 1), node_decision("edge-zoneC-02", 2)]
     _, resolvable2 = majority_arbiter(outs2)
-    print(f"  投票={[o['decision']['category'] for o in outs2]} "
+    print(f"  投票={[provisional_category(o) for o in outs2]} "
           f"-> 可本地解决={resolvable2} (平票应甩云)")
     ok &= check("平票场景不可本地解决 (交云端裁决)", resolvable2 is False)
     return ok

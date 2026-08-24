@@ -33,12 +33,16 @@ struct ClassificationResult {
     int    batch_index      = -1;
     int    category         = -1;    // 0-6, -1 on error
     std::string category_name;       // "正常", "轴承磨损", ...
-    std::string action;              // normal/warning/alert/maintain/shutdown
+    std::string action;              // protect / continue_with_review / continue
     std::string level;               // info/warning/critical
     std::string summary;             // human-readable diagnosis
-    float   confidence       = 0.0f;
-    bool    escalate_to_cloud = false;
-    std::string escalate_reason;
+    // This native path emits a Qwen class token. It has no retained-set
+    // calibration, so it never manufactures a probability or confidence.
+    std::string local_prediction;    // empty for uncalibrated Qwen
+    std::string review_state;        // required / not_required
+    std::vector<std::string> review_reason;
+    std::string safety_priority;     // P0 / P1 / P2 safety urgency only
+    std::string safety_trigger;
     double  latency_ms       = 0.0;
     std::string raw_output;          // raw model response (for debug)
     std::string error;               // set on failure
@@ -53,7 +57,7 @@ struct PipelineStats {
     double avg_latency_ms  = 0.0;
     double p95_latency_ms  = 0.0;
     int    under_200ms     = 0;
-    int    escalated_count = 0;
+    int    review_required_count = 0;
     std::map<int, int> category_distribution;
 };
 

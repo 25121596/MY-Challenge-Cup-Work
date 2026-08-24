@@ -108,6 +108,12 @@ profile-based. This mode is therefore partially evidence-replayed, not a fully
 real-calibrated simulator. The pre-route observation remains 24D and never
 contains `failure_probability`.
 
+For real HHK `edge-output/v3` integration, `failure_probability` remains a
+risk probability and is not converted to confidence. The shared evaluator uses
+`review_state=required` to request `CLOUD_REVIEW` and can accept a calibrated
+AI4I result with `review_state=not_required`. This preserves compatibility for
+legacy simulated confidence rows while keeping the two semantics separate.
+
 ## Policy bundle
 
 `train_ppo.py` publishes a complete release bundle containing:

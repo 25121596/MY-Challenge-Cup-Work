@@ -1,138 +1,64 @@
 {
-  "$schema": "边端模型输出格式 v1.0",
-  "description": "模型推理完成后返回的结果格式，下游系统（SCADA、报警、云端）直接消费",
-
+  "$schema": "edge-output/v3",
+  "description": "Auditable edge decision contract. Model risk, review routing, safety urgency, and action are separate concepts.",
+  "required": [
+    "task_id", "node_id", "observed_at", "received_at", "decided_at", "latency_ms", "decision",
+    "local_prediction", "failure_probability", "calibration_version", "feature_schema_id", "model_route",
+    "model_version", "policy_version", "threshold_used", "threshold_review_margin", "review_state", "review_reason",
+    "safety_priority", "safety_trigger", "action"
+  ],
   "fields": {
-    "task_id": {
-      "type": "string",
-      "required": true,
-      "说明": "关联输入的任务编号"
-    },
-    "node_id": {
-      "type": "string",
-      "required": true,
-      "说明": "执行推理的边缘节点"
-    },
-    "timestamp": {
-      "type": "string(ISO8601)",
-      "required": true,
-      "说明": "推理完成时间"
-    },
-    "latency_ms": {
-      "type": "float",
-      "required": true,
-      "说明": "本次推理实际耗时（毫秒），用于监控 ≤200ms 指标"
-    },
-    "decision": {
-      "type": "object",
-      "required": true,
-      "fields": {
-        "action": {
-          "type": "enum",
-          "说明": "结论动作",
-          "options": [
-            "normal",      // 正常，无需处理
-            "warning",     // 警告，需注意
-            "alert",       // 报警，需立即响应
-            "maintain",    // 建议维护
-            "shutdown"     // 建议停机
-          ]
-        },
-        "level": {
-          "type": "enum",
-          "说明": "严重程度",
-          "options": ["info", "warning", "critical"]
-        },
-        "summary": {
-          "type": "string",
-          "说明": "一句话结论，给人看的摘要"
-        },
-        "detail": {
-          "type": "object",
-          "说明": "详细诊断结果，内容随 task_type 不同",
-          "fields": {
-            "root_cause": "根因分析",
-            "evidence": ["支撑结论的关键证据列表"],
-            "recommendation": "具体操作建议"
-          }
-        }
-      }
-    },
-    "confidence": {
-      "type": "float(0-1)",
-      "required": true,
-      "说明": "模型对结论的置信度。低于阈值则甩给云端二次确认"
-    },
-    "escalate_to_cloud": {
-      "type": "boolean",
-      "required": true,
-      "说明": "是否需要甩给云端大模型重新推理。confidence < 阈值 或 action=critical 时通常为 true"
-    },
-    "escalate_reason": {
-      "type": "string",
-      "required": false,
-      "说明": "甩给云端的原因（方便日志追踪）"
-    },
-    "consistency": {
-      "type": "object",
-      "required": false,
-      "说明": "多节点一致性校验用（同一区域有多个边缘节点时才填）",
-      "fields": {
-        "decision_hash": "决策的 SHA256 哈希值，用于多节点对比检测冲突",
-        "zone": "区域标识",
-        "node_count": "同一区域内边缘节点总数"
-      }
-    }
+    "task_id": {"type": "string", "description": "Input correlation identifier."},
+    "node_id": {"type": "string", "description": "Edge node that made the decision."},
+    "observed_at": {"type": "RFC3339 timestamp", "description": "When the source observation was made."},
+    "received_at": {"type": "RFC3339 timestamp", "description": "When the edge path accepted it."},
+    "decided_at": {"type": "RFC3339 timestamp", "description": "When the edge path completed its local decision."},
+    "latency_ms": {"type": "number", "description": "Edge-local processing only; it excludes network, cloud queueing, and cloud inference."},
+    "local_prediction": {"type": ["normal", "fault", "null"], "description": "AI4I only: normal iff calibrated failure_probability <= threshold_used. Null for uncalibrated Qwen."},
+    "raw_logit": {"type": ["number", "null"], "description": "Uncalibrated AI4I model score retained for later recalibration; null for Qwen."},
+    "failure_probability": {"type": ["number", "null"], "range": [0, 1], "description": "Calibrated P(failure) for AI4I. Null for Qwen until independently calibrated."},
+    "calibration_version": {"type": ["string", "null"], "description": "Calibration artifact version; null means that no probability is claimed."},
+    "feature_schema_id": {"type": ["string", "null"], "description": "Frozen feature contract used by the model route."},
+    "model_route": {"type": "string", "options": ["ai4i_tabular_moe_v1", "qwen_text_fallback_v1"]},
+    "model_version": {"type": "string"},
+    "policy_version": {"type": "string"},
+    "threshold_used": {"type": ["number", "null"], "description": "The calibrated normal-accept threshold; not a safety threshold."},
+    "threshold_review_margin": {"type": ["number", "null"], "range": [0, 1], "description": "Versioned operational review band around threshold_used. It is not a probability or confidence value."},
+    "review_state": {"type": "enum", "options": ["required", "not_required"]},
+    "review_reason": {"type": "array[string]", "description": "Machine-readable reason for review. Qwen fallback is always required until calibrated."},
+    "safety_priority": {"type": "enum", "options": ["P0", "P1", "P2"], "description": "Safety urgency only, never a business priority."},
+    "safety_trigger": {"type": ["string", "null"], "description": "P0 requires a hard trigger such as emergency_stop or interlock_trip."},
+    "action": {"type": "enum", "options": ["protect", "continue_with_review", "continue"]},
+    "decision": {"type": "object", "description": "Human-facing local result. For Qwen it contains an explicitly provisional class observation only."},
+    "consistency": {"type": "object", "required": false, "description": "Optional multi-node comparison metadata."}
   },
-
+  "invariants": [
+    "There is no confidence field.",
+    "suspected is a review workflow state, not a model class.",
+    "P0 is permitted only with a hard safety_trigger; model probability or a Qwen class cannot create P0.",
+    "A positive threshold_review_margin may require review around the calibrated decision boundary without changing local_prediction.",
+    "Qwen fallback sets failure_probability, calibration_version, feature_schema_id, threshold_used, and threshold_review_margin to null and review_state to required."
+  ],
   "examples": {
-    "故障诊断(高置信度)": {
-      "task_id": "T-001",
-      "node_id": "edge-workshop3",
-      "timestamp": "2026-07-15T14:30:00.148",
-      "latency_ms": 145,
-      "decision": {
-        "action": "alert",
-        "level": "critical",
-        "summary": "电机A01振动严重超标，疑似轴承磨损，建议立即停机检修",
-        "detail": {
-          "root_cause": "轴承长时间未维护导致磨损加剧，产生异常振动",
-          "evidence": [
-            "振动值5.1mm/s，超出报警值4.5mm/s",
-            "轴承温度85°C，远超正常值65°C",
-            "三相电流不平衡度8%，存在电气故障风险"
-          ],
-          "recommendation": "1.立即停机 2.检查轴承磨损情况 3.更换轴承后重新对中 4.三天后复查振动数据"
-        }
-      },
-      "confidence": 0.92,
-      "escalate_to_cloud": false,
-      "consistency": {
-        "decision_hash": "sha256:a1b2c3...",
-        "zone": "workshop-3"
-      }
+    "calibrated_ai4i": {
+      "local_prediction": "normal",
+      "failure_probability": 0.021,
+      "calibration_version": "ai4i_platt_v1",
+      "feature_schema_id": "ai4i_8d_v1",
+      "threshold_review_margin": 0.0,
+      "review_state": "not_required",
+      "safety_priority": "P2",
+      "action": "continue"
     },
-    "故障诊断(低置信度→甩云端)": {
-      "task_id": "T-003",
-      "node_id": "edge-workshop1",
-      "timestamp": "2026-07-15T14:35:00.180",
-      "latency_ms": 178,
-      "decision": {
-        "action": "warning",
-        "level": "warning",
-        "summary": "设备存在异常趋势但原因不明确，已上报云端分析",
-        "detail": {
-          "root_cause": "待云端确认",
-          "evidence": ["电流小幅波动", "噪声增加但未超阈值"],
-          "recommendation": "继续监测，等待云端分析结果"
-        }
-      },
-      "confidence": 0.52,
-      "escalate_to_cloud": true,
-      "escalate_reason": "置信度0.52低于阈值0.75，症状模糊需云端深度分析",
-      "consistency": {
-        "decision_hash": "sha256:d4e5f6..."
-      }
+    "uncalibrated_qwen": {
+      "local_prediction": null,
+      "failure_probability": null,
+      "calibration_version": null,
+      "threshold_review_margin": null,
+      "review_state": "required",
+      "review_reason": ["qwen_fallback_uncalibrated"],
+      "safety_priority": "P1",
+      "action": "continue_with_review"
     }
   }
 }

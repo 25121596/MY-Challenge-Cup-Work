@@ -99,6 +99,9 @@ class Config:
     low_tps_threshold: float = field(
         default_factory=lambda: _env_float("LOW_TPS_THRESHOLD", 10.0)
     )
+    max_escalation_queue: int = field(
+        default_factory=lambda: _env_int("MAX_ESCALATION_QUEUE", 1000)
+    )
 
     # --- LoRA updates ---
     lora_base_url: str = field(
