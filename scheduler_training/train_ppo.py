@@ -13,6 +13,11 @@ from stable_baselines3.common.env_checker import check_env
 from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3.common.monitor import Monitor
 
+from experiment_scenarios import (
+    DEFAULT_SCENARIO_FILES,
+    ExperimentScenario,
+    load_experiment_scenarios,
+)
 from observation import OBSERVATION_NAMES
 from policy_bundle import publish_policy_bundle
 from post_edge_policy import DEFAULT_RULES_PATH, PostEdgePolicy
@@ -31,6 +36,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--device", choices=["cpu", "auto"], default="cpu")
     parser.add_argument("--output", default="models/checkpoints/pre_route_v2/pre_route_ppo")
     parser.add_argument("--release-dir", default="models/releases/pre_route_v2")
+    parser.add_argument(
+        "--results-prefix",
+        default=None,
+        help="可选结果文件前缀；用于避免多次实验覆盖同名CSV/JSON",
+    )
     parser.add_argument("--policy-version", default="pre-route-ppo-v2")
     parser.add_argument("--post-edge-rules", default=str(DEFAULT_RULES_PATH))
     parser.add_argument("--queue-policy", choices=["edf", "fifo"], default="edf")
@@ -59,6 +69,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--edge-compute-penalty-weight", type=float, default=0.05)
     parser.add_argument("--cloud-compute-penalty-weight", type=float, default=0.05)
     parser.add_argument("--eval-episodes", type=int, default=20)
+    scenario_group = parser.add_mutually_exclusive_group()
+    scenario_group.add_argument(
+        "--standard-scenarios",
+        action="store_true",
+        help="按配置权重跨normal_load/edge_burst/weak_network训练",
+    )
+    scenario_group.add_argument(
+        "--scenario-files",
+        nargs="+",
+        help="显式指定一个或多个scheduler-experiment-scenario/1.0 JSON",
+    )
     return parser.parse_args()
 
 
@@ -71,6 +92,8 @@ def validate_args(args: argparse.Namespace) -> None:
         raise ValueError("eval-episodes必须大于0")
     if not args.policy_version.strip():
         raise ValueError("policy-version不能为空")
+    if (args.standard_scenarios or args.scenario_files) and args.task_source != "typed_simulation":
+        raise ValueError("跨场景PPO训练不能与edge_input或hhk_v2_replay任务源混用")
     PostEdgePolicy.from_json(args.post_edge_rules)
     if args.task_source in {"edge_input", "hhk_v2_replay"}:
         if not args.edge_input_path:
@@ -84,7 +107,21 @@ def validate_args(args: argparse.Namespace) -> None:
             raise FileNotFoundError(args.edge_result_path)
 
 
-def create_env(seed: int, args: argparse.Namespace) -> CloudEdgeGymEnv:
+def load_training_scenarios(
+    args: argparse.Namespace,
+) -> tuple[ExperimentScenario, ...] | None:
+    if args.standard_scenarios:
+        return load_experiment_scenarios(DEFAULT_SCENARIO_FILES)
+    if args.scenario_files:
+        return load_experiment_scenarios(args.scenario_files)
+    return None
+
+
+def create_env(
+    seed: int,
+    args: argparse.Namespace,
+    experiment_scenarios: tuple[ExperimentScenario, ...] | None = None,
+) -> CloudEdgeGymEnv:
     return CloudEdgeGymEnv(
         seed=seed,
         episode_steps=args.episode_steps,
@@ -104,24 +141,30 @@ def create_env(seed: int, args: argparse.Namespace) -> CloudEdgeGymEnv:
         edge_compute_penalty_weight=args.edge_compute_penalty_weight,
         cloud_compute_penalty_weight=args.cloud_compute_penalty_weight,
         post_edge_rules_path=args.post_edge_rules,
+        experiment_scenarios=experiment_scenarios,
     )
 
 
 def main() -> None:
     args = parse_args()
     validate_args(args)
+    experiment_scenarios = load_training_scenarios(args)
     torch.set_num_threads(args.torch_threads)
     output_path = Path(args.output)
+    results_prefix = args.results_prefix or output_path.stem
     output_path.parent.mkdir(parents=True, exist_ok=True)
     results_dir = Path("results")
     results_dir.mkdir(parents=True, exist_ok=True)
 
-    checker = create_env(args.seed, args)
+    checker = create_env(args.seed, args, experiment_scenarios)
     check_env(checker, warn=True, skip_render_check=True)
     checker.close()
 
-    monitor_path = results_dir / f"{output_path.stem}_monitor.csv"
-    training_env = Monitor(create_env(args.seed, args), filename=str(monitor_path))
+    monitor_path = results_dir / f"{results_prefix}_monitor.csv"
+    training_env = Monitor(
+        create_env(args.seed, args, experiment_scenarios),
+        filename=str(monitor_path),
+    )
     model = PPO(
         "MlpPolicy",
         training_env,
@@ -140,14 +183,17 @@ def main() -> None:
     )
     print(
         f"开始Phase4.5 PPO训练：actions=2, queue={args.queue_policy}, "
-        f"task_source={args.task_source}, slot={args.slot_duration}s, "
+        f"task_source={args.task_source}, "
+        f"scenarios={'legacy_cli' if experiment_scenarios is None else ','.join(s.scenario_id for s in experiment_scenarios)}, "
         f"obs={len(OBSERVATION_NAMES)}维"
     )
     model.learn(total_timesteps=args.timesteps, reset_num_timesteps=True)
     actual_timesteps = int(model.num_timesteps)
     model.save(str(output_path))
 
-    evaluation_env = Monitor(create_env(args.seed + 10_000, args))
+    evaluation_env = Monitor(
+        create_env(args.seed + 10_000, args, experiment_scenarios)
+    )
     mean_reward, std_reward = evaluate_policy(
         model,
         evaluation_env,
@@ -158,14 +204,23 @@ def main() -> None:
     training_env.close()
 
     replay_report = None
-    report_env = create_env(args.seed, args)
+    report_env = create_env(args.seed, args, experiment_scenarios)
     _, report_info = report_env.reset()
     replay_report = report_info.get("hhk_v2_replay")
     report_env.close()
     calibration_status = (
         "partial_hhk_v2_ai4i_edge_result_replay"
         if replay_report is not None
-        else "legacy_parameters_not_real_calibrated"
+        else (
+            "versioned_experiment_scenarios_not_real_calibrated"
+            if experiment_scenarios is not None
+            else "legacy_parameters_not_real_calibrated"
+        )
+    )
+    scenario_metadata = (
+        []
+        if experiment_scenarios is None
+        else [scenario.to_metadata() for scenario in experiment_scenarios]
     )
     metadata = {
         "phase": "4.5",
@@ -183,17 +238,18 @@ def main() -> None:
         "actual_timesteps": actual_timesteps,
         "observation_names": OBSERVATION_NAMES,
         "environment": vars(args),
+        "experiment_scenarios": scenario_metadata,
         "task_profiles": profiles_as_dict(),
         "hhk_v2_replay_report": replay_report,
     }
-    with (results_dir / f"{output_path.stem}_metadata.json").open(
+    with (results_dir / f"{results_prefix}_metadata.json").open(
         "w", encoding="utf-8"
     ) as file:
         json.dump(metadata, file, ensure_ascii=False, indent=2)
     pd.DataFrame(
         [{"mean_reward": mean_reward, "std_reward": std_reward}]
     ).to_csv(
-        results_dir / f"{output_path.stem}_evaluation.csv",
+        results_dir / f"{results_prefix}_evaluation.csv",
         index=False,
         encoding="utf-8-sig",
     )
@@ -210,14 +266,20 @@ def main() -> None:
             "mean_eval_reward": float(mean_reward),
             "std_eval_reward": float(std_reward),
             "environment": vars(args),
+            "experiment_scenarios": scenario_metadata,
         },
         calibration_metadata={
             "calibration_status": calibration_status,
             "scope": (
                 "HHK V2 AI4I matched edge-result replay; network, cloud and resource dynamics remain simulated"
                 if replay_report is not None
-                else "legacy simulator parameters"
+                else (
+                    "versioned scenario simulation; not real-system calibrated"
+                    if experiment_scenarios is not None
+                    else "legacy simulator parameters"
+                )
             ),
+            "experiment_scenarios": scenario_metadata,
             "hhk_v2_replay_report": replay_report,
         },
     )

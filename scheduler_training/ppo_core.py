@@ -13,6 +13,11 @@ from typing import Any
 
 import numpy as np
 
+from experiment_scenarios import (
+    ExperimentScenario,
+    scenario_simulator_kwargs,
+    select_training_scenario,
+)
 from models import Action, PPO_ACTION_TO_ROUTE
 from observation import build_observation
 from scheduler import RuleScheduler
@@ -45,11 +50,16 @@ class CloudEdgePPOCore:
         edge_input_interval_s: float = 0.05,
         ppo_reward_scale: float = 0.05,
         post_edge_rules_path: str | None = None,
+        experiment_scenarios: tuple[ExperimentScenario, ...] | None = None,
     ) -> None:
         if episode_steps <= 0:
             raise ValueError("episode_steps必须大于0")
         if ppo_reward_scale <= 0:
             raise ValueError("ppo_reward_scale必须大于0")
+        if experiment_scenarios is not None and not experiment_scenarios:
+            raise ValueError("experiment_scenarios不能为空")
+        if experiment_scenarios is not None and task_source != "typed_simulation":
+            raise ValueError("跨场景PPO训练只支持typed_simulation任务源")
         self.base_seed = seed
         self.episode_steps = episode_steps
         self.arrival_probability = arrival_probability
@@ -73,8 +83,10 @@ class CloudEdgePPOCore:
         self.edge_input_interval_s = edge_input_interval_s
         self.ppo_reward_scale = float(ppo_reward_scale)
         self.post_edge_rules_path = post_edge_rules_path
+        self.experiment_scenarios = experiment_scenarios
 
         self.simulator: CloudEdgeSimulator | None = None
+        self.active_scenario: ExperimentScenario | None = None
         self.context: dict | None = None
         self.decision_step = 0
         self.episode_index = 0
@@ -105,6 +117,15 @@ class CloudEdgePPOCore:
         )
         if self.post_edge_rules_path is not None:
             simulator_kwargs["post_edge_rules_path"] = self.post_edge_rules_path
+        self.active_scenario = None
+        if self.experiment_scenarios is not None:
+            self.active_scenario = select_training_scenario(
+                self.experiment_scenarios,
+                seed=seed,
+            )
+            simulator_kwargs.update(
+                scenario_simulator_kwargs(self.active_scenario, seed=seed)
+            )
         return CloudEdgeSimulator(**simulator_kwargs)
 
     def _advance_to_decision(self) -> tuple[dict | None, float, dict[str, Any]]:
@@ -126,14 +147,31 @@ class CloudEdgePPOCore:
         observation = build_observation(None if self.context is None else self.context["task"], state)
         report = self.simulator.edge_input_load_report
         replay_report = self.simulator.hhk_v2_replay_report
+        effective_slot_duration = (
+            self.slot_duration
+            if self.active_scenario is None
+            else self.active_scenario.slot_duration_s
+        )
         return observation, {
             "episode_seed": episode_seed,
+            "scenario_id": (
+                "legacy_cli"
+                if self.active_scenario is None
+                else self.active_scenario.scenario_id
+            ),
+            "scenario_source": (
+                "command_line"
+                if self.active_scenario is None
+                else self.active_scenario.source_path
+            ),
             "queue_policy": self.queue_policy,
-            "task_source": self.task_source,
+            "task_source": self.simulator.task_source,
             "time_engine": "continuous_event",
             "initial_advanced_time_s": advance_info.get("advanced_time_s", 0.0),
             # Kept for old logging scripts; it is now only a reporting equivalent.
-            "initial_idle_slots": int(round(advance_info.get("advanced_time_s", 0.0) / self.slot_duration)),
+            "initial_idle_slots": int(
+                round(advance_info.get("advanced_time_s", 0.0) / effective_slot_duration)
+            ),
             "edge_inputs_loaded": 0 if report is None else report.loaded_count,
             "hhk_v2_replay": None if replay_report is None else replay_report.to_dict(),
         }
@@ -194,8 +232,22 @@ class CloudEdgePPOCore:
             "completed_task_ids": advance_info.get("completed_task_ids", []),
             "timeout_task_ids": advance_info.get("timeout_task_ids", []),
             # Backward-compatible reporting field, not a simulation engine counter.
-            "idle_slots_advanced": int(round(float(advance_info.get("advanced_time_s", 0.0)) / self.slot_duration)),
+            "idle_slots_advanced": int(
+                round(
+                    float(advance_info.get("advanced_time_s", 0.0))
+                    / (
+                        self.slot_duration
+                        if self.active_scenario is None
+                        else self.active_scenario.slot_duration_s
+                    )
+                )
+            ),
             "cumulative_reward": self.simulator.cumulative_reward,
+            "scenario_id": (
+                "legacy_cli"
+                if self.active_scenario is None
+                else self.active_scenario.scenario_id
+            ),
         }
         if terminated or truncated:
             info["episode_summary"] = self.simulator.get_metrics()
