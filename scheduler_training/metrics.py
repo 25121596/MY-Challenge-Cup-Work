@@ -57,6 +57,9 @@ class MetricsTracker:
         if records.empty:
             average_reward = cumulative_reward = 0.0
             average_edge_queue = average_cloud_queue = 0.0
+            max_edge_queue = max_cloud_queue = 0.0
+            average_edge_workload = average_cloud_workload = 0.0
+            max_edge_workload = max_cloud_workload = 0.0
             edge_ratio = cloud_ratio = collaborative_ratio = 0.0
             local_first_ratio = direct_cloud_ratio = 0.0
             average_deadline_ratio = upload_mb = 0.0
@@ -78,6 +81,12 @@ class MetricsTracker:
             cumulative_reward = float(records["cumulative_reward"].iloc[-1])
             average_edge_queue = float(records["edge_queue"].mean())
             average_cloud_queue = float(records["cloud_queue"].mean())
+            max_edge_queue = float(records["edge_queue"].max())
+            max_cloud_queue = float(records["cloud_queue"].max())
+            average_edge_workload = float(records["edge_workload_s"].mean())
+            average_cloud_workload = float(records["cloud_workload_s"].mean())
+            max_edge_workload = float(records["edge_workload_s"].max())
+            max_cloud_workload = float(records["cloud_workload_s"].max())
             average_deadline_ratio = float(records["deadline_ratio"].mean())
 
         latency_p50 = self._quantile(successful, "latency_s", 0.50)
@@ -93,10 +102,20 @@ class MetricsTracker:
         )
         action_ratio_sum = edge_ratio + cloud_ratio + collaborative_ratio
         decision_consistency = float("nan")
+        post_edge_review_tasks = 0
+        post_edge_accept_tasks = 0
         if not finished.empty and "scheduler_matches_producer_review" in finished:
             comparable = finished["scheduler_matches_producer_review"].dropna()
             if not comparable.empty:
                 decision_consistency = float(comparable.astype(bool).mean())
+        if not finished.empty and "post_edge_decision" in finished:
+            post_edge_review_tasks = int(
+                (finished["post_edge_decision"] == "CLOUD_REVIEW").sum()
+            )
+            post_edge_accept_tasks = int(
+                (finished["post_edge_decision"] == "ACCEPT_EDGE").sum()
+            )
+        post_edge_evaluated_tasks = post_edge_review_tasks + post_edge_accept_tasks
 
         return {
             "generated_tasks": generated_tasks,
@@ -121,6 +140,12 @@ class MetricsTracker:
             "cumulative_reward": cumulative_reward,
             "average_edge_queue": average_edge_queue,
             "average_cloud_queue": average_cloud_queue,
+            "max_edge_queue": max_edge_queue,
+            "max_cloud_queue": max_cloud_queue,
+            "average_edge_workload_s": average_edge_workload,
+            "average_cloud_workload_s": average_cloud_workload,
+            "max_edge_workload_s": max_edge_workload,
+            "max_cloud_workload_s": max_cloud_workload,
             "edge_ratio": edge_ratio,
             "cloud_ratio": cloud_ratio,
             "collaborative_ratio": collaborative_ratio,
@@ -128,6 +153,13 @@ class MetricsTracker:
             "direct_cloud_ratio": direct_cloud_ratio,
             "action_ratio_sum": action_ratio_sum,
             "upload_mb": upload_mb,
+            "post_edge_review_tasks": post_edge_review_tasks,
+            "post_edge_accept_tasks": post_edge_accept_tasks,
+            "post_edge_evaluated_tasks": post_edge_evaluated_tasks,
+            "cloud_review_ratio": post_edge_review_tasks / max(generated_tasks, 1),
+            "post_edge_review_ratio": (
+                post_edge_review_tasks / max(post_edge_evaluated_tasks, 1)
+            ),
             "post_edge_producer_consistency_rate": decision_consistency,
             "in_system_tasks": in_system_tasks,
         }

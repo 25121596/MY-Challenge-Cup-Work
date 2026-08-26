@@ -68,7 +68,7 @@ class HhkV2ReplayTests(unittest.TestCase):
         review, _, _ = load_hhk_v2_evidence_for_test(policy, task, _result("b", 0.08, "required"))
         self.assertEqual(accept.decision, PostEdgeDecision.ACCEPT_EDGE)
         self.assertEqual(review.decision, PostEdgeDecision.CLOUD_REVIEW)
-        self.assertEqual(review.reason, "HIGH_FAILURE_PROBABILITY")
+        self.assertEqual(review.reason, "EDGE_REVIEW_REQUIRED")
         legacy = PostEdgePolicy.from_json(
             Path(__file__).resolve().parents[1] / "config" / "post_edge_rules_v1.json"
         )
@@ -94,7 +94,7 @@ class HhkV2ReplayTests(unittest.TestCase):
             completed = simulator.get_completed_tasks().set_index("external_task_id")
             self.assertEqual(completed.loc["a", "route"], "EDGE")
             self.assertEqual(completed.loc["b", "route"], "COLLABORATIVE")
-            self.assertEqual(completed.loc["b", "post_edge_reason"], "HIGH_FAILURE_PROBABILITY")
+            self.assertEqual(completed.loc["b", "post_edge_reason"], "EDGE_REVIEW_REQUIRED")
             self.assertEqual(simulator.get_metrics()["post_edge_producer_consistency_rate"], 1.0)
 
 

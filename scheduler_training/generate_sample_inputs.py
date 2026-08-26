@@ -1,4 +1,8 @@
-"""生成包含8类任务的边端标准input样例。"""
+"""生成包含8类任务的边端标准input样例。
+
+样例只包含Pre-route决策时已经存在的信息，不预置尚未执行边端推理才能得到的
+置信度。仿真所需的边端置信度由任务类型先验在输入适配阶段补齐。
+"""
 
 from datetime import datetime, timedelta
 import json
@@ -36,15 +40,6 @@ def main() -> None:
                         profile.payload_max_mb,
                     ),
                     5,
-                ),
-                "estimated_edge_confidence": round(
-                    float(
-                        rng.uniform(
-                            profile.edge_confidence_min,
-                            profile.edge_confidence_max,
-                        )
-                    ),
-                    3,
                 ),
                 "data": {
                     "device_id": f"device-{index % 20:02d}",

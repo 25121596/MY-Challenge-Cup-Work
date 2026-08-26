@@ -7,7 +7,6 @@
     "priority": "high",
     "max_latency_ms": 213,
     "payload_size_mb": 0.21218,
-    "estimated_edge_confidence": 0.742,
     "data": {
       "device_id": "device-00",
       "device_type": "industrial_device",
@@ -27,7 +26,6 @@
     "priority": "high",
     "max_latency_ms": 274,
     "payload_size_mb": 0.61442,
-    "estimated_edge_confidence": 0.663,
     "data": {
       "device_id": "device-01",
       "device_type": "industrial_device",
@@ -47,7 +45,6 @@
     "priority": "high",
     "max_latency_ms": 170,
     "payload_size_mb": 0.18258,
-    "estimated_edge_confidence": 0.737,
     "data": {
       "device_id": "device-02",
       "device_type": "industrial_device",
@@ -67,7 +64,6 @@
     "priority": "medium",
     "max_latency_ms": 464,
     "payload_size_mb": 0.09554,
-    "estimated_edge_confidence": 0.634,
     "data": {
       "device_id": "device-03",
       "device_type": "industrial_device",
@@ -87,7 +83,6 @@
     "priority": "low",
     "max_latency_ms": 126,
     "payload_size_mb": 0.02717,
-    "estimated_edge_confidence": 0.923,
     "data": {
       "device_id": "device-04",
       "device_type": "industrial_device",
@@ -107,7 +102,6 @@
     "priority": "medium",
     "max_latency_ms": 715,
     "payload_size_mb": 0.07675,
-    "estimated_edge_confidence": 0.679,
     "data": {
       "device_id": "device-05",
       "device_type": "industrial_device",
@@ -127,7 +121,6 @@
     "priority": "high",
     "max_latency_ms": 193,
     "payload_size_mb": 0.18689,
-    "estimated_edge_confidence": 0.637,
     "data": {
       "device_id": "device-06",
       "device_type": "industrial_device",
@@ -147,7 +140,6 @@
     "priority": "high",
     "max_latency_ms": 322,
     "payload_size_mb": 0.43233,
-    "estimated_edge_confidence": 0.709,
     "data": {
       "device_id": "device-07",
       "device_type": "industrial_device",
@@ -167,7 +159,6 @@
     "priority": "high",
     "max_latency_ms": 281,
     "payload_size_mb": 0.26674,
-    "estimated_edge_confidence": 0.838,
     "data": {
       "device_id": "device-08",
       "device_type": "industrial_device",
@@ -187,7 +178,6 @@
     "priority": "high",
     "max_latency_ms": 273,
     "payload_size_mb": 0.30775,
-    "estimated_edge_confidence": 0.699,
     "data": {
       "device_id": "device-09",
       "device_type": "industrial_device",
@@ -207,7 +197,6 @@
     "priority": "high",
     "max_latency_ms": 147,
     "payload_size_mb": 0.7431,
-    "estimated_edge_confidence": 0.751,
     "data": {
       "device_id": "device-10",
       "device_type": "industrial_device",
@@ -227,7 +216,6 @@
     "priority": "medium",
     "max_latency_ms": 459,
     "payload_size_mb": 0.25077,
-    "estimated_edge_confidence": 0.72,
     "data": {
       "device_id": "device-11",
       "device_type": "industrial_device",
@@ -247,7 +235,6 @@
     "priority": "low",
     "max_latency_ms": 145,
     "payload_size_mb": 0.04746,
-    "estimated_edge_confidence": 0.937,
     "data": {
       "device_id": "device-12",
       "device_type": "industrial_device",
@@ -267,7 +254,6 @@
     "priority": "medium",
     "max_latency_ms": 500,
     "payload_size_mb": 0.43995,
-    "estimated_edge_confidence": 0.731,
     "data": {
       "device_id": "device-13",
       "device_type": "industrial_device",
@@ -287,7 +273,6 @@
     "priority": "high",
     "max_latency_ms": 242,
     "payload_size_mb": 0.08409,
-    "estimated_edge_confidence": 0.618,
     "data": {
       "device_id": "device-14",
       "device_type": "industrial_device",
@@ -307,7 +292,6 @@
     "priority": "high",
     "max_latency_ms": 367,
     "payload_size_mb": 1.17932,
-    "estimated_edge_confidence": 0.758,
     "data": {
       "device_id": "device-15",
       "device_type": "industrial_device",
@@ -327,7 +311,6 @@
     "priority": "high",
     "max_latency_ms": 240,
     "payload_size_mb": 0.07077,
-    "estimated_edge_confidence": 0.685,
     "data": {
       "device_id": "device-16",
       "device_type": "industrial_device",
@@ -347,7 +330,6 @@
     "priority": "high",
     "max_latency_ms": 285,
     "payload_size_mb": 0.39227,
-    "estimated_edge_confidence": 0.796,
     "data": {
       "device_id": "device-17",
       "device_type": "industrial_device",
@@ -367,7 +349,6 @@
     "priority": "high",
     "max_latency_ms": 177,
     "payload_size_mb": 0.29356,
-    "estimated_edge_confidence": 0.839,
     "data": {
       "device_id": "device-18",
       "device_type": "industrial_device",
@@ -387,7 +368,6 @@
     "priority": "medium",
     "max_latency_ms": 494,
     "payload_size_mb": 0.11591,
-    "estimated_edge_confidence": 0.698,
     "data": {
       "device_id": "device-19",
       "device_type": "industrial_device",
@@ -407,7 +387,6 @@
     "priority": "low",
     "max_latency_ms": 104,
     "payload_size_mb": 0.03525,
-    "estimated_edge_confidence": 0.883,
     "data": {
       "device_id": "device-00",
       "device_type": "industrial_device",
@@ -427,7 +406,6 @@
     "priority": "medium",
     "max_latency_ms": 546,
     "payload_size_mb": 0.30466,
-    "estimated_edge_confidence": 0.691,
     "data": {
       "device_id": "device-01",
       "device_type": "industrial_device",
@@ -447,7 +425,6 @@
     "priority": "high",
     "max_latency_ms": 290,
     "payload_size_mb": 0.13142,
-    "estimated_edge_confidence": 0.641,
     "data": {
       "device_id": "device-02",
       "device_type": "industrial_device",
@@ -467,7 +444,6 @@
     "priority": "high",
     "max_latency_ms": 289,
     "payload_size_mb": 0.32761,
-    "estimated_edge_confidence": 0.796,
     "data": {
       "device_id": "device-03",
       "device_type": "industrial_device",
@@ -487,7 +463,6 @@
     "priority": "high",
     "max_latency_ms": 209,
     "payload_size_mb": 0.10495,
-    "estimated_edge_confidence": 0.868,
     "data": {
       "device_id": "device-04",
       "device_type": "industrial_device",
@@ -507,7 +482,6 @@
     "priority": "high",
     "max_latency_ms": 297,
     "payload_size_mb": 1.05738,
-    "estimated_edge_confidence": 0.776,
     "data": {
       "device_id": "device-05",
       "device_type": "industrial_device",
@@ -527,7 +501,6 @@
     "priority": "high",
     "max_latency_ms": 197,
     "payload_size_mb": 0.28132,
-    "estimated_edge_confidence": 0.755,
     "data": {
       "device_id": "device-06",
       "device_type": "industrial_device",
@@ -547,7 +520,6 @@
     "priority": "medium",
     "max_latency_ms": 414,
     "payload_size_mb": 0.17423,
-    "estimated_edge_confidence": 0.63,
     "data": {
       "device_id": "device-07",
       "device_type": "industrial_device",
@@ -567,7 +539,6 @@
     "priority": "low",
     "max_latency_ms": 137,
     "payload_size_mb": 0.05467,
-    "estimated_edge_confidence": 0.88,
     "data": {
       "device_id": "device-08",
       "device_type": "industrial_device",
@@ -587,7 +558,6 @@
     "priority": "medium",
     "max_latency_ms": 715,
     "payload_size_mb": 0.09117,
-    "estimated_edge_confidence": 0.795,
     "data": {
       "device_id": "device-09",
       "device_type": "industrial_device",
@@ -607,7 +577,6 @@
     "priority": "high",
     "max_latency_ms": 221,
     "payload_size_mb": 0.05818,
-    "estimated_edge_confidence": 0.755,
     "data": {
       "device_id": "device-10",
       "device_type": "industrial_device",
@@ -627,7 +596,6 @@
     "priority": "high",
     "max_latency_ms": 356,
     "payload_size_mb": 0.57036,
-    "estimated_edge_confidence": 0.655,
     "data": {
       "device_id": "device-11",
       "device_type": "industrial_device",
@@ -647,7 +615,6 @@
     "priority": "high",
     "max_latency_ms": 276,
     "payload_size_mb": 0.15301,
-    "estimated_edge_confidence": 0.693,
     "data": {
       "device_id": "device-12",
       "device_type": "industrial_device",
@@ -667,7 +634,6 @@
     "priority": "high",
     "max_latency_ms": 260,
     "payload_size_mb": 0.50712,
-    "estimated_edge_confidence": 0.736,
     "data": {
       "device_id": "device-13",
       "device_type": "industrial_device",
@@ -687,7 +653,6 @@
     "priority": "high",
     "max_latency_ms": 194,
     "payload_size_mb": 0.2097,
-    "estimated_edge_confidence": 0.708,
     "data": {
       "device_id": "device-14",
       "device_type": "industrial_device",
@@ -707,7 +672,6 @@
     "priority": "medium",
     "max_latency_ms": 351,
     "payload_size_mb": 0.20236,
-    "estimated_edge_confidence": 0.722,
     "data": {
       "device_id": "device-15",
       "device_type": "industrial_device",
@@ -727,7 +691,6 @@
     "priority": "low",
     "max_latency_ms": 116,
     "payload_size_mb": 0.01432,
-    "estimated_edge_confidence": 0.87,
     "data": {
       "device_id": "device-16",
       "device_type": "industrial_device",
@@ -747,7 +710,6 @@
     "priority": "medium",
     "max_latency_ms": 671,
     "payload_size_mb": 0.09412,
-    "estimated_edge_confidence": 0.595,
     "data": {
       "device_id": "device-17",
       "device_type": "industrial_device",
@@ -767,7 +729,6 @@
     "priority": "high",
     "max_latency_ms": 226,
     "payload_size_mb": 0.01684,
-    "estimated_edge_confidence": 0.643,
     "data": {
       "device_id": "device-18",
       "device_type": "industrial_device",
@@ -787,7 +748,6 @@
     "priority": "high",
     "max_latency_ms": 251,
     "payload_size_mb": 0.48856,
-    "estimated_edge_confidence": 0.815,
     "data": {
       "device_id": "device-19",
       "device_type": "industrial_device",
@@ -807,7 +767,6 @@
     "priority": "high",
     "max_latency_ms": 282,
     "payload_size_mb": 0.09096,
-    "estimated_edge_confidence": 0.704,
     "data": {
       "device_id": "device-00",
       "device_type": "industrial_device",
@@ -827,7 +786,6 @@
     "priority": "high",
     "max_latency_ms": 294,
     "payload_size_mb": 0.9932,
-    "estimated_edge_confidence": 0.652,
     "data": {
       "device_id": "device-01",
       "device_type": "industrial_device",
@@ -847,7 +805,6 @@
     "priority": "high",
     "max_latency_ms": 214,
     "payload_size_mb": 0.22785,
-    "estimated_edge_confidence": 0.861,
     "data": {
       "device_id": "device-02",
       "device_type": "industrial_device",
@@ -867,7 +824,6 @@
     "priority": "medium",
     "max_latency_ms": 456,
     "payload_size_mb": 0.04224,
-    "estimated_edge_confidence": 0.734,
     "data": {
       "device_id": "device-03",
       "device_type": "industrial_device",
@@ -887,7 +843,6 @@
     "priority": "low",
     "max_latency_ms": 138,
     "payload_size_mb": 0.00525,
-    "estimated_edge_confidence": 0.922,
     "data": {
       "device_id": "device-04",
       "device_type": "industrial_device",
@@ -907,7 +862,6 @@
     "priority": "medium",
     "max_latency_ms": 713,
     "payload_size_mb": 0.52421,
-    "estimated_edge_confidence": 0.634,
     "data": {
       "device_id": "device-05",
       "device_type": "industrial_device",
@@ -927,7 +881,6 @@
     "priority": "high",
     "max_latency_ms": 195,
     "payload_size_mb": 0.06386,
-    "estimated_edge_confidence": 0.786,
     "data": {
       "device_id": "device-06",
       "device_type": "industrial_device",
@@ -947,7 +900,6 @@
     "priority": "high",
     "max_latency_ms": 249,
     "payload_size_mb": 0.96142,
-    "estimated_edge_confidence": 0.624,
     "data": {
       "device_id": "device-07",
       "device_type": "industrial_device",
@@ -967,7 +919,6 @@
     "priority": "high",
     "max_latency_ms": 290,
     "payload_size_mb": 0.03085,
-    "estimated_edge_confidence": 0.806,
     "data": {
       "device_id": "device-08",
       "device_type": "industrial_device",
@@ -987,7 +938,6 @@
     "priority": "high",
     "max_latency_ms": 299,
     "payload_size_mb": 0.32515,
-    "estimated_edge_confidence": 0.662,
     "data": {
       "device_id": "device-09",
       "device_type": "industrial_device",
@@ -1007,7 +957,6 @@
     "priority": "high",
     "max_latency_ms": 212,
     "payload_size_mb": 0.73502,
-    "estimated_edge_confidence": 0.873,
     "data": {
       "device_id": "device-10",
       "device_type": "industrial_device",
@@ -1027,7 +976,6 @@
     "priority": "medium",
     "max_latency_ms": 335,
     "payload_size_mb": 0.17504,
-    "estimated_edge_confidence": 0.817,
     "data": {
       "device_id": "device-11",
       "device_type": "industrial_device",
@@ -1047,7 +995,6 @@
     "priority": "low",
     "max_latency_ms": 147,
     "payload_size_mb": 0.01062,
-    "estimated_edge_confidence": 0.934,
     "data": {
       "device_id": "device-12",
       "device_type": "industrial_device",
@@ -1067,7 +1014,6 @@
     "priority": "medium",
     "max_latency_ms": 669,
     "payload_size_mb": 0.20294,
-    "estimated_edge_confidence": 0.79,
     "data": {
       "device_id": "device-13",
       "device_type": "industrial_device",
@@ -1087,7 +1033,6 @@
     "priority": "high",
     "max_latency_ms": 263,
     "payload_size_mb": 0.02482,
-    "estimated_edge_confidence": 0.626,
     "data": {
       "device_id": "device-14",
       "device_type": "industrial_device",
@@ -1107,7 +1052,6 @@
     "priority": "high",
     "max_latency_ms": 369,
     "payload_size_mb": 0.35055,
-    "estimated_edge_confidence": 0.712,
     "data": {
       "device_id": "device-15",
       "device_type": "industrial_device",
@@ -1127,7 +1071,6 @@
     "priority": "high",
     "max_latency_ms": 193,
     "payload_size_mb": 0.16428,
-    "estimated_edge_confidence": 0.695,
     "data": {
       "device_id": "device-16",
       "device_type": "industrial_device",
@@ -1147,7 +1090,6 @@
     "priority": "high",
     "max_latency_ms": 215,
     "payload_size_mb": 0.75213,
-    "estimated_edge_confidence": 0.658,
     "data": {
       "device_id": "device-17",
       "device_type": "industrial_device",
@@ -1167,7 +1109,6 @@
     "priority": "high",
     "max_latency_ms": 200,
     "payload_size_mb": 0.33365,
-    "estimated_edge_confidence": 0.819,
     "data": {
       "device_id": "device-18",
       "device_type": "industrial_device",
@@ -1187,7 +1128,6 @@
     "priority": "medium",
     "max_latency_ms": 523,
     "payload_size_mb": 0.14202,
-    "estimated_edge_confidence": 0.679,
     "data": {
       "device_id": "device-19",
       "device_type": "industrial_device",
@@ -1207,7 +1147,6 @@
     "priority": "low",
     "max_latency_ms": 102,
     "payload_size_mb": 0.0267,
-    "estimated_edge_confidence": 0.879,
     "data": {
       "device_id": "device-00",
       "device_type": "industrial_device",
@@ -1227,7 +1166,6 @@
     "priority": "medium",
     "max_latency_ms": 696,
     "payload_size_mb": 0.10125,
-    "estimated_edge_confidence": 0.765,
     "data": {
       "device_id": "device-01",
       "device_type": "industrial_device",
@@ -1247,7 +1185,6 @@
     "priority": "high",
     "max_latency_ms": 281,
     "payload_size_mb": 0.19093,
-    "estimated_edge_confidence": 0.743,
     "data": {
       "device_id": "device-02",
       "device_type": "industrial_device",
@@ -1267,7 +1204,6 @@
     "priority": "high",
     "max_latency_ms": 276,
     "payload_size_mb": 1.12646,
-    "estimated_edge_confidence": 0.773,
     "data": {
       "device_id": "device-03",
       "device_type": "industrial_device",
@@ -1287,7 +1223,6 @@
     "priority": "high",
     "max_latency_ms": 253,
     "payload_size_mb": 0.10565,
-    "estimated_edge_confidence": 0.761,
     "data": {
       "device_id": "device-04",
       "device_type": "industrial_device",
@@ -1307,7 +1242,6 @@
     "priority": "high",
     "max_latency_ms": 275,
     "payload_size_mb": 0.5846,
-    "estimated_edge_confidence": 0.749,
     "data": {
       "device_id": "device-05",
       "device_type": "industrial_device",
@@ -1327,7 +1261,6 @@
     "priority": "high",
     "max_latency_ms": 190,
     "payload_size_mb": 0.19208,
-    "estimated_edge_confidence": 0.702,
     "data": {
       "device_id": "device-06",
       "device_type": "industrial_device",
@@ -1347,7 +1280,6 @@
     "priority": "medium",
     "max_latency_ms": 482,
     "payload_size_mb": 0.03004,
-    "estimated_edge_confidence": 0.697,
     "data": {
       "device_id": "device-07",
       "device_type": "industrial_device",
@@ -1367,7 +1299,6 @@
     "priority": "low",
     "max_latency_ms": 111,
     "payload_size_mb": 0.01309,
-    "estimated_edge_confidence": 0.941,
     "data": {
       "device_id": "device-08",
       "device_type": "industrial_device",
@@ -1387,7 +1318,6 @@
     "priority": "medium",
     "max_latency_ms": 498,
     "payload_size_mb": 0.05687,
-    "estimated_edge_confidence": 0.744,
     "data": {
       "device_id": "device-09",
       "device_type": "industrial_device",
@@ -1407,7 +1337,6 @@
     "priority": "high",
     "max_latency_ms": 195,
     "payload_size_mb": 0.14989,
-    "estimated_edge_confidence": 0.725,
     "data": {
       "device_id": "device-10",
       "device_type": "industrial_device",
@@ -1427,7 +1356,6 @@
     "priority": "high",
     "max_latency_ms": 341,
     "payload_size_mb": 0.65287,
-    "estimated_edge_confidence": 0.768,
     "data": {
       "device_id": "device-11",
       "device_type": "industrial_device",
@@ -1447,7 +1375,6 @@
     "priority": "high",
     "max_latency_ms": 190,
     "payload_size_mb": 0.16906,
-    "estimated_edge_confidence": 0.735,
     "data": {
       "device_id": "device-12",
       "device_type": "industrial_device",
@@ -1467,7 +1394,6 @@
     "priority": "high",
     "max_latency_ms": 239,
     "payload_size_mb": 0.36079,
-    "estimated_edge_confidence": 0.82,
     "data": {
       "device_id": "device-13",
       "device_type": "industrial_device",
@@ -1487,7 +1413,6 @@
     "priority": "high",
     "max_latency_ms": 200,
     "payload_size_mb": 0.14023,
-    "estimated_edge_confidence": 0.706,
     "data": {
       "device_id": "device-14",
       "device_type": "industrial_device",
@@ -1507,7 +1432,6 @@
     "priority": "medium",
     "max_latency_ms": 333,
     "payload_size_mb": 0.26284,
-    "estimated_edge_confidence": 0.698,
     "data": {
       "device_id": "device-15",
       "device_type": "industrial_device",
@@ -1527,7 +1451,6 @@
     "priority": "low",
     "max_latency_ms": 95,
     "payload_size_mb": 0.01211,
-    "estimated_edge_confidence": 0.918,
     "data": {
       "device_id": "device-16",
       "device_type": "industrial_device",
@@ -1547,7 +1470,6 @@
     "priority": "medium",
     "max_latency_ms": 558,
     "payload_size_mb": 0.2816,
-    "estimated_edge_confidence": 0.783,
     "data": {
       "device_id": "device-17",
       "device_type": "industrial_device",
@@ -1567,7 +1489,6 @@
     "priority": "high",
     "max_latency_ms": 206,
     "payload_size_mb": 0.07427,
-    "estimated_edge_confidence": 0.785,
     "data": {
       "device_id": "device-18",
       "device_type": "industrial_device",
@@ -1587,7 +1508,6 @@
     "priority": "high",
     "max_latency_ms": 349,
     "payload_size_mb": 1.08587,
-    "estimated_edge_confidence": 0.79,
     "data": {
       "device_id": "device-19",
       "device_type": "industrial_device",
@@ -1607,7 +1527,6 @@
     "priority": "high",
     "max_latency_ms": 254,
     "payload_size_mb": 0.07359,
-    "estimated_edge_confidence": 0.843,
     "data": {
       "device_id": "device-00",
       "device_type": "industrial_device",
@@ -1627,7 +1546,6 @@
     "priority": "high",
     "max_latency_ms": 237,
     "payload_size_mb": 0.97566,
-    "estimated_edge_confidence": 0.626,
     "data": {
       "device_id": "device-01",
       "device_type": "industrial_device",
@@ -1647,7 +1565,6 @@
     "priority": "high",
     "max_latency_ms": 196,
     "payload_size_mb": 0.67191,
-    "estimated_edge_confidence": 0.799,
     "data": {
       "device_id": "device-02",
       "device_type": "industrial_device",
@@ -1667,7 +1584,6 @@
     "priority": "medium",
     "max_latency_ms": 516,
     "payload_size_mb": 0.03409,
-    "estimated_edge_confidence": 0.609,
     "data": {
       "device_id": "device-03",
       "device_type": "industrial_device",
@@ -1687,7 +1603,6 @@
     "priority": "low",
     "max_latency_ms": 127,
     "payload_size_mb": 0.00571,
-    "estimated_edge_confidence": 0.878,
     "data": {
       "device_id": "device-04",
       "device_type": "industrial_device",
@@ -1707,7 +1622,6 @@
     "priority": "medium",
     "max_latency_ms": 749,
     "payload_size_mb": 0.14249,
-    "estimated_edge_confidence": 0.629,
     "data": {
       "device_id": "device-05",
       "device_type": "industrial_device",
@@ -1727,7 +1641,6 @@
     "priority": "high",
     "max_latency_ms": 205,
     "payload_size_mb": 0.20805,
-    "estimated_edge_confidence": 0.642,
     "data": {
       "device_id": "device-06",
       "device_type": "industrial_device",
@@ -1747,7 +1660,6 @@
     "priority": "high",
     "max_latency_ms": 360,
     "payload_size_mb": 1.03191,
-    "estimated_edge_confidence": 0.731,
     "data": {
       "device_id": "device-07",
       "device_type": "industrial_device",
@@ -1767,7 +1679,6 @@
     "priority": "high",
     "max_latency_ms": 291,
     "payload_size_mb": 0.06671,
-    "estimated_edge_confidence": 0.793,
     "data": {
       "device_id": "device-08",
       "device_type": "industrial_device",
@@ -1787,7 +1698,6 @@
     "priority": "high",
     "max_latency_ms": 206,
     "payload_size_mb": 0.75466,
-    "estimated_edge_confidence": 0.808,
     "data": {
       "device_id": "device-09",
       "device_type": "industrial_device",
@@ -1807,7 +1717,6 @@
     "priority": "high",
     "max_latency_ms": 155,
     "payload_size_mb": 0.18423,
-    "estimated_edge_confidence": 0.782,
     "data": {
       "device_id": "device-10",
       "device_type": "industrial_device",
@@ -1827,7 +1736,6 @@
     "priority": "medium",
     "max_latency_ms": 363,
     "payload_size_mb": 0.06744,
-    "estimated_edge_confidence": 0.714,
     "data": {
       "device_id": "device-11",
       "device_type": "industrial_device",
@@ -1847,7 +1755,6 @@
     "priority": "low",
     "max_latency_ms": 101,
     "payload_size_mb": 0.0382,
-    "estimated_edge_confidence": 0.895,
     "data": {
       "device_id": "device-12",
       "device_type": "industrial_device",
@@ -1867,7 +1774,6 @@
     "priority": "medium",
     "max_latency_ms": 734,
     "payload_size_mb": 0.1117,
-    "estimated_edge_confidence": 0.764,
     "data": {
       "device_id": "device-13",
       "device_type": "industrial_device",
@@ -1887,7 +1793,6 @@
     "priority": "high",
     "max_latency_ms": 240,
     "payload_size_mb": 0.04476,
-    "estimated_edge_confidence": 0.591,
     "data": {
       "device_id": "device-14",
       "device_type": "industrial_device",
@@ -1907,7 +1812,6 @@
     "priority": "high",
     "max_latency_ms": 294,
     "payload_size_mb": 0.37849,
-    "estimated_edge_confidence": 0.6,
     "data": {
       "device_id": "device-15",
       "device_type": "industrial_device",

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import replace
 import math
 from pathlib import Path
 import tempfile
@@ -29,6 +30,13 @@ class SchedulerCoreTests(unittest.TestCase):
         self.assertEqual(len(OBSERVATION_NAMES), 24)
         self.assertEqual(obs.shape, (24,))
         self.assertNotIn("task_confidence", OBSERVATION_NAMES)
+        low_confidence_obs = build_observation(
+            replace(context["task"], confidence=0.10), context["state_before"]
+        )
+        high_confidence_obs = build_observation(
+            replace(context["task"], confidence=0.99), context["state_before"]
+        )
+        np.testing.assert_array_equal(low_confidence_obs, high_confidence_obs)
         self.assertTrue(np.isfinite(obs).all())
         self.assertEqual(Action.LOCAL_FIRST.value, 1)
         self.assertEqual(Action.DIRECT_CLOUD.value, 2)
@@ -41,8 +49,13 @@ class SchedulerCoreTests(unittest.TestCase):
         sample_path = root / "data" / "sample_edge_inputs.json"
         tasks, report = load_edge_inputs(sample_path)
         self.assertEqual(report.loaded_count, 96)
+        self.assertEqual(report.explicit_confidence_count, 0)
+        self.assertEqual(report.profile_confidence_count, 96)
         self.assertEqual(len(TASK_TYPE_ORDER), 8)
         self.assertEqual({task.task_type for task in tasks}, set(TASK_TYPE_ORDER))
+        self.assertTrue(
+            all("estimated_edge_confidence" not in task.edge_input for task in tasks)
+        )
 
         simulator = CloudEdgeSimulator(
             seed=42,
@@ -166,7 +179,7 @@ class SchedulerCoreTests(unittest.TestCase):
         result = sim.completed_tasks[0]
         self.assertEqual(result["pre_route_action"], "LOCAL_FIRST")
         self.assertEqual(result["post_edge_decision"], "CLOUD_REVIEW")
-        self.assertEqual(result["post_edge_rule_version"], "post-edge-ai4i-v2")
+        self.assertEqual(result["post_edge_rule_version"], "post-edge-v1")
         self.assertEqual(result["route"], "COLLABORATIVE")
         self.assertFalse(result["timeout"])
         self.assertEqual(result["execution_stage"], "FINISHED")
