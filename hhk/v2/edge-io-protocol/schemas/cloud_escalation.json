@@ -1,0 +1,38 @@
+{
+  "$schema": "edge-cloud-review/v3",
+  "description": "Traceable admission request for cloud review. Admission is not durable execution and is not a business-priority task.",
+  "required": [
+    "review_id", "trace_id", "idempotency_key", "task_id", "from_node", "observed_at", "received_at",
+    "decided_at", "deadline_at", "local_prediction", "failure_probability", "calibration_version",
+    "feature_schema_id", "model_route", "model_version", "policy_version", "threshold_used", "threshold_review_margin",
+    "review_state", "review_reason", "safety_priority", "safety_trigger", "action", "network", "evidence"
+  ],
+  "fields": {
+    "review_id": {"type": "string", "description": "Review request identifier."},
+    "trace_id": {"type": "string", "description": "End-to-end correlation identifier."},
+    "idempotency_key": {"type": "string", "description": "Duplicate-suppression key."},
+    "deadline_at": {"type": "RFC3339 timestamp", "description": "Review deadline; queue order uses safety urgency then deadline then acceptance time."},
+    "local_prediction": {"type": ["normal", "fault", "null"]},
+    "raw_logit": {"type": ["number", "null"], "description": "Uncalibrated AI4I score retained for recalibration."},
+    "failure_probability": {"type": ["number", "null"], "range": [0, 1]},
+    "calibration_version": {"type": ["string", "null"]},
+    "feature_schema_id": {"type": ["string", "null"]},
+    "model_route": {"type": "string"},
+    "model_version": {"type": "string"},
+    "policy_version": {"type": "string"},
+    "threshold_used": {"type": ["number", "null"]},
+    "threshold_review_margin": {"type": ["number", "null"], "range": [0, 1], "description": "Explicit boundary-review policy margin; never a confidence score."},
+    "review_state": {"type": "enum", "options": ["required", "not_required"]},
+    "review_reason": {"type": "array[string]"},
+    "safety_priority": {"type": "enum", "options": ["P0", "P1", "P2"], "description": "Safety urgency, not asset or business value."},
+    "safety_trigger": {"type": ["string", "null"]},
+    "action": {"type": "enum", "options": ["protect", "continue_with_review", "continue"]},
+    "network": {"type": "object", "description": "Observed transport state."},
+    "evidence": {"type": "object", "description": "Bounded evidence metadata, including a feature hash."}
+  },
+  "admission_ack": {
+    "fields": ["review_id", "trace_id", "status", "queue_position", "accepted_at", "deadline_at", "execution_status", "storage"],
+    "warning": "status=accepted only means the current in-memory mock admitted the request. It does not prove durable storage, worker execution, cloud inference, or corrective action."
+  },
+  "forbidden_fields": ["confidence", "device_label", "priority", "priority_code", "escalate_to_cloud"]
+}

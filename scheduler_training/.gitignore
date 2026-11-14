@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+models/**/*.zip
+models/checkpoints/
+models/releases/
+results/*
+!results/.gitkeep
+!results/README.md
+output/*
+!output/.gitkeep
+data/distillation/*
+!data/distillation/ground_truth.example.jsonl
+!data/distillation/README.md
+models/student_candidates/*
+!models/student_candidates/.gitkeep

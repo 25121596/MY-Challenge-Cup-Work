@@ -1,0 +1,9 @@
+{
+  "schema_version": "asset-routing/1.0",
+  "policy_version": "asset-routing-v1-empty-registry",
+  "enabled": true,
+  "registry_source": "authoritative_asset_registry_required",
+  "default_route": "LOCAL_FIRST",
+  "designated_cloud_device_ids": [],
+  "designated_cloud_device_types": []
+}

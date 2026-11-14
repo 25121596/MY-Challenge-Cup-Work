@@ -1,0 +1,60 @@
+build/
+*.gguf
+*.exe
+*.dll
+*.lib
+*.exp
+*.obj
+*.pdb
+*.ilk
+*.ini
+edge-gui.ini
+.DS_Store
+Thumbs.db
+
+
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+.venv/
+venv/
+env/
+
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
+*.egg-info/
+
+# Local environment
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Runtime outputs
+scheduler_training/outputs/
+integration/outputs/*
+!integration/outputs/.gitkeep
+
+# Generated PPO models
+scheduler_training/models/**/*.zip
+scheduler_training/models/checkpoints/
+scheduler_training/models/releases/
+
+# Additional model formats
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# Logs and temporary files
+*.log
+tmp/
+temp/
+*.tmp

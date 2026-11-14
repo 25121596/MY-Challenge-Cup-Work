@@ -1,0 +1,64 @@
+{
+  "$schema": "edge-output/v3",
+  "description": "Auditable edge decision contract. Model risk, review routing, safety urgency, and action are separate concepts.",
+  "required": [
+    "task_id", "node_id", "observed_at", "received_at", "decided_at", "latency_ms", "decision",
+    "local_prediction", "failure_probability", "calibration_version", "feature_schema_id", "model_route",
+    "model_version", "policy_version", "threshold_used", "threshold_review_margin", "review_state", "review_reason",
+    "safety_priority", "safety_trigger", "action"
+  ],
+  "fields": {
+    "task_id": {"type": "string", "description": "Input correlation identifier."},
+    "node_id": {"type": "string", "description": "Edge node that made the decision."},
+    "observed_at": {"type": "RFC3339 timestamp", "description": "When the source observation was made."},
+    "received_at": {"type": "RFC3339 timestamp", "description": "When the edge path accepted it."},
+    "decided_at": {"type": "RFC3339 timestamp", "description": "When the edge path completed its local decision."},
+    "latency_ms": {"type": "number", "description": "Edge-local processing only; it excludes network, cloud queueing, and cloud inference."},
+    "local_prediction": {"type": ["normal", "fault", "null"], "description": "AI4I only: normal iff calibrated failure_probability <= threshold_used. Null for uncalibrated Qwen."},
+    "raw_logit": {"type": ["number", "null"], "description": "Uncalibrated AI4I model score retained for later recalibration; null for Qwen."},
+    "failure_probability": {"type": ["number", "null"], "range": [0, 1], "description": "Calibrated P(failure) for AI4I. Null for Qwen until independently calibrated."},
+    "calibration_version": {"type": ["string", "null"], "description": "Calibration artifact version; null means that no probability is claimed."},
+    "feature_schema_id": {"type": ["string", "null"], "description": "Frozen feature contract used by the model route."},
+    "model_route": {"type": "string", "options": ["ai4i_tabular_moe_v1", "qwen_text_fallback_v1"]},
+    "model_version": {"type": "string"},
+    "policy_version": {"type": "string"},
+    "threshold_used": {"type": ["number", "null"], "description": "The calibrated normal-accept threshold; not a safety threshold."},
+    "threshold_review_margin": {"type": ["number", "null"], "range": [0, 1], "description": "Versioned operational review band around threshold_used. It is not a probability or confidence value."},
+    "review_state": {"type": "enum", "options": ["required", "not_required"]},
+    "review_reason": {"type": "array[string]", "description": "Machine-readable reason for review. Qwen fallback is always required until calibrated."},
+    "safety_priority": {"type": "enum", "options": ["P0", "P1", "P2"], "description": "Safety urgency only, never a business priority."},
+    "safety_trigger": {"type": ["string", "null"], "description": "P0 requires a hard trigger such as emergency_stop or interlock_trip."},
+    "action": {"type": "enum", "options": ["protect", "continue_with_review", "continue"]},
+    "decision": {"type": "object", "description": "Human-facing local result. For Qwen it contains an explicitly provisional class observation only."},
+    "consistency": {"type": "object", "required": false, "description": "Optional multi-node comparison metadata."}
+  },
+  "invariants": [
+    "There is no confidence field.",
+    "suspected is a review workflow state, not a model class.",
+    "P0 is permitted only with a hard safety_trigger; model probability or a Qwen class cannot create P0.",
+    "A positive threshold_review_margin may require review around the calibrated decision boundary without changing local_prediction.",
+    "Qwen fallback sets failure_probability, calibration_version, feature_schema_id, threshold_used, and threshold_review_margin to null and review_state to required."
+  ],
+  "examples": {
+    "calibrated_ai4i": {
+      "local_prediction": "normal",
+      "failure_probability": 0.021,
+      "calibration_version": "ai4i_platt_v1",
+      "feature_schema_id": "ai4i_8d_v1",
+      "threshold_review_margin": 0.0,
+      "review_state": "not_required",
+      "safety_priority": "P2",
+      "action": "continue"
+    },
+    "uncalibrated_qwen": {
+      "local_prediction": null,
+      "failure_probability": null,
+      "calibration_version": null,
+      "threshold_review_margin": null,
+      "review_state": "required",
+      "review_reason": ["qwen_fallback_uncalibrated"],
+      "safety_priority": "P1",
+      "action": "continue_with_review"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "post-edge-rules/1.0",
+  "rule_version": "post-edge-v1",
+  "default_confidence_threshold": 0.78,
+  "task_confidence_thresholds": {},
+  "force_review_on_parse_failure": true,
+  "force_review_on_ood": true,
+  "force_review_levels": [
+    "critical"
+  ],
+  "force_review_categories": [
+    "unknown_fault",
+    "unknown_defect",
+    "unknown_hazard",
+    "unknown"
+  ],
+  "require_deadline_feasibility": true,
+  "cloud_review_deadline_margin_s": 0.0,
+  "deadline_infeasible_action": "ACCEPT_EDGE"
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": "scheduler-experiment-scenario/1.0",
+  "scenario_id": "weak_network",
+  "description": "Steady workload under a low-bandwidth network that frequently enters a bad state.",
+  "task_source": "typed_simulation",
+  "training_weight": 0.2,
+  "arrival": {
+    "kind": "periodic_bernoulli",
+    "slot_duration_s": 0.05,
+    "period_s": 1.0,
+    "segments": [
+      {"start_s": 0.0, "end_s": 1.0, "probability": 0.1}
+    ]
+  },
+  "resource": {
+    "edge_initial": 0.8,
+    "cloud_initial": 0.85
+  },
+  "network": {
+    "initial_quality": 0.35,
+    "initial_state": "BAD",
+    "good_quality": 0.45,
+    "bad_quality": 0.08,
+    "good_to_bad_per_s": 0.35,
+    "bad_to_good_per_s": 0.15,
+    "min_bandwidth_mbps": 5.0,
+    "max_bandwidth_mbps": 20.0,
+    "noise_std_per_s": 0.015
+  },
+  "service_time": {
+    "edge_scale": 1.0,
+    "cloud_scale": 1.0
+  }
+}

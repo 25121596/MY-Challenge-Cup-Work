@@ -1,0 +1,22 @@
+{
+  "feature_schema_id": "ai4i_8d_v1",
+  "model_route": "ai4i_tabular_moe_v1",
+  "source_dataset": "UCI AI4I 2020 Predictive Maintenance",
+  "feature_order": [
+    {"name": "type_H", "source": "Type", "encoding": "one_hot_H", "allowed": [0, 1]},
+    {"name": "type_L", "source": "Type", "encoding": "one_hot_L", "allowed": [0, 1]},
+    {"name": "type_M", "source": "Type", "encoding": "one_hot_M", "allowed": [0, 1]},
+    {"name": "zscore_Air temperature [K]", "source_unit": "K", "transform": "zscore"},
+    {"name": "zscore_Process temperature [K]", "source_unit": "K", "transform": "zscore"},
+    {"name": "zscore_Rotational speed [rpm]", "source_unit": "rpm", "transform": "zscore"},
+    {"name": "zscore_Torque [Nm]", "source_unit": "Nm", "transform": "zscore"},
+    {"name": "zscore_Tool wear [min]", "source_unit": "min", "transform": "zscore"}
+  ],
+  "validation": {
+    "dimension": 8,
+    "type_one_hot_indices": [0, 1, 2],
+    "type_one_hot_sum": 1,
+    "all_values_finite": true
+  },
+  "online_input_policy": "features_only_no_ground_truth"
+}

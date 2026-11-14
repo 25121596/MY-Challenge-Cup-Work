@@ -1,0 +1,36 @@
+{
+  "schema_version": "scheduler-experiment-scenario/1.0",
+  "scenario_id": "edge_burst",
+  "description": "Periodic burst workload that overloads edge-only execution while cloud remains healthy.",
+  "task_source": "typed_simulation",
+  "training_weight": 0.4,
+  "arrival": {
+    "kind": "periodic_bernoulli",
+    "slot_duration_s": 0.05,
+    "period_s": 15.0,
+    "segments": [
+      {"start_s": 0.0, "end_s": 5.0, "probability": 0.08},
+      {"start_s": 5.0, "end_s": 10.0, "probability": 0.4},
+      {"start_s": 10.0, "end_s": 15.0, "probability": 0.08}
+    ]
+  },
+  "resource": {
+    "edge_initial": 0.75,
+    "cloud_initial": 0.9
+  },
+  "network": {
+    "initial_quality": 0.85,
+    "initial_state": "GOOD",
+    "good_quality": 0.9,
+    "bad_quality": 0.45,
+    "good_to_bad_per_s": 0.04,
+    "bad_to_good_per_s": 0.5,
+    "min_bandwidth_mbps": 20.0,
+    "max_bandwidth_mbps": 50.0,
+    "noise_std_per_s": 0.015
+  },
+  "service_time": {
+    "edge_scale": 1.0,
+    "cloud_scale": 1.0
+  }
+}

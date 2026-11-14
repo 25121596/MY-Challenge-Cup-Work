@@ -1,0 +1,4730 @@
+{
+  "latency_avg_ms": 0.059,
+  "total": 100,
+  "results": [
+    {
+      "task_id": "T-FEAT-ai4i_milling-00000",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.722986Z",
+      "decided_at": "2026-08-07T13:46:12.725347Z",
+      "latency_ms": 2.385,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.001727,
+          "gate_weights": [
+            0.603961,
+            0.396039
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.001727,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00001",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.725379Z",
+      "decided_at": "2026-08-07T13:46:12.725441Z",
+      "latency_ms": 0.066,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.006962,
+          "gate_weights": [
+            0.040641,
+            0.959359
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.006962,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00002",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.725449Z",
+      "decided_at": "2026-08-07T13:46:12.725480Z",
+      "latency_ms": 0.034,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.008032,
+          "gate_weights": [
+            0.034369,
+            0.965631
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.008032,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00003",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.725486Z",
+      "decided_at": "2026-08-07T13:46:12.725514Z",
+      "latency_ms": 0.03,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.002319,
+          "gate_weights": [
+            0.087359,
+            0.912641
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.002319,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00004",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.725519Z",
+      "decided_at": "2026-08-07T13:46:12.725549Z",
+      "latency_ms": 0.033,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.002716,
+          "gate_weights": [
+            0.082162,
+            0.917838
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.002716,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00005",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.725556Z",
+      "decided_at": "2026-08-07T13:46:12.725583Z",
+      "latency_ms": 0.03,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.002373,
+          "gate_weights": [
+            0.588267,
+            0.411733
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.002373,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00006",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.725589Z",
+      "decided_at": "2026-08-07T13:46:12.725614Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.002313,
+          "gate_weights": [
+            0.08641,
+            0.91359
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.002313,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00007",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.725621Z",
+      "decided_at": "2026-08-07T13:46:12.725645Z",
+      "latency_ms": 0.026,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.001904,
+          "gate_weights": [
+            0.103968,
+            0.896032
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.001904,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00008",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.725650Z",
+      "decided_at": "2026-08-07T13:46:12.725675Z",
+      "latency_ms": 0.027,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.000994,
+          "gate_weights": [
+            0.906144,
+            0.093856
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.000994,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00009",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.725681Z",
+      "decided_at": "2026-08-07T13:46:12.725708Z",
+      "latency_ms": 0.03,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.001661,
+          "gate_weights": [
+            0.921128,
+            0.078872
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.001661,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00010",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.725713Z",
+      "decided_at": "2026-08-07T13:46:12.725739Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.002141,
+          "gate_weights": [
+            0.975825,
+            0.024175
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.002141,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00011",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.725744Z",
+      "decided_at": "2026-08-07T13:46:12.725772Z",
+      "latency_ms": 0.031,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.006426,
+          "gate_weights": [
+            0.669745,
+            0.330255
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.006426,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00012",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.725778Z",
+      "decided_at": "2026-08-07T13:46:12.725804Z",
+      "latency_ms": 0.029,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.027695,
+          "gate_weights": [
+            0.300249,
+            0.699751
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.027695,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-584f8c4cbe768c0d5a5d",
+        "trace_id": "trace-7c4b5f24f040ae6f5fe4",
+        "idempotency_key": "idem-584f8c4cbe768c0d5a5d7c4b",
+        "task_id": "T-FEAT-ai4i_milling-00012",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.725778Z",
+        "decided_at": "2026-08-07T13:46:12.725804Z",
+        "deadline_at": "2026-08-07T13:48:12.725811Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.027695,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:dc518b31bb2ab2fc232123c4c529e697744d26ec8a610d9687c075b00fd97c70"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00013",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.725908Z",
+      "decided_at": "2026-08-07T13:46:12.725945Z",
+      "latency_ms": 0.04,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.002677,
+          "gate_weights": [
+            0.910525,
+            0.089475
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.002677,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00014",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.725951Z",
+      "decided_at": "2026-08-07T13:46:12.725981Z",
+      "latency_ms": 0.032,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.019312,
+          "gate_weights": [
+            0.756198,
+            0.243802
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.019312,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00015",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.725987Z",
+      "decided_at": "2026-08-07T13:46:12.726081Z",
+      "latency_ms": 0.098,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.008578,
+          "gate_weights": [
+            0.046572,
+            0.953428
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.008578,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00016",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726089Z",
+      "decided_at": "2026-08-07T13:46:12.726117Z",
+      "latency_ms": 0.03,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.014331,
+          "gate_weights": [
+            0.423941,
+            0.576059
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.014331,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00017",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726122Z",
+      "decided_at": "2026-08-07T13:46:12.726148Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.008463,
+          "gate_weights": [
+            0.488303,
+            0.511697
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.008463,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00018",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726153Z",
+      "decided_at": "2026-08-07T13:46:12.726179Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.075385,
+          "gate_weights": [
+            0.34948,
+            0.65052
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.075385,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-6cd66e42db532897254d",
+        "trace_id": "trace-d952db47505b78c6741a",
+        "idempotency_key": "idem-6cd66e42db532897254dd952",
+        "task_id": "T-FEAT-ai4i_milling-00018",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.726153Z",
+        "decided_at": "2026-08-07T13:46:12.726179Z",
+        "deadline_at": "2026-08-07T13:48:12.726184Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.075385,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:cb9e19de494370dea821965b8b159ee17fed9b8f04a45e52ca2f18c0d2bb8305"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00019",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726214Z",
+      "decided_at": "2026-08-07T13:46:12.726242Z",
+      "latency_ms": 0.03,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.002324,
+          "gate_weights": [
+            0.859412,
+            0.140588
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.002324,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00020",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726254Z",
+      "decided_at": "2026-08-07T13:46:12.726284Z",
+      "latency_ms": 0.032,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.00816,
+          "gate_weights": [
+            0.702814,
+            0.297186
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.00816,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00021",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726289Z",
+      "decided_at": "2026-08-07T13:46:12.726313Z",
+      "latency_ms": 0.027,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.009851,
+          "gate_weights": [
+            0.060827,
+            0.939173
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.009851,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00022",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726318Z",
+      "decided_at": "2026-08-07T13:46:12.726342Z",
+      "latency_ms": 0.026,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.001837,
+          "gate_weights": [
+            0.878468,
+            0.121532
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.001837,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00023",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726346Z",
+      "decided_at": "2026-08-07T13:46:12.726371Z",
+      "latency_ms": 0.026,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.00617,
+          "gate_weights": [
+            0.485042,
+            0.514958
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.00617,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00024",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726375Z",
+      "decided_at": "2026-08-07T13:46:12.726399Z",
+      "latency_ms": 0.026,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.003132,
+          "gate_weights": [
+            0.767591,
+            0.232409
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.003132,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00025",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726404Z",
+      "decided_at": "2026-08-07T13:46:12.726428Z",
+      "latency_ms": 0.026,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.01342,
+          "gate_weights": [
+            0.611005,
+            0.388995
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.01342,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00026",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726432Z",
+      "decided_at": "2026-08-07T13:46:12.726456Z",
+      "latency_ms": 0.025,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.004368,
+          "gate_weights": [
+            0.118942,
+            0.881058
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.004368,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00027",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726460Z",
+      "decided_at": "2026-08-07T13:46:12.726483Z",
+      "latency_ms": 0.025,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.008814,
+          "gate_weights": [
+            0.976701,
+            0.023299
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.008814,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00028",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726488Z",
+      "decided_at": "2026-08-07T13:46:12.726511Z",
+      "latency_ms": 0.025,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.013495,
+          "gate_weights": [
+            0.062416,
+            0.937584
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.013495,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00029",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726515Z",
+      "decided_at": "2026-08-07T13:46:12.726543Z",
+      "latency_ms": 0.029,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.005899,
+          "gate_weights": [
+            0.357293,
+            0.642707
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.005899,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00030",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726547Z",
+      "decided_at": "2026-08-07T13:46:12.726571Z",
+      "latency_ms": 0.026,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.029127,
+          "gate_weights": [
+            0.405757,
+            0.594243
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.029127,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-19844003e827edb95782",
+        "trace_id": "trace-117e1bba443802936aa0",
+        "idempotency_key": "idem-19844003e827edb95782117e",
+        "task_id": "T-FEAT-ai4i_milling-00030",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.726547Z",
+        "decided_at": "2026-08-07T13:46:12.726571Z",
+        "deadline_at": "2026-08-07T13:48:12.726575Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.029127,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:d84170086ea6f78000749bf5aabd528b424a196497617deade46ae4bb4516f4d"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00031",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726595Z",
+      "decided_at": "2026-08-07T13:46:12.726626Z",
+      "latency_ms": 0.032,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.012857,
+          "gate_weights": [
+            0.538295,
+            0.461705
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.012857,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00032",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726630Z",
+      "decided_at": "2026-08-07T13:46:12.726654Z",
+      "latency_ms": 0.026,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.028446,
+          "gate_weights": [
+            0.042702,
+            0.957298
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.028446,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-5523d5d472dd7d7659f3",
+        "trace_id": "trace-4ecea67c572b3260e77a",
+        "idempotency_key": "idem-5523d5d472dd7d7659f34ece",
+        "task_id": "T-FEAT-ai4i_milling-00032",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.726630Z",
+        "decided_at": "2026-08-07T13:46:12.726654Z",
+        "deadline_at": "2026-08-07T13:48:12.726658Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.028446,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:307de54b1dc67f29eba731f312010b43f0a5ed79bd38b340cd218ea7eb766363"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00033",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726674Z",
+      "decided_at": "2026-08-07T13:46:12.726700Z",
+      "latency_ms": 0.027,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.006155,
+          "gate_weights": [
+            0.302975,
+            0.697025
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.006155,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00034",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726704Z",
+      "decided_at": "2026-08-07T13:46:12.726728Z",
+      "latency_ms": 0.026,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.00407,
+          "gate_weights": [
+            0.839626,
+            0.160374
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.00407,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00035",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726732Z",
+      "decided_at": "2026-08-07T13:46:12.726756Z",
+      "latency_ms": 0.026,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.021156,
+          "gate_weights": [
+            0.481348,
+            0.518652
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.021156,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00036",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726760Z",
+      "decided_at": "2026-08-07T13:46:12.726783Z",
+      "latency_ms": 0.025,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.006081,
+          "gate_weights": [
+            0.813943,
+            0.186057
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.006081,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00037",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726787Z",
+      "decided_at": "2026-08-07T13:46:12.726811Z",
+      "latency_ms": 0.025,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.007779,
+          "gate_weights": [
+            0.125709,
+            0.874291
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.007779,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00038",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726815Z",
+      "decided_at": "2026-08-07T13:46:12.726841Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.044456,
+          "gate_weights": [
+            0.551423,
+            0.448577
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.044456,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-f6455d29db03dc17f640",
+        "trace_id": "trace-086a616643b9f47527a5",
+        "idempotency_key": "idem-f6455d29db03dc17f640086a",
+        "task_id": "T-FEAT-ai4i_milling-00038",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.726815Z",
+        "decided_at": "2026-08-07T13:46:12.726841Z",
+        "deadline_at": "2026-08-07T13:48:12.726845Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.044456,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:66c9e7f12273494b1a9740037484fe49c5c9c080a9c60fc34f604657d66d0ec4"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00039",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726860Z",
+      "decided_at": "2026-08-07T13:46:12.726885Z",
+      "latency_ms": 0.027,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.087981,
+          "gate_weights": [
+            0.027379,
+            0.972621
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.087981,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-8224e7d71f895091ed29",
+        "trace_id": "trace-959c212faf27d710ebd6",
+        "idempotency_key": "idem-8224e7d71f895091ed29959c",
+        "task_id": "T-FEAT-ai4i_milling-00039",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.726860Z",
+        "decided_at": "2026-08-07T13:46:12.726885Z",
+        "deadline_at": "2026-08-07T13:48:12.726889Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.087981,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:c766c2f206acf6169838d55b7ade9feb377877d4088960d6516d442ec53d751c"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00040",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726906Z",
+      "decided_at": "2026-08-07T13:46:12.726931Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.029443,
+          "gate_weights": [
+            0.061112,
+            0.938888
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.029443,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-55291a6c90305cd42f12",
+        "trace_id": "trace-413cf4342c7bd3c6ef29",
+        "idempotency_key": "idem-55291a6c90305cd42f12413c",
+        "task_id": "T-FEAT-ai4i_milling-00040",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.726906Z",
+        "decided_at": "2026-08-07T13:46:12.726931Z",
+        "deadline_at": "2026-08-07T13:48:12.726936Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.029443,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:381a9c4bc4b1c43ca3351c30a24cc80e1cacba1dcdbe4a0902e3b06503fddf90"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00041",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.726949Z",
+      "decided_at": "2026-08-07T13:46:12.727036Z",
+      "latency_ms": 0.095,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.066395,
+          "gate_weights": [
+            0.034816,
+            0.965184
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.066395,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-7f4ce4ef0c424f839875",
+        "trace_id": "trace-d51c6a4e57fcc96a5552",
+        "idempotency_key": "idem-7f4ce4ef0c424f839875d51c",
+        "task_id": "T-FEAT-ai4i_milling-00041",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.726949Z",
+        "decided_at": "2026-08-07T13:46:12.727036Z",
+        "deadline_at": "2026-08-07T13:48:12.727049Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.066395,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:ec95806b46ec3bbd6cb108d95447bc7a1e85e6dc9215b5208879823471f9bd20"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00042",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727085Z",
+      "decided_at": "2026-08-07T13:46:12.727139Z",
+      "latency_ms": 0.056,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.036374,
+          "gate_weights": [
+            0.44986,
+            0.55014
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.036374,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-dfeda17e94c92874c6f1",
+        "trace_id": "trace-51414684f618ca245372",
+        "idempotency_key": "idem-dfeda17e94c92874c6f15141",
+        "task_id": "T-FEAT-ai4i_milling-00042",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.727085Z",
+        "decided_at": "2026-08-07T13:46:12.727139Z",
+        "deadline_at": "2026-08-07T13:48:12.727144Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.036374,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:462d2170cedc6c6ee1f1759ed3494b6f5658e58beb310d9a440466957b7346dd"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00043",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727164Z",
+      "decided_at": "2026-08-07T13:46:12.727196Z",
+      "latency_ms": 0.035,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.032579,
+          "gate_weights": [
+            0.639273,
+            0.360727
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.032579,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-6d3e49f76bffc5c7f6e0",
+        "trace_id": "trace-b66d1d99d3a097817903",
+        "idempotency_key": "idem-6d3e49f76bffc5c7f6e0b66d",
+        "task_id": "T-FEAT-ai4i_milling-00043",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.727164Z",
+        "decided_at": "2026-08-07T13:46:12.727196Z",
+        "deadline_at": "2026-08-07T13:48:12.727201Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.032579,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:fd9756703d29a1f372e0ecb54c5b7401995f66664aa7d2710c61ce7e695fe811"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00044",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727223Z",
+      "decided_at": "2026-08-07T13:46:12.727252Z",
+      "latency_ms": 0.032,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.023494,
+          "gate_weights": [
+            0.553343,
+            0.446657
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.023494,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00045",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727257Z",
+      "decided_at": "2026-08-07T13:46:12.727283Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.036628,
+          "gate_weights": [
+            0.055384,
+            0.944616
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.036628,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-13305ee69db23d4f1f67",
+        "trace_id": "trace-8b61030e68f22efc7de0",
+        "idempotency_key": "idem-13305ee69db23d4f1f678b61",
+        "task_id": "T-FEAT-ai4i_milling-00045",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.727257Z",
+        "decided_at": "2026-08-07T13:46:12.727283Z",
+        "deadline_at": "2026-08-07T13:48:12.727288Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.036628,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:df8e3b5b0d885664c515652b5191be7db782c03adf8e891b3a9e9335f64b6689"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00046",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727302Z",
+      "decided_at": "2026-08-07T13:46:12.727328Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.028717,
+          "gate_weights": [
+            0.967831,
+            0.032169
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.028717,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-485f74147585aedd463c",
+        "trace_id": "trace-05a05eb6a88f28b8e840",
+        "idempotency_key": "idem-485f74147585aedd463c05a0",
+        "task_id": "T-FEAT-ai4i_milling-00046",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.727302Z",
+        "decided_at": "2026-08-07T13:46:12.727328Z",
+        "deadline_at": "2026-08-07T13:48:12.727333Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.028717,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:9ac13f234ffd2c3309219537c764b082f3648c895844c0ef04052dd4af05db6d"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00047",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727347Z",
+      "decided_at": "2026-08-07T13:46:12.727373Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.033431,
+          "gate_weights": [
+            0.067866,
+            0.932134
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.033431,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-c76be2658f2978cd9dcb",
+        "trace_id": "trace-0bf36e13c58a8db3a23e",
+        "idempotency_key": "idem-c76be2658f2978cd9dcb0bf3",
+        "task_id": "T-FEAT-ai4i_milling-00047",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.727347Z",
+        "decided_at": "2026-08-07T13:46:12.727373Z",
+        "deadline_at": "2026-08-07T13:48:12.727377Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.033431,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:ee8d2ad03ae193f5153bed196b3f7a780d15e1909cb07d27a257aca5ef18aa88"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00048",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727390Z",
+      "decided_at": "2026-08-07T13:46:12.727445Z",
+      "latency_ms": 0.059,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.070766,
+          "gate_weights": [
+            0.535042,
+            0.464958
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.070766,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-09d78d641ab0182e9744",
+        "trace_id": "trace-6b75994d6576d24c3464",
+        "idempotency_key": "idem-09d78d641ab0182e97446b75",
+        "task_id": "T-FEAT-ai4i_milling-00048",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.727390Z",
+        "decided_at": "2026-08-07T13:46:12.727445Z",
+        "deadline_at": "2026-08-07T13:48:12.727454Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.070766,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:be9de831732c4ace562539bd1e3111c250e16496d9a16e1b8520f3b6281c4daf"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00049",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727481Z",
+      "decided_at": "2026-08-07T13:46:12.727526Z",
+      "latency_ms": 0.048,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.018078,
+          "gate_weights": [
+            0.633778,
+            0.366222
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.018078,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00050",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727532Z",
+      "decided_at": "2026-08-07T13:46:12.727562Z",
+      "latency_ms": 0.032,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.851084,
+          "gate_weights": [
+            0.991319,
+            0.008681
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.851084,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-270c18e53f73b11faf73",
+        "trace_id": "trace-a8f342de625c7a384480",
+        "idempotency_key": "idem-270c18e53f73b11faf73a8f3",
+        "task_id": "T-FEAT-ai4i_milling-00050",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.727532Z",
+        "decided_at": "2026-08-07T13:46:12.727562Z",
+        "deadline_at": "2026-08-07T13:48:12.727567Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.851084,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:badff74e72dfa9ec4eba39a333b88001d1c6df43bc1cc2c709af814e86dc6099"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00051",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727586Z",
+      "decided_at": "2026-08-07T13:46:12.727614Z",
+      "latency_ms": 0.031,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.158262,
+          "gate_weights": [
+            0.025535,
+            0.974465
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.158262,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-bf3988115d7ce6a1a94a",
+        "trace_id": "trace-6f26e23d89eb1d5d08e9",
+        "idempotency_key": "idem-bf3988115d7ce6a1a94a6f26",
+        "task_id": "T-FEAT-ai4i_milling-00051",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.727586Z",
+        "decided_at": "2026-08-07T13:46:12.727614Z",
+        "deadline_at": "2026-08-07T13:48:12.727619Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.158262,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:ed2f1322c79b8601ff601de3a43817b866497dc134c778c005c1e97f0f80588b"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00052",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727634Z",
+      "decided_at": "2026-08-07T13:46:12.727661Z",
+      "latency_ms": 0.029,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.025138,
+          "gate_weights": [
+            0.807874,
+            0.192126
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.025138,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00053",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727667Z",
+      "decided_at": "2026-08-07T13:46:12.727692Z",
+      "latency_ms": 0.027,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.012561,
+          "gate_weights": [
+            0.279007,
+            0.720993
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.012561,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00054",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727696Z",
+      "decided_at": "2026-08-07T13:46:12.727720Z",
+      "latency_ms": 0.026,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.025039,
+          "gate_weights": [
+            0.464537,
+            0.535463
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.025039,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00055",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727724Z",
+      "decided_at": "2026-08-07T13:46:12.727748Z",
+      "latency_ms": 0.026,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.016692,
+          "gate_weights": [
+            0.156458,
+            0.843542
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.016692,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00056",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727753Z",
+      "decided_at": "2026-08-07T13:46:12.727778Z",
+      "latency_ms": 0.027,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.021661,
+          "gate_weights": [
+            0.12675,
+            0.87325
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.021661,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00057",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727782Z",
+      "decided_at": "2026-08-07T13:46:12.727806Z",
+      "latency_ms": 0.026,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.017039,
+          "gate_weights": [
+            0.165871,
+            0.834129
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.017039,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00058",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727811Z",
+      "decided_at": "2026-08-07T13:46:12.727835Z",
+      "latency_ms": 0.026,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.022079,
+          "gate_weights": [
+            0.941747,
+            0.058253
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.022079,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00059",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727839Z",
+      "decided_at": "2026-08-07T13:46:12.727863Z",
+      "latency_ms": 0.026,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.170787,
+          "gate_weights": [
+            0.031325,
+            0.968675
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.170787,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-0dc8beaf1dc1aef0aa93",
+        "trace_id": "trace-2b22a3aa8db0cb14c3f2",
+        "idempotency_key": "idem-0dc8beaf1dc1aef0aa932b22",
+        "task_id": "T-FEAT-ai4i_milling-00059",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.727839Z",
+        "decided_at": "2026-08-07T13:46:12.727863Z",
+        "deadline_at": "2026-08-07T13:48:12.727867Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.170787,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:a05b0b1a21d372f5b0f4dcf96d27318059ba5f8a660f70c144b090fda6257a41"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00060",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727887Z",
+      "decided_at": "2026-08-07T13:46:12.727912Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.129916,
+          "gate_weights": [
+            0.039586,
+            0.960414
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.129916,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-c5a82492504e9911faa2",
+        "trace_id": "trace-e35a68ab7eaddc716dd8",
+        "idempotency_key": "idem-c5a82492504e9911faa2e35a",
+        "task_id": "T-FEAT-ai4i_milling-00060",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.727887Z",
+        "decided_at": "2026-08-07T13:46:12.727912Z",
+        "deadline_at": "2026-08-07T13:48:12.727916Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.129916,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:09eb136c3d3302f35cd4a06ad3b6432e8c20c0954019602db58df8295bbd8540"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00061",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727930Z",
+      "decided_at": "2026-08-07T13:46:12.727957Z",
+      "latency_ms": 0.031,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.028798,
+          "gate_weights": [
+            0.846861,
+            0.153139
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.028798,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-3b929a5269cea69f9ccf",
+        "trace_id": "trace-f9f8d5122b91ad88b7c5",
+        "idempotency_key": "idem-3b929a5269cea69f9ccff9f8",
+        "task_id": "T-FEAT-ai4i_milling-00061",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.727930Z",
+        "decided_at": "2026-08-07T13:46:12.727957Z",
+        "deadline_at": "2026-08-07T13:48:12.727964Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.028798,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:8ae75e24d4ac8b9d4bf625005b8d30eda975487bb6dba96c63b45ba3c6e995ff"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00062",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.727983Z",
+      "decided_at": "2026-08-07T13:46:12.728012Z",
+      "latency_ms": 0.031,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.073045,
+          "gate_weights": [
+            0.726309,
+            0.273691
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.073045,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-252fc4a5ad0587e1b7b9",
+        "trace_id": "trace-25408036315376cb96c4",
+        "idempotency_key": "idem-252fc4a5ad0587e1b7b92540",
+        "task_id": "T-FEAT-ai4i_milling-00062",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.727983Z",
+        "decided_at": "2026-08-07T13:46:12.728012Z",
+        "deadline_at": "2026-08-07T13:48:12.728016Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.073045,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:21e6728ad7d680c7d5b045922fb90120d84426f271e387fdb063154148686f27"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00063",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728030Z",
+      "decided_at": "2026-08-07T13:46:12.728055Z",
+      "latency_ms": 0.027,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.059082,
+          "gate_weights": [
+            0.970191,
+            0.029809
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.059082,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-2249dd3c29462fbe0752",
+        "trace_id": "trace-903d4ce2b5c52e382190",
+        "idempotency_key": "idem-2249dd3c29462fbe0752903d",
+        "task_id": "T-FEAT-ai4i_milling-00063",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.728030Z",
+        "decided_at": "2026-08-07T13:46:12.728055Z",
+        "deadline_at": "2026-08-07T13:48:12.728059Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.059082,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:50a862f9ec3708113d84a32d9c5bba5d8b4080b9ed50d31e6cba0d13bb69c8de"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00064",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728073Z",
+      "decided_at": "2026-08-07T13:46:12.728098Z",
+      "latency_ms": 0.027,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.020319,
+          "gate_weights": [
+            0.196309,
+            0.803691
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.020319,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00065",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728103Z",
+      "decided_at": "2026-08-07T13:46:12.728128Z",
+      "latency_ms": 0.026,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.057482,
+          "gate_weights": [
+            0.085495,
+            0.914505
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.057482,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-f4521af6f120487ccd52",
+        "trace_id": "trace-eeeb842206892c0b496e",
+        "idempotency_key": "idem-f4521af6f120487ccd52eeeb",
+        "task_id": "T-FEAT-ai4i_milling-00065",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.728103Z",
+        "decided_at": "2026-08-07T13:46:12.728128Z",
+        "deadline_at": "2026-08-07T13:48:12.728131Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.057482,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:a662321479372737b8cdca71f4dd51140f7e9759e7fea2693b7157248f260604"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00066",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728145Z",
+      "decided_at": "2026-08-07T13:46:12.728170Z",
+      "latency_ms": 0.026,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.035487,
+          "gate_weights": [
+            0.949731,
+            0.050269
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.035487,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-355f663722de09418e8a",
+        "trace_id": "trace-2028380d5864fefb0acc",
+        "idempotency_key": "idem-355f663722de09418e8a2028",
+        "task_id": "T-FEAT-ai4i_milling-00066",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.728145Z",
+        "decided_at": "2026-08-07T13:46:12.728170Z",
+        "deadline_at": "2026-08-07T13:48:12.728174Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.035487,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:c8823211f9141f9d7c95749717096a7c4af6f5cb3702020a0b6fef223b77b09a"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00067",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728186Z",
+      "decided_at": "2026-08-07T13:46:12.728211Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.043946,
+          "gate_weights": [
+            0.821973,
+            0.178027
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.043946,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-fb6c892d6c2b6f6741e4",
+        "trace_id": "trace-332e368dc3789a0f5865",
+        "idempotency_key": "idem-fb6c892d6c2b6f6741e4332e",
+        "task_id": "T-FEAT-ai4i_milling-00067",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.728186Z",
+        "decided_at": "2026-08-07T13:46:12.728211Z",
+        "deadline_at": "2026-08-07T13:48:12.728218Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.043946,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:8f7f67a2125824faa9cafd3d8d2a31353fededc31a4660a93c21302fdd3eff2c"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00068",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728231Z",
+      "decided_at": "2026-08-07T13:46:12.728256Z",
+      "latency_ms": 0.027,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.01995,
+          "gate_weights": [
+            0.359215,
+            0.640785
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.01995,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00069",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728260Z",
+      "decided_at": "2026-08-07T13:46:12.728293Z",
+      "latency_ms": 0.036,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.613079,
+          "gate_weights": [
+            0.010119,
+            0.989881
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.613079,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-6cf94f0ce4e22483dc98",
+        "trace_id": "trace-3b0e17ea2a999a679472",
+        "idempotency_key": "idem-6cf94f0ce4e22483dc983b0e",
+        "task_id": "T-FEAT-ai4i_milling-00069",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.728260Z",
+        "decided_at": "2026-08-07T13:46:12.728293Z",
+        "deadline_at": "2026-08-07T13:48:12.728299Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.613079,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:d65d17e4488bd5cc59a7cdc3d2d434fa9f32cd00fe17679f926bbf20e1406bae"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00070",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728319Z",
+      "decided_at": "2026-08-07T13:46:12.728354Z",
+      "latency_ms": 0.037,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.134523,
+          "gate_weights": [
+            0.984741,
+            0.015259
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.134523,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-c5d4f7ee031f57209a8f",
+        "trace_id": "trace-2e968c6984bfecec4619",
+        "idempotency_key": "idem-c5d4f7ee031f57209a8f2e96",
+        "task_id": "T-FEAT-ai4i_milling-00070",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.728319Z",
+        "decided_at": "2026-08-07T13:46:12.728354Z",
+        "deadline_at": "2026-08-07T13:48:12.728358Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.134523,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:41cc66d6c42e9e633c3b630625c128e7b83a3fa4780225168b39906611127bcd"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00071",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728377Z",
+      "decided_at": "2026-08-07T13:46:12.728404Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.057633,
+          "gate_weights": [
+            0.103031,
+            0.896969
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.057633,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-7ff18f0a1518efd855f7",
+        "trace_id": "trace-f7d8c1d41c83eaf4e6a9",
+        "idempotency_key": "idem-7ff18f0a1518efd855f7f7d8",
+        "task_id": "T-FEAT-ai4i_milling-00071",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.728377Z",
+        "decided_at": "2026-08-07T13:46:12.728404Z",
+        "deadline_at": "2026-08-07T13:48:12.728408Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.057633,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:b67c825889f28878d7490f85de37c47d214dd8901d6437e56283b6a946dbd100"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00072",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728422Z",
+      "decided_at": "2026-08-07T13:46:12.728447Z",
+      "latency_ms": 0.027,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.065609,
+          "gate_weights": [
+            0.101663,
+            0.898337
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.065609,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-a3d22e38fc3ec854f20d",
+        "trace_id": "trace-717bfc51f70ee6329779",
+        "idempotency_key": "idem-a3d22e38fc3ec854f20d717b",
+        "task_id": "T-FEAT-ai4i_milling-00072",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.728422Z",
+        "decided_at": "2026-08-07T13:46:12.728447Z",
+        "deadline_at": "2026-08-07T13:48:12.728451Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.065609,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:c8a8e4d406cc9b6843595919ac6e104f06b5cf201186296dc281789355b314c1"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00073",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728470Z",
+      "decided_at": "2026-08-07T13:46:12.728508Z",
+      "latency_ms": 0.041,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.02999,
+          "gate_weights": [
+            0.321548,
+            0.678452
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.02999,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-993ed9376b784a5b3b43",
+        "trace_id": "trace-99858f084450ef92cf4f",
+        "idempotency_key": "idem-993ed9376b784a5b3b439985",
+        "task_id": "T-FEAT-ai4i_milling-00073",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.728470Z",
+        "decided_at": "2026-08-07T13:46:12.728508Z",
+        "deadline_at": "2026-08-07T13:48:12.728513Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.02999,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:0a743006be253bab7eb8716bb03303c66a2b2c4010c3ce3eaa613957a82e62a4"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00074",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728528Z",
+      "decided_at": "2026-08-07T13:46:12.728573Z",
+      "latency_ms": 0.048,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.033532,
+          "gate_weights": [
+            0.404586,
+            0.595414
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.033532,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-94565a35a9fb84f29e94",
+        "trace_id": "trace-7f8ec7e162419a845e3d",
+        "idempotency_key": "idem-94565a35a9fb84f29e947f8e",
+        "task_id": "T-FEAT-ai4i_milling-00074",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.728528Z",
+        "decided_at": "2026-08-07T13:46:12.728573Z",
+        "deadline_at": "2026-08-07T13:48:12.728579Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.033532,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:c6e0e50cea0f05e872300063435ad737a6048d8c7af7492a892a26b5fa42c216"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00075",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728600Z",
+      "decided_at": "2026-08-07T13:46:12.728630Z",
+      "latency_ms": 0.032,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.095789,
+          "gate_weights": [
+            0.084303,
+            0.915697
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.095789,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-a9f4df53f5a2b77b5743",
+        "trace_id": "trace-d39116307c5376edb7ad",
+        "idempotency_key": "idem-a9f4df53f5a2b77b5743d391",
+        "task_id": "T-FEAT-ai4i_milling-00075",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.728600Z",
+        "decided_at": "2026-08-07T13:46:12.728630Z",
+        "deadline_at": "2026-08-07T13:48:12.728634Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.095789,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:5a67a2c7a1d675e10925b678c3dd11e13aefd1df2f07112e1e5840a21d1fd0f8"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00076",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728647Z",
+      "decided_at": "2026-08-07T13:46:12.728674Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.088181,
+          "gate_weights": [
+            0.08619,
+            0.91381
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.088181,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-a72289d3201bba9cfddf",
+        "trace_id": "trace-67d94e2ab2082e32c110",
+        "idempotency_key": "idem-a72289d3201bba9cfddf67d9",
+        "task_id": "T-FEAT-ai4i_milling-00076",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.728647Z",
+        "decided_at": "2026-08-07T13:46:12.728674Z",
+        "deadline_at": "2026-08-07T13:48:12.728678Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.088181,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:3f9421dee7261bf07da4718e7f8961f076428c705e47d1b46f1bf57662ef0a27"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00077",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728691Z",
+      "decided_at": "2026-08-07T13:46:12.728717Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.040749,
+          "gate_weights": [
+            0.166275,
+            0.833725
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.040749,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-22f1ed4aad9b663becb1",
+        "trace_id": "trace-9aa58c7c9591304e2cc5",
+        "idempotency_key": "idem-22f1ed4aad9b663becb19aa5",
+        "task_id": "T-FEAT-ai4i_milling-00077",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.728691Z",
+        "decided_at": "2026-08-07T13:46:12.728717Z",
+        "deadline_at": "2026-08-07T13:48:12.728721Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.040749,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:4505b764d524a2be08a929c169be7ec2f5ed4e3fd4829be890251f6d0b49894a"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00078",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728763Z",
+      "decided_at": "2026-08-07T13:46:12.728816Z",
+      "latency_ms": 0.056,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.021845,
+          "gate_weights": [
+            0.01728,
+            0.98272
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.021845,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00079",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728823Z",
+      "decided_at": "2026-08-07T13:46:12.728855Z",
+      "latency_ms": 0.034,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.00254,
+          "gate_weights": [
+            0.077277,
+            0.922723
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.00254,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00080",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728864Z",
+      "decided_at": "2026-08-07T13:46:12.728892Z",
+      "latency_ms": 0.029,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.01983,
+          "gate_weights": [
+            0.44993,
+            0.55007
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.01983,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00081",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.728896Z",
+      "decided_at": "2026-08-07T13:46:12.728993Z",
+      "latency_ms": 0.105,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.010932,
+          "gate_weights": [
+            0.029528,
+            0.970472
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.010932,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00082",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729010Z",
+      "decided_at": "2026-08-07T13:46:12.729068Z",
+      "latency_ms": 0.061,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.003824,
+          "gate_weights": [
+            0.062039,
+            0.937961
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.003824,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00083",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729075Z",
+      "decided_at": "2026-08-07T13:46:12.729106Z",
+      "latency_ms": 0.033,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.003334,
+          "gate_weights": [
+            0.06769,
+            0.93231
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.003334,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00084",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729111Z",
+      "decided_at": "2026-08-07T13:46:12.729145Z",
+      "latency_ms": 0.036,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.013409,
+          "gate_weights": [
+            0.028721,
+            0.971279
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.013409,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00085",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729150Z",
+      "decided_at": "2026-08-07T13:46:12.729179Z",
+      "latency_ms": 0.031,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.00229,
+          "gate_weights": [
+            0.91938,
+            0.08062
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.00229,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00086",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729184Z",
+      "decided_at": "2026-08-07T13:46:12.729211Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.007811,
+          "gate_weights": [
+            0.622461,
+            0.377539
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.007811,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00087",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729215Z",
+      "decided_at": "2026-08-07T13:46:12.729245Z",
+      "latency_ms": 0.032,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.001002,
+          "gate_weights": [
+            0.185769,
+            0.814231
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.001002,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00088",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729250Z",
+      "decided_at": "2026-08-07T13:46:12.729276Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.009063,
+          "gate_weights": [
+            0.426441,
+            0.573559
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.009063,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00089",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729280Z",
+      "decided_at": "2026-08-07T13:46:12.729307Z",
+      "latency_ms": 0.03,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.00242,
+          "gate_weights": [
+            0.626439,
+            0.373561
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.00242,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00090",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729313Z",
+      "decided_at": "2026-08-07T13:46:12.729339Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.002686,
+          "gate_weights": [
+            0.414357,
+            0.585643
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.002686,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00091",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729343Z",
+      "decided_at": "2026-08-07T13:46:12.729370Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.004836,
+          "gate_weights": [
+            0.476837,
+            0.523163
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.004836,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00092",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729374Z",
+      "decided_at": "2026-08-07T13:46:12.729403Z",
+      "latency_ms": 0.032,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.002128,
+          "gate_weights": [
+            0.916734,
+            0.083266
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.002128,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00093",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729412Z",
+      "decided_at": "2026-08-07T13:46:12.729442Z",
+      "latency_ms": 0.032,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.008209,
+          "gate_weights": [
+            0.052905,
+            0.947095
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.008209,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00094",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729446Z",
+      "decided_at": "2026-08-07T13:46:12.729473Z",
+      "latency_ms": 0.028,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.001656,
+          "gate_weights": [
+            0.218278,
+            0.781722
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.001656,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00095",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729477Z",
+      "decided_at": "2026-08-07T13:46:12.729504Z",
+      "latency_ms": 0.03,
+      "decision": {
+        "action": "continue_with_review",
+        "level": "warning",
+        "summary": "AI4I cloud review required",
+        "detail": {
+          "failure_probability": 0.047946,
+          "gate_weights": [
+            0.246315,
+            0.753685
+          ]
+        }
+      },
+      "local_prediction": "fault",
+      "failure_probability": 0.047946,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "required",
+      "review_reason": [
+        "failure_probability_above_normal_accept_threshold"
+      ],
+      "safety_priority": "P1",
+      "safety_trigger": null,
+      "action": "continue_with_review",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe",
+      "cloud_payload": {
+        "schema_version": "edge-cloud-review/v3",
+        "review_id": "review-d730caceadfa65524f41",
+        "trace_id": "trace-d6aefbd1143e281092d3",
+        "idempotency_key": "idem-d730caceadfa65524f41d6ae",
+        "task_id": "T-FEAT-ai4i_milling-00095",
+        "from_node": "edge-01",
+        "observed_at": "2026-08-06T13:25:20",
+        "received_at": "2026-08-07T13:46:12.729477Z",
+        "decided_at": "2026-08-07T13:46:12.729504Z",
+        "deadline_at": "2026-08-07T13:48:12.729509Z",
+        "local_prediction": "fault",
+        "failure_probability": 0.047946,
+        "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+        "feature_schema_id": "ai4i_8d_v1",
+        "model_route": "ai4i_tabular_moe_v1",
+        "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+        "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+        "threshold_used": 0.027514,
+        "review_state": "required",
+        "review_reason": [
+          "failure_probability_above_normal_accept_threshold"
+        ],
+        "safety_priority": "P1",
+        "safety_trigger": null,
+        "action": "continue_with_review",
+        "network": {
+          "cloud_reachable": true
+        },
+        "evidence": {
+          "feature_count": 8,
+          "feature_hash": "sha256:a52da9d8c120077541b7e94814e82343d95ac21b329cfe705fe7558e689ca6a0"
+        }
+      }
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00096",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729541Z",
+      "decided_at": "2026-08-07T13:46:12.729575Z",
+      "latency_ms": 0.087,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.001935,
+          "gate_weights": [
+            0.772455,
+            0.227545
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.001935,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00097",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729634Z",
+      "decided_at": "2026-08-07T13:46:12.729747Z",
+      "latency_ms": 0.118,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.00395,
+          "gate_weights": [
+            0.899895,
+            0.100105
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.00395,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00098",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729757Z",
+      "decided_at": "2026-08-07T13:46:12.729870Z",
+      "latency_ms": 0.119,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.001748,
+          "gate_weights": [
+            0.190426,
+            0.809574
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.001748,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    },
+    {
+      "task_id": "T-FEAT-ai4i_milling-00099",
+      "node_id": "edge-01",
+      "observed_at": "2026-08-06T13:25:20",
+      "received_at": "2026-08-07T13:46:12.729880Z",
+      "decided_at": "2026-08-07T13:46:12.729919Z",
+      "latency_ms": 0.041,
+      "decision": {
+        "action": "continue",
+        "level": "info",
+        "summary": "AI4I local normal acceptance",
+        "detail": {
+          "failure_probability": 0.008052,
+          "gate_weights": [
+            0.061608,
+            0.938392
+          ]
+        }
+      },
+      "local_prediction": "normal",
+      "failure_probability": 0.008052,
+      "calibration_version": "ai4i_platt:f62c3630d7aecce3",
+      "feature_schema_id": "ai4i_8d_v1",
+      "model_route": "ai4i_tabular_moe_v1",
+      "model_version": "ai4i_tabular_moe:f62c3630d7aecce3",
+      "policy_version": "ai4i_normal_accept:ca835c60f0329cda",
+      "threshold_used": 0.027514,
+      "review_state": "not_required",
+      "review_reason": [],
+      "safety_priority": "P2",
+      "safety_trigger": null,
+      "action": "continue",
+      "raw_model_response": "",
+      "route": "ai4i_tabular_moe"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "edge-task-types/v3",
+  "description": "Canonical task types and prompt mappings. This file does not assign business priority or model-confidence routing.",
+  "task_types": {
+    "data_analysis": {"name": "Data analysis", "description": "Analyze historical sensor trends.", "prompt_template": "prompts/data_analysis.txt", "max_latency_ms": 200},
+    "fault_diagnosis": {"name": "Fault diagnosis", "description": "Classify an observed equipment condition.", "prompt_template": "prompts/fault_diagnosis.txt", "max_latency_ms": 200},
+    "generic_anomaly": {"name": "Generic anomaly", "description": "Assess a sensor-agnostic anomaly level.", "prompt_template": "prompts/generic_anomaly.txt", "grammar": "generic_decision.gbnf", "max_latency_ms": 200},
+    "predictive_maintenance": {"name": "Predictive maintenance", "description": "Review maintenance-related trend information.", "prompt_template": "prompts/data_analysis.txt", "max_latency_ms": 500},
+    "quality_inspection": {"name": "Quality inspection", "description": "Review product inspection measurements.", "prompt_template": "prompts/quality_inspection.txt", "max_latency_ms": 200},
+    "safety_check": {"name": "Safety check", "description": "Review a work-scene safety observation.", "prompt_template": "prompts/safety_check.txt", "max_latency_ms": 150},
+    "status_monitoring": {"name": "Status monitoring", "description": "Review current equipment operating measurements.", "prompt_template": "prompts/status_monitoring.txt", "max_latency_ms": 100},
+    "video_anomaly": {"name": "Video anomaly", "description": "Review numeric features extracted from video.", "prompt_template": "prompts/video_anomaly.txt", "grammar": "generic_decision.gbnf", "max_latency_ms": 200}
+  },
+  "review_policy": {
+    "calibrated_ai4i": "Accept local normal only at or below the frozen calibrated failure-probability threshold; otherwise review is required.",
+    "qwen_text_fallback": "Always require review until a separate retained-set calibration is deployed.",
+    "safety": "Only hard safety triggers can set P0; model output does not establish business priority."
+  }
+}
